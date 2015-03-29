@@ -1,0 +1,29 @@
+//
+//  RDDistantAnnotationsCollectionView.m
+//  Radius
+//
+//  Created by Zakk Hoyt on 3/24/15.
+//  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
+//
+
+#import "SnapAnnotationsCollectionView.h"
+
+@implementation SnapAnnotationsCollectionView
+
+// Intercept touches on cells only. All others fall through to background controls
+-(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    NSArray *indexPaths = [self indexPathsForVisibleItems];
+    for(NSIndexPath *indexPath in indexPaths.reverseObjectEnumerator){
+        UICollectionViewCell *cell = [self cellForItemAtIndexPath:indexPath];
+        if(CGRectContainsPoint(cell.frame, point)){
+            return cell;
+        }
+    }
+    return nil;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    return NO;
+}
+
+@end
