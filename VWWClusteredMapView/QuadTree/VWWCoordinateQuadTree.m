@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Theodore Calmes. All rights reserved.
 //
 
-#import "CoordinateQuadTree.h"
-#import "ClusteredAnnotation.h"
+#import "VWWCoordinateQuadTree.h"
+#import "VWWClusteredAnnotation.h"
 
 @import Photos; 
 
-@implementation CoordinateQuadTree{
+@implementation VWWCoordinateQuadTree{
     NSUInteger _clusterDensity;
 }
 
@@ -25,8 +25,8 @@
 }
 
 -(void)buildTreeWithItems:(NSArray*)data{
-    BoundingBox *world = [[BoundingBox alloc]initWithX0:-90 Y0:-180 XF:90 YF:180];
-    self.root = [QuadTree quadTreeBuildWithData:data count:data.count boundingBox:world capacity:4];
+    VWWBoundingBox *world = [[VWWBoundingBox alloc]initWithX0:-90 Y0:-180 XF:90 YF:180];
+    self.root = [VWWQuadTree quadTreeBuildWithData:data count:data.count boundingBox:world capacity:4];
 }
 
 - (NSArray *)clusteredAnnotationsWithinMapRect:(MKMapRect)rect withZoomScale:(double)zoomScale
@@ -49,8 +49,8 @@
             __block int count = 0;
             
             NSMutableArray *annotations = [[NSMutableArray alloc]init];
-            BoundingBox *boundingBox = [self boundingBoxForMapRect:mapRect];
-            [QuadTree quadTree:self.root gatherDataInRange:boundingBox block:^(QuadTreeNodeData *data) {
+            VWWBoundingBox *boundingBox = [self boundingBoxForMapRect:mapRect];
+            [VWWQuadTree quadTree:self.root gatherDataInRange:boundingBox block:^(VWWQuadTreeNodeData *data) {
                 count++;
                 totalX += data.coordinate.latitude;
                 totalY += data.coordinate.longitude;
@@ -62,7 +62,7 @@
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(0, 0);
             coordinate = CLLocationCoordinate2DMake(totalX / count, totalY / count);
 
-            ClusteredAnnotation *annotation = [[ClusteredAnnotation alloc]initWithCoordinate:coordinate annotations:annotations];
+            VWWClusteredAnnotation *annotation = [[VWWClusteredAnnotation alloc]initWithCoordinate:coordinate annotations:annotations];
             [clusteredAnnotations addObject:annotation];
         }
     }
@@ -116,7 +116,7 @@
     return zoomLevel;
 }
 
--(BoundingBox*)boundingBoxForMapRect:(MKMapRect)mapRect {
+-(VWWBoundingBox*)boundingBoxForMapRect:(MKMapRect)mapRect {
     CLLocationCoordinate2D topLeft = MKCoordinateForMapPoint(mapRect.origin);
     CLLocationCoordinate2D botRight = MKCoordinateForMapPoint(MKMapPointMake(MKMapRectGetMaxX(mapRect), MKMapRectGetMaxY(mapRect)));
     
@@ -125,7 +125,7 @@
     
     CLLocationDegrees minLon = topLeft.longitude;
     CLLocationDegrees maxLon = botRight.longitude;
-    return [[BoundingBox alloc]initWithX0:minLat Y0:minLon XF:maxLat YF:maxLon];
+    return [[VWWBoundingBox alloc]initWithX0:minLat Y0:minLon XF:maxLat YF:maxLon];
     
 }
 

@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import "ClusteredMapView+UICollectionViewDelegate.h"
-#import "SnapAnnotationCollectionViewCell.h"
+#import "VWWClusteredMapView+UICollectionViewDelegate.h"
+#import "VWWSnapAnnotationCollectionViewCell.h"
 
-@implementation ClusteredMapView (UICollectionViewDelegate)
+@implementation VWWClusteredMapView (UICollectionViewDelegate)
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    SnapAnnotationCollectionViewCell *cell = (SnapAnnotationCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    VWWSnapAnnotationCollectionViewCell *cell = (VWWSnapAnnotationCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
     if(cell == nil) return;
     
     MKAnnotationView *annotationView = cell.annotationView;

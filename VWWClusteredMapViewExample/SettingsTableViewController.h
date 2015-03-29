@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ClusteredMapView.h"
+#import "VWWClusteredMapView.h"
 
 typedef void(^SettingsTableViewControllerEmptyBlock)(void);
 
 @interface SettingsTableViewController : UITableViewController
-@property (nonatomic, strong) ClusteredMapView *mapView;
+@property (nonatomic, strong) VWWClusteredMapView *mapView;
 -(void)setHideButtonActionBlock:(SettingsTableViewControllerEmptyBlock)hideButtonActionBlock;
 @end

@@ -6,15 +6,15 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import "ClusteredMapView+UICollectionViewDataSource.h"
-#import "SnapAnnotationCollectionViewCell.h"
-#import "ClusteredMapView+ClassExtension.h"
+#import "VWWClusteredMapView+UICollectionViewDataSource.h"
+#import "VWWSnapAnnotationCollectionViewCell.h"
+#import "VWWClusteredMapView+ClassExtension.h"
 
-@interface ClusteredMapView ()
+@interface VWWClusteredMapView ()
 @property (nonatomic, strong) MKAnnotationView *annotationView;
 @end
 
-@implementation ClusteredMapView (UICollectionViewDataSource)
+@implementation VWWClusteredMapView (UICollectionViewDataSource)
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)cv {
     return 1;
 }
@@ -32,7 +32,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    SnapAnnotationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:SnapAnnotationCollectionViewCellKey forIndexPath:indexPath];
+    VWWSnapAnnotationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:VWWSnapAnnotationCollectionViewCellKey forIndexPath:indexPath];
 
     MKAnnotationView *annotationView = nil;
     id<MKAnnotation> annotation = nil;

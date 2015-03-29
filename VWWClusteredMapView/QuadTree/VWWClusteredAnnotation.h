@@ -11,7 +11,7 @@
 
 static NSString *const VWWAnnotatioViewReuseID = @"VWWAnnotatioViewReuseID";
 
-@interface ClusteredAnnotation : NSObject <MKAnnotation>
+@interface VWWClusteredAnnotation : NSObject <MKAnnotation>
 - (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate annotations:(NSArray*)annotations;
 
 @property (assign, nonatomic) CLLocationCoordinate2D coordinate;

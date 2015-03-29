@@ -7,8 +7,8 @@
 //
 
 
-#import "ClusteredMapView.h"
+#import "VWWClusteredMapView.h"
 
-@interface ClusteredMapView (MKMapViewDelegate) <MKMapViewDelegate>
+@interface VWWClusteredMapView (MKMapViewDelegate) <MKMapViewDelegate>
 
 @end

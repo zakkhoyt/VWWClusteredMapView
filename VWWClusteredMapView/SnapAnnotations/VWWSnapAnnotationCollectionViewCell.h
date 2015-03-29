@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-static NSString *SnapAnnotationCollectionViewCellKey = @"SnapAnnotationCollectionViewCell";
-@interface SnapAnnotationCollectionViewCell : UICollectionViewCell
+static NSString *VWWSnapAnnotationCollectionViewCellKey = @"VWWSnapAnnotationCollectionViewCell";
+@interface VWWSnapAnnotationCollectionViewCell : UICollectionViewCell
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, strong) MKAnnotationView *annotationView;
 @end

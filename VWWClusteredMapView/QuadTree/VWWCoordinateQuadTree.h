@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "QuadTree.h"
+#import "VWWQuadTree.h"
 
 
 
 
 
-@interface CoordinateQuadTree : NSObject
+@interface VWWCoordinateQuadTree : NSObject
 
-@property (nonatomic, strong) QuadTreeNode *root;
+@property (nonatomic, strong) VWWQuadTreeNode *root;
 @property (nonatomic, strong) MKMapView *mapView;
 
 -(instancetype)init;

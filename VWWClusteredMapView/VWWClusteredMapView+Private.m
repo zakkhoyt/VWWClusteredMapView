@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import "ClusteredMapView+Private.h"
-#import "ClusteredMapView+ClassExtension.h"
+#import "VWWClusteredMapView+Private.h"
+#import "VWWClusteredMapView+ClassExtension.h"
 
-@implementation ClusteredMapView (Private)
+@implementation VWWClusteredMapView (Private)
 
 -(void)refreshClusterableAnnotations{
     if(self.annotationsAreClusterable) {
@@ -36,7 +36,7 @@
             [self.clusteredAnnotations removeAllObjects];
         }
         for(NSUInteger index = 0; index < clusters.count; index++){
-            ClusteredAnnotation *cluster = clusters[index];
+            VWWClusteredAnnotation *cluster = clusters[index];
             if(cluster.annotations.count) {
                 [self.clusteredAnnotations addObject:cluster];
             }

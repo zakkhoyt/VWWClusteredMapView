@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import "SnapAnnotationsCollectionViewLayout.h"
+#import "VWWSnapAnnotationsCollectionViewLayout.h"
 
 
-@interface SnapAnnotationsCollectionViewLayout ()
+@interface VWWSnapAnnotationsCollectionViewLayout ()
 @property (nonatomic, strong) NSArray *updateItems;
 @property (nonatomic, strong) NSMutableArray *deleteIndexPaths;
 @property (nonatomic, strong) NSMutableArray *insertIndexPaths;
@@ -19,7 +19,7 @@
 
 
 
-@implementation SnapAnnotationsCollectionViewLayout
+@implementation VWWSnapAnnotationsCollectionViewLayout
 #pragma mark UICollectionViewLayout stuff
 
 - (instancetype)init{

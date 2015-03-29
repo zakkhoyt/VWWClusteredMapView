@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import "ClusteredMapView.h"
+#import "VWWClusteredMapView.h"
 
-@interface ClusteredMapView (UICollectionViewDataSource) <UICollectionViewDataSource>
+@interface VWWClusteredMapView (UICollectionViewDataSource) <UICollectionViewDataSource>
 
 @end

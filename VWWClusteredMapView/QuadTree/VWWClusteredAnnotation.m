@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Theodore Calmes. All rights reserved.
 //
 
-#import "ClusteredAnnotation.h"
+#import "VWWClusteredAnnotation.h"
 
-@implementation ClusteredAnnotation
+@implementation VWWClusteredAnnotation
 
 - (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate annotations:(NSArray*)annotations {
     self = [super init];

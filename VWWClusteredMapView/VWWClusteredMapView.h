@@ -6,9 +6,10 @@
 //
 //
 
+
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "ClusteredAnnotation.h"
+#import "VWWClusteredAnnotation.h"
 
 typedef enum {
     ClusterMapViewDensityWimpy = 0,
@@ -20,7 +21,7 @@ typedef enum {
 @protocol ClusteredMapViewDelegate;
 
 
-@interface ClusteredMapView : UIView
+@interface VWWClusteredMapView : UIView
 // If set not onscreen / offscreen annotations will be clustered
 @property (nonatomic) BOOL annotationsAreClusterable;
 
@@ -41,7 +42,7 @@ typedef enum {
 - (MKAnnotationView *)viewForSnappedAnnotation:(id <MKAnnotation>)annotation;
 @end
 
-@interface ClusteredMapView (MKMapView)
+@interface VWWClusteredMapView (MKMapView)
 // Changing the map type or region can cause the map to start loading map content.
 // The loading delegate methods will be called as map content is loaded.
 @property (nonatomic) MKMapType mapType;
@@ -154,7 +155,7 @@ typedef enum {
 @end
 
 
-@interface ClusteredMapView (MKMapView_OverlaysAPI)
+@interface VWWClusteredMapView (MKMapView_OverlaysAPI)
 
 // Overlays are models used to represent areas to be drawn on top of the map.
 // This is in contrast to annotations, which represent points on the map.
@@ -200,57 +201,57 @@ typedef enum {
 // *********************************************************
 // Methods in this section are wrapped versions of MKMapViewDelegate
 
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView regionWillChangeAnimated:(BOOL)animated;
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView regionDidChangeAnimated:(BOOL)animated;
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView regionWillChangeAnimated:(BOOL)animated;
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView regionDidChangeAnimated:(BOOL)animated;
 
-- (void)clusteredMapViewWillStartLoadingMap:(ClusteredMapView *)clusteredMapView;
-- (void)clusteredMapViewDidFinishLoadingMap:(ClusteredMapView *)clusteredMapView;
-- (void)clusteredMapViewDidFailLoadingMap:(ClusteredMapView *)clusteredMapView withError:(NSError *)error;
+- (void)clusteredMapViewWillStartLoadingMap:(VWWClusteredMapView *)clusteredMapView;
+- (void)clusteredMapViewDidFinishLoadingMap:(VWWClusteredMapView *)clusteredMapView;
+- (void)clusteredMapViewDidFailLoadingMap:(VWWClusteredMapView *)clusteredMapView withError:(NSError *)error;
 
-- (void)clusteredMapViewWillStartRenderingMap:(ClusteredMapView *)clusteredMapView NS_AVAILABLE(10_9, 7_0);
-- (void)clusteredMapViewDidFinishRenderingMap:(ClusteredMapView *)clusteredMapView fullyRendered:(BOOL)fullyRendered NS_AVAILABLE(10_9, 7_0);
+- (void)clusteredMapViewWillStartRenderingMap:(VWWClusteredMapView *)clusteredMapView NS_AVAILABLE(10_9, 7_0);
+- (void)clusteredMapViewDidFinishRenderingMap:(VWWClusteredMapView *)clusteredMapView fullyRendered:(BOOL)fullyRendered NS_AVAILABLE(10_9, 7_0);
 
-- (MKAnnotationView *)clusteredMapView:(ClusteredMapView *)clusteredMapView viewForAnnotation:(id <MKAnnotation>)annotation;
+- (MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForAnnotation:(id <MKAnnotation>)annotation;
 
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didAddAnnotationViews:(NSArray *)views;
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didAddAnnotationViews:(NSArray *)views;
 
 #if TARGET_OS_IPHONE
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control;
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control;
 #endif
 
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didSelectAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didDeselectAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 
-- (void)clusteredMapViewWillStartLocatingUser:(ClusteredMapView *)clusteredMapView NS_AVAILABLE(10_9, 4_0);
-- (void)clusteredMapViewDidStopLocatingUser:(ClusteredMapView *)clusteredMapView NS_AVAILABLE(10_9, 4_0);
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didUpdateUserLocation:(MKUserLocation *)userLocation NS_AVAILABLE(10_9, 4_0);
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didFailToLocateUserWithError:(NSError *)error NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapViewWillStartLocatingUser:(VWWClusteredMapView *)clusteredMapView NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapViewDidStopLocatingUser:(VWWClusteredMapView *)clusteredMapView NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didUpdateUserLocation:(MKUserLocation *)userLocation NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didFailToLocateUserWithError:(NSError *)error NS_AVAILABLE(10_9, 4_0);
 
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState
             fromOldState:(MKAnnotationViewDragState)oldState NS_AVAILABLE(10_9, 4_0);
 
 #if TARGET_OS_IPHONE
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated NS_AVAILABLE(NA, 5_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated NS_AVAILABLE(NA, 5_0);
 #endif
 
-- (MKOverlayRenderer *)clusteredMapView:(ClusteredMapView *)clusteredMapView rendererForOverlay:(id <MKOverlay>)overlay NS_AVAILABLE(10_9, 7_0);
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didAddOverlayRenderers:(NSArray *)renderers NS_AVAILABLE(10_9, 7_0);
+- (MKOverlayRenderer *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView rendererForOverlay:(id <MKOverlay>)overlay NS_AVAILABLE(10_9, 7_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didAddOverlayRenderers:(NSArray *)renderers NS_AVAILABLE(10_9, 7_0);
 
 #if TARGET_OS_IPHONE
-- (MKOverlayView *)clusteredMapView:(ClusteredMapView *)clusteredMapView viewForOverlay:(id <MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0);
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didAddOverlayViews:(NSArray *)overlayViews NS_DEPRECATED_IOS(4_0, 7_0);
+- (MKOverlayView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForOverlay:(id <MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didAddOverlayViews:(NSArray *)overlayViews NS_DEPRECATED_IOS(4_0, 7_0);
 #endif
 
 // *********************************************************
 // Methods below here are additional to MKMapViewDelegate
-- (MKAnnotationView *)clusteredMapView:(ClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
+- (MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 
 
-- (MKAnnotationView *)clusteredMapView:(ClusteredMapView *)clusteredMapView viewForSnappedAnnotation:(id <MKAnnotation>)annotation;
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didSelectSnapedAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didDeselectSnappedAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
+- (MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForSnappedAnnotation:(id <MKAnnotation>)annotation;
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectSnapedAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectSnappedAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 
 
 

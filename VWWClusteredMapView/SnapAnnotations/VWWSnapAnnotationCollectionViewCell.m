@@ -6,18 +6,18 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import "SnapAnnotationCollectionViewCell.h"
+#import "VWWSnapAnnotationCollectionViewCell.h"
 #import <UIKit/UIKit.h>
 
 
 
-@interface SnapAnnotationCollectionViewCell ()
+@interface VWWSnapAnnotationCollectionViewCell ()
 @property (nonatomic, strong) UILabel *locationLabel;
 @property (nonatomic, strong) UIImageView *imageView;
 @end
 
 
-@implementation SnapAnnotationCollectionViewCell
+@implementation VWWSnapAnnotationCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

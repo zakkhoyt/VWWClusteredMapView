@@ -12,10 +12,10 @@
 #import "HotelAnnotation.h"
 #import "HotelAnnotationView.h"
 
-#import "ClusteredMapView.h"
+#import "VWWClusteredMapView.h"
 
 @interface ViewController () <ClusteredMapViewDelegate, UIPopoverPresentationControllerDelegate>
-@property (weak, nonatomic) IBOutlet ClusteredMapView *mapView;
+@property (weak, nonatomic) IBOutlet VWWClusteredMapView *mapView;
 @property (nonatomic, strong) UIPopoverPresentationController *popover;
 @property (weak, nonatomic) IBOutlet UIView *settingsContainerView;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
@@ -85,7 +85,7 @@
 @implementation ViewController (ClusteredMapViewDelegate)
 
 #pragma mark Annotation Views
--(MKAnnotationView*)clusteredMapView:(ClusteredMapView *)clusteredMapView viewForAnnotation:(id<MKAnnotation>)annotation {
+-(MKAnnotationView*)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForAnnotation:(id<MKAnnotation>)annotation {
     HotelAnnotationView *annotationView = (HotelAnnotationView *)[clusteredMapView dequeueReusableAnnotationViewWithIdentifier:@"AnnotationView"];
     if (!annotationView) {
         annotationView = [[HotelAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"AnnotationView"];
@@ -95,18 +95,18 @@
     return annotationView;
 }
 
--(MKAnnotationView*)clusteredMapView:(ClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id<MKAnnotation>)annotation {
+-(MKAnnotationView*)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id<MKAnnotation>)annotation {
     HotelAnnotationView *annotationView = (HotelAnnotationView *)[clusteredMapView dequeueReusableAnnotationViewWithIdentifier:@"AnnotationView"];
     if (!annotationView) {
         annotationView = [[HotelAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ClusteredAnnotationView"];
     }
     annotationView.canShowCallout = YES;
-    annotationView.count = ((ClusteredAnnotation*)annotation).annotations.count;
+    annotationView.count = ((VWWClusteredAnnotation*)annotation).annotations.count;
     return annotationView;
 }
 
 // If this delegate method is not implemented, the default arrow image will be used (similar to how the map uses pins)
--(MKAnnotationView*)clusteredMapView:(ClusteredMapView *)clusteredMapView viewForSnappedAnnotation:(id<MKAnnotation>)annotation {
+-(MKAnnotationView*)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForSnappedAnnotation:(id<MKAnnotation>)annotation {
 //    MKAnnotationView *av = [[MKAnnotationView alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
 //    av.backgroundColor = [UIColor yellowColor];
 //    return av;
@@ -115,21 +115,21 @@
 
 #pragma mark Annotation interaction
 
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didSelectAnnotationView:(MKAnnotationView *)view {
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectAnnotationView:(MKAnnotationView *)view {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     id<MKAnnotation> annotation = view.annotation;
     NSLog(@"%.4f,%.f", annotation.coordinate.latitude, annotation.coordinate.longitude);
     [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
 }
 
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(MKAnnotationView *)view {
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(MKAnnotationView *)view {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     id<MKAnnotation> annotation = view.annotation;
     NSLog(@"%.4f,%.f", annotation.coordinate.latitude, annotation.coordinate.longitude);
     [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
 }
 
-- (void)clusteredMapView:(ClusteredMapView *)clusteredMapView didSelectSnapedAnnotationView:(MKAnnotationView *)view {
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectSnapedAnnotationView:(MKAnnotationView *)view {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     id<MKAnnotation> annotation = view.annotation;
     NSLog(@"%.4f,%.f", annotation.coordinate.latitude, annotation.coordinate.longitude);

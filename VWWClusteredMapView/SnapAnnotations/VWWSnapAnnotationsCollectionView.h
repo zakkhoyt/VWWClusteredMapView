@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SnapAnnotationsCollectionView : UICollectionView
+@interface VWWSnapAnnotationsCollectionView : UICollectionView
 
 @end

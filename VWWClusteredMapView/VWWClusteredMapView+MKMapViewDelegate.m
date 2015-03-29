@@ -6,12 +6,12 @@
 //
 //
 
-#import "ClusteredMapView.h"
-#import "ClusteredMapView+MKMapViewDelegate.h"
-#import "ClusteredMapView+ClassExtension.h"
-#import "ClusteredMapView+Private.h"
+#import "VWWClusteredMapView.h"
+#import "VWWClusteredMapView+MKMapViewDelegate.h"
+#import "VWWClusteredMapView+ClassExtension.h"
+#import "VWWClusteredMapView+Private.h"
 
-@implementation ClusteredMapView (MKMapViewDelegate)
+@implementation VWWClusteredMapView (MKMapViewDelegate)
 
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {

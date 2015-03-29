@@ -6,18 +6,18 @@
 //
 //
 
-#import "ClusteredMapView.h"
-#import "ClusteredMapView+ClassExtension.h"
-#import "ClusteredMapView+Private.h"
-#import "ClusteredMapView+MKMapViewDelegate.h"
-#import "ClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h"
-#import "ClusteredMapView+UICollectionViewDataSource.h"
-#import "ClusteredMapView+UICollectionViewDelegate.h"
+#import "VWWClusteredMapView.h"
+#import "VWWClusteredMapView+ClassExtension.h"
+#import "VWWClusteredMapView+Private.h"
+#import "VWWClusteredMapView+MKMapViewDelegate.h"
+#import "VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h"
+#import "VWWClusteredMapView+UICollectionViewDataSource.h"
+#import "VWWClusteredMapView+UICollectionViewDelegate.h"
 
-#import "QuadTree.h"
-#import "SnapAnnotationCollectionViewCell.h"
+#import "VWWQuadTree.h"
+#import "VWWSnapAnnotationCollectionViewCell.h"
 
-@implementation ClusteredMapView 
+@implementation VWWClusteredMapView 
 - (id)init {
     return [self initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds))];
 }
@@ -40,7 +40,7 @@
 }
 
 - (void)commonInitWithFrame:(CGRect)frame {
-    self.coordinateQuadTree = [[CoordinateQuadTree alloc] init];
+    self.coordinateQuadTree = [[VWWCoordinateQuadTree alloc] init];
     
     MKMapView *mapView = [[MKMapView alloc]initWithFrame:frame];
     mapView.delegate = (id<MKMapViewDelegate>)self;
@@ -52,12 +52,12 @@
     [self setClusterDensity:ClusterMapViewDensityNormal];
     [self setAnnotationsAreSnapable:YES];
     
-    SnapAnnotationsCollectionViewLayout *layout = [[SnapAnnotationsCollectionViewLayout alloc]init];
+    VWWSnapAnnotationsCollectionViewLayout *layout = [[VWWSnapAnnotationsCollectionViewLayout alloc]init];
     layout.delegate = self;
     [self setLayout:layout];
     
-    SnapAnnotationsCollectionView *collectionView = [[SnapAnnotationsCollectionView alloc]initWithFrame:self.frame collectionViewLayout:self.layout];
-    [collectionView registerClass:[SnapAnnotationCollectionViewCell class] forCellWithReuseIdentifier:SnapAnnotationCollectionViewCellKey];
+    VWWSnapAnnotationsCollectionView *collectionView = [[VWWSnapAnnotationsCollectionView alloc]initWithFrame:self.frame collectionViewLayout:self.layout];
+    [collectionView registerClass:[VWWSnapAnnotationCollectionViewCell class] forCellWithReuseIdentifier:VWWSnapAnnotationCollectionViewCellKey];
     collectionView.dataSource = self;
     collectionView.delegate = self;
     collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -116,7 +116,7 @@
 @end
 
 
-@implementation ClusteredMapView (MKMapView)
+@implementation VWWClusteredMapView (MKMapView)
 
 #pragma mark MKMapView hijacks
 -(MKMapType)mapType{
@@ -344,7 +344,7 @@
     NSMutableArray *treeAnnotations = [@[]mutableCopy];
     
     [annotations enumerateObjectsUsingBlock:^(id annotation, NSUInteger idx, BOOL *stop) {
-        QuadTreeNodeData *node = [[QuadTreeNodeData alloc]initWithAnotation:annotation];
+        VWWQuadTreeNodeData *node = [[VWWQuadTreeNodeData alloc]initWithAnotation:annotation];
         [treeAnnotations addObject:node];
     }];
     [self.coordinateQuadTree buildTreeWithItems:treeAnnotations];
@@ -456,7 +456,7 @@
 @end
 
 
-@implementation ClusteredMapView (OverlaysAPI)
+@implementation VWWClusteredMapView (OverlaysAPI)
 
 // Overlays are models used to represent areas to be drawn on top of the map.
 // This is in contrast to annotations, which represent points on the map.

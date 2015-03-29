@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import "SnapAnnotationsCollectionView.h"
+#import "VWWSnapAnnotationsCollectionView.h"
 
-@implementation SnapAnnotationsCollectionView
+@implementation VWWSnapAnnotationsCollectionView
 
 // Intercept touches on cells only. All others fall through to background controls
 -(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{

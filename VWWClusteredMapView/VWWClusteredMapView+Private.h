@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import "ClusteredMapView.h"
+#import "VWWClusteredMapView.h"
 
-@interface ClusteredMapView (Private)
+@interface VWWClusteredMapView (Private)
 -(void)refreshClusterableAnnotations;
 -(void)refreshAnnotations;
 - (void)updateViewsBasedOnMapRegion:(CADisplayLink *)link;
