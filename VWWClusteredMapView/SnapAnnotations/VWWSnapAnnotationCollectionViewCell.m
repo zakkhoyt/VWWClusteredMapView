@@ -1,10 +1,9 @@
 //
-//  RDDistantAnnotationCollectionViewCell.m
-//  Radius
+//  VWWSnapAnnotationCollectionViewCell.m
+//  VWWClusteredMapView
 //
-//  Created by Zakk Hoyt on 3/24/15.
+//  Created by Zakk Hoyt on 3/28/15.
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
-//
 
 #import "VWWSnapAnnotationCollectionViewCell.h"
 #import <UIKit/UIKit.h>

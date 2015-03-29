@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  ClusteredMap_demo
+//  VWWClusteredMapViewExample
 //
 //  Created by Zakk Hoyt on 3/27/15.
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
@@ -14,7 +14,7 @@
 
 #import "VWWClusteredMapView.h"
 
-@interface ViewController () <ClusteredMapViewDelegate, UIPopoverPresentationControllerDelegate>
+@interface ViewController () <VWWClusteredMapViewDelegate, UIPopoverPresentationControllerDelegate>
 @property (weak, nonatomic) IBOutlet VWWClusteredMapView *mapView;
 @property (nonatomic, strong) UIPopoverPresentationController *popover;
 @property (weak, nonatomic) IBOutlet UIView *settingsContainerView;

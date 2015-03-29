@@ -3,7 +3,7 @@
 //  TBAnnotationClustering
 //
 //  Created by Zakk Hoyt on 9/25/14.
-//  Copyright (c) 2014 Theodore Calmes. All rights reserved.
+//  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
 #import "HotelAnnotationView.h"

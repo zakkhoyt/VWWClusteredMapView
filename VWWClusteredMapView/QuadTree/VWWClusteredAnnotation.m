@@ -1,10 +1,9 @@
 //
 //  VWWClusterAnnotation.m
-//  VWWAnnotationClustering
+//  VWWClusteredMapView
 //
-//  Created by Zakk Hoyt on 9/25/14.
-//  Copyright (c) 2014 Theodore Calmes. All rights reserved.
-//
+//  Created by Zakk Hoyt on 3/28/15.
+//  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 
 #import "VWWClusteredAnnotation.h"
 

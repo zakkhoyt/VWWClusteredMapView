@@ -1,6 +1,6 @@
 //
 //  ClusteredMapView+UICollectionViewDataSource.h
-//  ClusteredMap_demo
+//  VWWClusteredMapView
 //
 //  Created by Zakk Hoyt on 3/28/15.
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
