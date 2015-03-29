@@ -5,10 +5,13 @@
 
 
 
+# This pod is not published on trunk yet. YOu can use it by adding this to your podfile:
+# pod 'VWWClusteredMapView', :podspec => "https://raw.githubusercontent.com/zakkhoyt/VWWClusteredMapView/master/VWWClusteredMapView.podspec"
+
 
 Pod::Spec.new do |s|
   s.name         = "VWWClusteredMapView"
-  s.version      = "0.0.2"
+  s.version      = "0.0.4"
   s.summary      = "MKMapView where annotations can snap to edge of the map and automatically cluster as the user zooms"
   s.author        = { "Zakk Hoyt" => "vaporwarewolf@gmail.com" }
   s.homepage      = "http://github.com/zakkhoyt"
@@ -24,5 +27,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   # Coming soon...
-  #s.osx.deployment_target = '10.10'
+  # s.osx.deployment_target = '10.10'
 end
