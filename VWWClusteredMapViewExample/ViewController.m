@@ -31,7 +31,7 @@
     self.settingsButton.layer.borderWidth = 4;
     self.settingsButton.layer.borderColor = [UIColor greenColor].CGColor;
     self.settingsContainerView.alpha = 1.0;
-    self.bottomConstraint.constant = -206;
+    self.bottomConstraint.constant = -226;
     self.mapView.delegate = self;
     self.mapView.snapInset = UIEdgeInsetsMake(22, 22, 22, 22);
     
@@ -57,7 +57,7 @@
         SettingsTableViewController *vc = segue.destinationViewController;
         vc.mapView = self.mapView;
         [vc setHideButtonActionBlock:^{
-            self.bottomConstraint.constant = -206;
+            self.bottomConstraint.constant = -226;
             [UIView animateWithDuration:0.3 animations:^{
                 [self.view layoutIfNeeded];
                 self.settingsButton.alpha = 1.0;
