@@ -14,6 +14,25 @@
 		CF5741F61AC7CE9200300A05 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5741F51AC7CE9200300A05 /* Images.xcassets */; };
 		CF5741F91AC7CE9200300A05 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5741F71AC7CE9200300A05 /* LaunchScreen.xib */; };
 		CF5742051AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742041AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m */; };
+		CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */; };
+		CF5742311AC7CF0100300A05 /* ClusteredMapView+MKMapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742141AC7CF0100300A05 /* ClusteredMapView+MKMapViewDelegate.m */; };
+		CF5742321AC7CF0100300A05 /* ClusteredMapView+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742161AC7CF0100300A05 /* ClusteredMapView+Private.m */; };
+		CF5742331AC7CF0100300A05 /* ClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742181AC7CF0100300A05 /* ClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m */; };
+		CF5742341AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57421A1AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDataSource.m */; };
+		CF5742351AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57421C1AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDelegate.m */; };
+		CF5742361AC7CF0100300A05 /* ClusteredMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57421E1AC7CF0100300A05 /* ClusteredMapView.m */; };
+		CF5742371AC7CF0100300A05 /* ClusteredAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742211AC7CF0100300A05 /* ClusteredAnnotation.m */; };
+		CF5742381AC7CF0100300A05 /* CoordinateQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742231AC7CF0100300A05 /* CoordinateQuadTree.m */; };
+		CF5742391AC7CF0100300A05 /* QuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742251AC7CF0100300A05 /* QuadTree.m */; };
+		CF57423A1AC7CF0100300A05 /* SnapAnnotationImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5742281AC7CF0100300A05 /* SnapAnnotationImage.png */; };
+		CF57423B1AC7CF0100300A05 /* SnapAnnotationImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5742291AC7CF0100300A05 /* SnapAnnotationImage@2x.png */; };
+		CF57423C1AC7CF0100300A05 /* SnapAnnotationImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF57422A1AC7CF0100300A05 /* SnapAnnotationImage@3x.png */; };
+		CF57423D1AC7CF0100300A05 /* SnapAnnotationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57422C1AC7CF0100300A05 /* SnapAnnotationCollectionViewCell.m */; };
+		CF57423E1AC7CF0100300A05 /* SnapAnnotationsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57422E1AC7CF0100300A05 /* SnapAnnotationsCollectionView.m */; };
+		CF57423F1AC7CF0100300A05 /* SnapAnnotationsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742301AC7CF0100300A05 /* SnapAnnotationsCollectionViewLayout.m */; };
+		CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742421AC7CF1600300A05 /* HotelAnnotation.m */; };
+		CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742441AC7CF1600300A05 /* HotelAnnotationView.m */; };
+		CF5742481AC7CF1600300A05 /* USA-HotelMotel.csv in Resources */ = {isa = PBXBuildFile; fileRef = CF5742451AC7CF1600300A05 /* USA-HotelMotel.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +59,41 @@
 		CF5741FE1AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VWWClusteredMapViewExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5742031AC7CE9200300A05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5742041AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredMapViewExampleTests.m; sourceTree = "<group>"; };
+		CF57420E1AC7CEF300300A05 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		CF5742121AC7CF0100300A05 /* ClusteredMapView+ClassExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ClusteredMapView+ClassExtension.h"; sourceTree = "<group>"; };
+		CF5742131AC7CF0100300A05 /* ClusteredMapView+MKMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ClusteredMapView+MKMapViewDelegate.h"; sourceTree = "<group>"; };
+		CF5742141AC7CF0100300A05 /* ClusteredMapView+MKMapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ClusteredMapView+MKMapViewDelegate.m"; sourceTree = "<group>"; };
+		CF5742151AC7CF0100300A05 /* ClusteredMapView+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ClusteredMapView+Private.h"; sourceTree = "<group>"; };
+		CF5742161AC7CF0100300A05 /* ClusteredMapView+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ClusteredMapView+Private.m"; sourceTree = "<group>"; };
+		CF5742171AC7CF0100300A05 /* ClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h"; sourceTree = "<group>"; };
+		CF5742181AC7CF0100300A05 /* ClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m"; sourceTree = "<group>"; };
+		CF5742191AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ClusteredMapView+UICollectionViewDataSource.h"; sourceTree = "<group>"; };
+		CF57421A1AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ClusteredMapView+UICollectionViewDataSource.m"; sourceTree = "<group>"; };
+		CF57421B1AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ClusteredMapView+UICollectionViewDelegate.h"; sourceTree = "<group>"; };
+		CF57421C1AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ClusteredMapView+UICollectionViewDelegate.m"; sourceTree = "<group>"; };
+		CF57421D1AC7CF0100300A05 /* ClusteredMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusteredMapView.h; sourceTree = "<group>"; };
+		CF57421E1AC7CF0100300A05 /* ClusteredMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusteredMapView.m; sourceTree = "<group>"; };
+		CF5742201AC7CF0100300A05 /* ClusteredAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusteredAnnotation.h; sourceTree = "<group>"; };
+		CF5742211AC7CF0100300A05 /* ClusteredAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusteredAnnotation.m; sourceTree = "<group>"; };
+		CF5742221AC7CF0100300A05 /* CoordinateQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateQuadTree.h; sourceTree = "<group>"; };
+		CF5742231AC7CF0100300A05 /* CoordinateQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateQuadTree.m; sourceTree = "<group>"; };
+		CF5742241AC7CF0100300A05 /* QuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadTree.h; sourceTree = "<group>"; };
+		CF5742251AC7CF0100300A05 /* QuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadTree.m; sourceTree = "<group>"; };
+		CF5742281AC7CF0100300A05 /* SnapAnnotationImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnapAnnotationImage.png; sourceTree = "<group>"; };
+		CF5742291AC7CF0100300A05 /* SnapAnnotationImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapAnnotationImage@2x.png"; sourceTree = "<group>"; };
+		CF57422A1AC7CF0100300A05 /* SnapAnnotationImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapAnnotationImage@3x.png"; sourceTree = "<group>"; };
+		CF57422B1AC7CF0100300A05 /* SnapAnnotationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapAnnotationCollectionViewCell.h; sourceTree = "<group>"; };
+		CF57422C1AC7CF0100300A05 /* SnapAnnotationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapAnnotationCollectionViewCell.m; sourceTree = "<group>"; };
+		CF57422D1AC7CF0100300A05 /* SnapAnnotationsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapAnnotationsCollectionView.h; sourceTree = "<group>"; };
+		CF57422E1AC7CF0100300A05 /* SnapAnnotationsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapAnnotationsCollectionView.m; sourceTree = "<group>"; };
+		CF57422F1AC7CF0100300A05 /* SnapAnnotationsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapAnnotationsCollectionViewLayout.h; sourceTree = "<group>"; };
+		CF5742301AC7CF0100300A05 /* SnapAnnotationsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapAnnotationsCollectionViewLayout.m; sourceTree = "<group>"; };
+		CF5742411AC7CF1600300A05 /* HotelAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelAnnotation.h; sourceTree = "<group>"; };
+		CF5742421AC7CF1600300A05 /* HotelAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelAnnotation.m; sourceTree = "<group>"; };
+		CF5742431AC7CF1600300A05 /* HotelAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelAnnotationView.h; sourceTree = "<group>"; };
+		CF5742441AC7CF1600300A05 /* HotelAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelAnnotationView.m; sourceTree = "<group>"; };
+		CF5742451AC7CF1600300A05 /* USA-HotelMotel.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "USA-HotelMotel.csv"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +117,7 @@
 		CF5741DC1AC7CE9200300A05 = {
 			isa = PBXGroup;
 			children = (
+				CF5742111AC7CF0100300A05 /* VWWClusteredMapView */,
 				CF5741E71AC7CE9200300A05 /* VWWClusteredMapViewExample */,
 				CF5742011AC7CE9200300A05 /* VWWClusteredMapViewExampleTests */,
 				CF5741E61AC7CE9200300A05 /* Products */,
@@ -81,10 +136,13 @@
 		CF5741E71AC7CE9200300A05 /* VWWClusteredMapViewExample */ = {
 			isa = PBXGroup;
 			children = (
+				CF5742401AC7CF1600300A05 /* Hotel */,
 				CF5741EC1AC7CE9200300A05 /* AppDelegate.h */,
 				CF5741ED1AC7CE9200300A05 /* AppDelegate.m */,
 				CF5741EF1AC7CE9200300A05 /* ViewController.h */,
 				CF5741F01AC7CE9200300A05 /* ViewController.m */,
+				CF57420E1AC7CEF300300A05 /* SettingsTableViewController.h */,
+				CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */,
 				CF5741F21AC7CE9200300A05 /* Main.storyboard */,
 				CF5741F51AC7CE9200300A05 /* Images.xcassets */,
 				CF5741F71AC7CE9200300A05 /* LaunchScreen.xib */,
@@ -117,6 +175,77 @@
 				CF5742031AC7CE9200300A05 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CF5742111AC7CF0100300A05 /* VWWClusteredMapView */ = {
+			isa = PBXGroup;
+			children = (
+				CF5742121AC7CF0100300A05 /* ClusteredMapView+ClassExtension.h */,
+				CF5742131AC7CF0100300A05 /* ClusteredMapView+MKMapViewDelegate.h */,
+				CF5742141AC7CF0100300A05 /* ClusteredMapView+MKMapViewDelegate.m */,
+				CF5742151AC7CF0100300A05 /* ClusteredMapView+Private.h */,
+				CF5742161AC7CF0100300A05 /* ClusteredMapView+Private.m */,
+				CF5742171AC7CF0100300A05 /* ClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h */,
+				CF5742181AC7CF0100300A05 /* ClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m */,
+				CF5742191AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDataSource.h */,
+				CF57421A1AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDataSource.m */,
+				CF57421B1AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDelegate.h */,
+				CF57421C1AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDelegate.m */,
+				CF57421D1AC7CF0100300A05 /* ClusteredMapView.h */,
+				CF57421E1AC7CF0100300A05 /* ClusteredMapView.m */,
+				CF57421F1AC7CF0100300A05 /* QuadTree */,
+				CF5742261AC7CF0100300A05 /* SnapAnnotations */,
+			);
+			path = VWWClusteredMapView;
+			sourceTree = "<group>";
+		};
+		CF57421F1AC7CF0100300A05 /* QuadTree */ = {
+			isa = PBXGroup;
+			children = (
+				CF5742201AC7CF0100300A05 /* ClusteredAnnotation.h */,
+				CF5742211AC7CF0100300A05 /* ClusteredAnnotation.m */,
+				CF5742221AC7CF0100300A05 /* CoordinateQuadTree.h */,
+				CF5742231AC7CF0100300A05 /* CoordinateQuadTree.m */,
+				CF5742241AC7CF0100300A05 /* QuadTree.h */,
+				CF5742251AC7CF0100300A05 /* QuadTree.m */,
+			);
+			path = QuadTree;
+			sourceTree = "<group>";
+		};
+		CF5742261AC7CF0100300A05 /* SnapAnnotations */ = {
+			isa = PBXGroup;
+			children = (
+				CF5742271AC7CF0100300A05 /* Images */,
+				CF57422B1AC7CF0100300A05 /* SnapAnnotationCollectionViewCell.h */,
+				CF57422C1AC7CF0100300A05 /* SnapAnnotationCollectionViewCell.m */,
+				CF57422D1AC7CF0100300A05 /* SnapAnnotationsCollectionView.h */,
+				CF57422E1AC7CF0100300A05 /* SnapAnnotationsCollectionView.m */,
+				CF57422F1AC7CF0100300A05 /* SnapAnnotationsCollectionViewLayout.h */,
+				CF5742301AC7CF0100300A05 /* SnapAnnotationsCollectionViewLayout.m */,
+			);
+			path = SnapAnnotations;
+			sourceTree = "<group>";
+		};
+		CF5742271AC7CF0100300A05 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CF5742281AC7CF0100300A05 /* SnapAnnotationImage.png */,
+				CF5742291AC7CF0100300A05 /* SnapAnnotationImage@2x.png */,
+				CF57422A1AC7CF0100300A05 /* SnapAnnotationImage@3x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		CF5742401AC7CF1600300A05 /* Hotel */ = {
+			isa = PBXGroup;
+			children = (
+				CF5742411AC7CF1600300A05 /* HotelAnnotation.h */,
+				CF5742421AC7CF1600300A05 /* HotelAnnotation.m */,
+				CF5742431AC7CF1600300A05 /* HotelAnnotationView.h */,
+				CF5742441AC7CF1600300A05 /* HotelAnnotationView.m */,
+				CF5742451AC7CF1600300A05 /* USA-HotelMotel.csv */,
+			);
+			path = Hotel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +328,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF57423C1AC7CF0100300A05 /* SnapAnnotationImage@3x.png in Resources */,
+				CF57423B1AC7CF0100300A05 /* SnapAnnotationImage@2x.png in Resources */,
 				CF5741F41AC7CE9200300A05 /* Main.storyboard in Resources */,
 				CF5741F91AC7CE9200300A05 /* LaunchScreen.xib in Resources */,
+				CF57423A1AC7CF0100300A05 /* SnapAnnotationImage.png in Resources */,
+				CF5742481AC7CF1600300A05 /* USA-HotelMotel.csv in Resources */,
 				CF5741F61AC7CE9200300A05 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,9 +352,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF5742311AC7CF0100300A05 /* ClusteredMapView+MKMapViewDelegate.m in Sources */,
+				CF57423E1AC7CF0100300A05 /* SnapAnnotationsCollectionView.m in Sources */,
+				CF5742321AC7CF0100300A05 /* ClusteredMapView+Private.m in Sources */,
+				CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */,
+				CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */,
 				CF5741F11AC7CE9200300A05 /* ViewController.m in Sources */,
+				CF57423F1AC7CF0100300A05 /* SnapAnnotationsCollectionViewLayout.m in Sources */,
 				CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */,
 				CF5741EB1AC7CE9200300A05 /* main.m in Sources */,
+				CF5742331AC7CF0100300A05 /* ClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m in Sources */,
+				CF5742351AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDelegate.m in Sources */,
+				CF5742391AC7CF0100300A05 /* QuadTree.m in Sources */,
+				CF5742341AC7CF0100300A05 /* ClusteredMapView+UICollectionViewDataSource.m in Sources */,
+				CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */,
+				CF5742361AC7CF0100300A05 /* ClusteredMapView.m in Sources */,
+				CF5742381AC7CF0100300A05 /* CoordinateQuadTree.m in Sources */,
+				CF5742371AC7CF0100300A05 /* ClusteredAnnotation.m in Sources */,
+				CF57423D1AC7CF0100300A05 /* SnapAnnotationCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
