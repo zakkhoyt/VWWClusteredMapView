@@ -8,7 +8,7 @@
 
 #import "CoordinateQuadTree.h"
 #import "ClusteredAnnotation.h"
-#import "HotelAnnotation.h"
+
 @import Photos; 
 
 @implementation CoordinateQuadTree{
