@@ -21,6 +21,10 @@
 
 
 
+
+
+
+
 - (void)updateMapViewAnnotationsWithAnnotations:(NSArray *)annotations {
     NSMutableSet *before = [NSMutableSet setWithArray:self.annotations];
     self.lastAnnotations = [NSSet setWithSet:before];
@@ -36,6 +40,21 @@
     
     NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
     [toRemove minusSet:after];
+    
+    
+    [toAdd enumerateObjectsUsingBlock:^(VWWClusteredAnnotation *annotation, BOOL *stop) {
+        // Find annotation in toKeep. Get point
+        if([toKeep containsObject:annotation]){
+            NSUInteger index = [toKeep.allObjects indexOfObject:annotation];
+            VWWClusteredAnnotation *annotationToSplitFrom = toKeep.allObjects[index];
+            CGPoint point = [self.mapView convertCoordinate:annotationToSplitFrom.coordinate toPointToView:self];
+            annotation.splitFromPoint = point;
+            NSLog(@"Updated splitFromPoint on annotation");
+        }
+    }];
+    
+    
+    
     
     [self.mapView addAnnotations:[toAdd allObjects]];
     [self.mapView removeAnnotations:[toRemove allObjects]];
@@ -65,4 +84,5 @@
         }
     }
 }
+
 @end

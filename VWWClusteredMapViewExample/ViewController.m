@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIView *settingsContainerView;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
-
 @end
 
 @implementation ViewController

@@ -8,8 +8,6 @@
 
 #import "VWWClusteredMapView.h"
 #import "VWWCoordinateQuadTree.h"
-#import "VWWSnapAnnotationsCollectionViewLayout.h"
-#import "VWWSnapAnnotationsCollectionView.h"
 
 
 @interface VWWClusteredMapView () 

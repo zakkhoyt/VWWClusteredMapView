@@ -11,5 +11,5 @@
 @interface VWWClusteredMapView (Private)
 -(void)refreshClusterableAnnotations;
 -(void)refreshAnnotations;
-- (void)updateViewsBasedOnMapRegion:(CADisplayLink *)link;
+-(void)updateViewsBasedOnMapRegion:(CADisplayLink *)link;
 @end

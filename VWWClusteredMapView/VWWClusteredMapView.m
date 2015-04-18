@@ -10,9 +10,8 @@
 #import "VWWClusteredMapView+Private.h"
 #import "VWWClusteredMapView+MKMapViewDelegate.h"
 
-
 #import "VWWQuadTree.h"
-#import "VWWSnapAnnotationCollectionViewCell.h"
+
 
 @implementation VWWClusteredMapView 
 - (id)init {

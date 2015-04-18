@@ -17,6 +17,6 @@ static NSString *const VWWAnnotatioViewReuseID = @"VWWAnnotatioViewReuseID";
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *subtitle;
 @property (nonatomic, strong) NSArray *annotations;
-@property (nonatomic) CGPoint initialPoint;
-@property (nonatomic) CGPoint finalPoint;
+@property (nonatomic) CGPoint splitFromPoint; // initial position
+@property (nonatomic) CGPoint mergeToPoint; // final position
 @end
