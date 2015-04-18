@@ -12,7 +12,7 @@
 Pod::Spec.new do |s|
   s.name         = "VWWClusteredMapView"
   s.version      = "0.0.5"
-  s.summary      = "MKMapView which automatically clusters your annotations into groups with some light animation""
+  s.summary      = "MKMapView which automatically clusters your annotations into groups with some light animation"
   s.author        = { "Zakk Hoyt" => "vaporwarewolf@gmail.com" }
   s.homepage      = "http://github.com/zakkhoyt"
   s.license = { :type => 'MIT',
