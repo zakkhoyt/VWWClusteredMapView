@@ -11,8 +11,8 @@
 
 Pod::Spec.new do |s|
   s.name         = "VWWClusteredMapView"
-  s.version      = "0.0.4"
-  s.summary      = "MKMapView where annotations can snap to edge of the map and automatically cluster as the user zooms"
+  s.version      = "0.0.5"
+  s.summary      = "MKMapView which automatically clusters your annotations into groups with some light animation""
   s.author        = { "Zakk Hoyt" => "vaporwarewolf@gmail.com" }
   s.homepage      = "http://github.com/zakkhoyt"
   s.license = { :type => 'MIT',
