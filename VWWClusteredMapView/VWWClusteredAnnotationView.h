@@ -12,4 +12,8 @@
 
 @interface VWWClusteredAnnotationView : MKAnnotationView
 
+@property (nonatomic) CGPoint splitFromPoint; // initial position
+@property (nonatomic) CGPoint point;
+@property (nonatomic) CGPoint mergeToPoint; // final position
+
 @end

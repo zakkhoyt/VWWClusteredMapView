@@ -75,6 +75,10 @@
 }
 
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
+    [views enumerateObjectsUsingBlock:^(VWWClusteredAnnotationView *view, NSUInteger idx, BOOL *stop) {
+        [self setAnimationPointsForAnnotationView:view];
+    }];
+
     if([self.delegate respondsToSelector:@selector(clusteredMapView:didAddAnnotationViews:)]) {
         [self.delegate clusteredMapView:self didAddAnnotationViews:views];
     }

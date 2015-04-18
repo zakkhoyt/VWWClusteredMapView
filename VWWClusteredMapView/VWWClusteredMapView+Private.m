@@ -8,6 +8,8 @@
 
 #import "VWWClusteredMapView+Private.h"
 #import "VWWClusteredMapView+ClassExtension.h"
+#import "VWWClusteredAnnotation.h"
+#import "VWWClusteredAnnotationView.h"
 
 @implementation VWWClusteredMapView (Private)
 
@@ -15,15 +17,10 @@
     if(self.annotationsAreClusterable) {
         double scale = self.bounds.size.width / self.visibleMapRect.size.width;
         NSArray *annotations = [self.coordinateQuadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
+        NSLog(@"%ld clustered annotations", (long)annotations.count);
         [self updateMapViewAnnotationsWithAnnotations:annotations];
     }
 }
-
-
-
-
-
-
 
 - (void)updateMapViewAnnotationsWithAnnotations:(NSArray *)annotations {
     NSMutableSet *before = [NSMutableSet setWithArray:self.annotations];
@@ -41,23 +38,42 @@
     NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
     [toRemove minusSet:after];
     
-    
-    [toAdd enumerateObjectsUsingBlock:^(VWWClusteredAnnotation *annotation, BOOL *stop) {
-        // Find annotation in toKeep. Get point
-        if([toKeep containsObject:annotation]){
-            NSUInteger index = [toKeep.allObjects indexOfObject:annotation];
-            VWWClusteredAnnotation *annotationToSplitFrom = toKeep.allObjects[index];
-            CGPoint point = [self.mapView convertCoordinate:annotationToSplitFrom.coordinate toPointToView:self];
-            annotation.splitFromPoint = point;
-            NSLog(@"Updated splitFromPoint on annotation");
-        }
-    }];
-    
-    
-    
-    
     [self.mapView addAnnotations:[toAdd allObjects]];
     [self.mapView removeAnnotations:[toRemove allObjects]];
+    
+}
+
+-(void)setAnimationPointsForAnnotationView:(VWWClusteredAnnotationView*)annotationView{
+    
+    VWWClusteredAnnotation *annotation = annotationView.annotation;
+    if([annotation isKindOfClass:[VWWClusteredAnnotation class]] == NO){
+        // TODO: Assert
+        return;
+    }
+    
+    NSSet *annotationStacks = [NSSet setWithArray:annotation.annotations];
+
+    
+    // Find splits
+    for(VWWClusteredAnnotation *lastAnnotation in self.lastAnnotations){
+        NSSet *lastAnnotationStacks = [NSSet setWithArray:lastAnnotation.annotations];
+        if([annotationStacks isSubsetOfSet:lastAnnotationStacks]){
+            CGPoint fromPoint = [self.mapView convertCoordinate:lastAnnotation.coordinate toPointToView:self];
+            annotationView.splitFromPoint = fromPoint;
+            break;
+        }
+    }
+    
+    // Find merges
+    for(VWWClusteredAnnotation *lastAnnotation in self.lastAnnotations){
+        NSSet *lastAnnotationStacks = [NSSet setWithArray:lastAnnotation.annotations];
+        if([lastAnnotationStacks isSubsetOfSet:annotationStacks]){
+            CGPoint toPoint = [self.mapView convertCoordinate:annotation.coordinate toPointToView:self];
+            annotationView.mergeToPoint = toPoint;
+            break;
+        }
+    }
+
 }
 
 -(void)refreshAnnotations{

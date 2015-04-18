@@ -7,9 +7,11 @@
 //
 
 #import "VWWClusteredMapView.h"
+#import "VWWClusteredAnnotationView.h"
 
 @interface VWWClusteredMapView (Private)
 -(void)refreshClusterableAnnotations;
 -(void)refreshAnnotations;
 -(void)updateViewsBasedOnMapRegion:(CADisplayLink *)link;
+-(void)setAnimationPointsForAnnotationView:(VWWClusteredAnnotationView*)annotationView;
 @end

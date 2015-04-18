@@ -68,7 +68,7 @@
 #pragma mark Private Methods
 -(void)panToAnnotationView:(MKAnnotationView*)view withPrettyFunction:(char*)function {
     id<MKAnnotation> annotation = view.annotation;
-    NSLog(@"%s %.4f,%.f", function, annotation.coordinate.latitude, annotation.coordinate.longitude);
+//    NSLog(@"%s %.4f,%.f", function, annotation.coordinate.latitude, annotation.coordinate.longitude);
     [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
 }
 

@@ -312,11 +312,9 @@
         VWWQuadTreeNodeData *node = [[VWWQuadTreeNodeData alloc]initWithAnotation:annotation];
         [treeAnnotations addObject:node];
     }];
-    [self.coordinateQuadTree buildTreeWithItems:treeAnnotations];
-    
-
     
     if(self.annotationsAreClusterable){
+        [self.coordinateQuadTree buildTreeWithItems:treeAnnotations];
         [self refreshClusterableAnnotations];
         
     } else {
@@ -332,49 +330,7 @@
     [self.mapView removeAnnotations:annotations];
 }
 
-//-(void)removeAnnotation:(id<MKAnnotation>)annotation{
-//    [super removeAnnotations:@[annotation]];
-//    // TODO: We need to find this in the quadtree and delete it there too
-//    [_clusteredAnnotations removeObject:annotation];
-//    [_unclusteredAnnotations removeObject:annotation];
-//    
-//}
-//-(void)removeAnnotations:(NSArray *)annotations{
-//    [super removeAnnotations:annotations];
-//    [_clusteredAnnotations removeAllObjects];
-//    [_unclusteredAnnotations removeAllObjects];
-//}
-//
-//-(void)addAnnotation:(id<MKAnnotation>)annotation{
-//    [self addAnnotations:@[annotation]];
-//}
-//-(void)addAnnotations:(NSArray *)annotations{
-//    // Unclustered
-//    if(!self.unclusteredAnnotations){
-//        self.unclusteredAnnotations = [@[]mutableCopy];
-//    }
-//    [self.unclusteredAnnotations addObjectsFromArray:annotations];
-//    
-//    
-//    // Clustered
-//    // Convert annotations (which are id<MKAnnotation> to VWWQuadTreeNodeData then load a tree search into the map
-//    if(!self.clusteredAnnotations){
-//        self.clusteredAnnotations = [@[]mutableCopy];
-//    }
-//    
-//    [annotations enumerateObjectsUsingBlock:^(id annotation, NSUInteger idx, BOOL *stop) {
-//        VWWQuadTreeNodeData *node = [[VWWQuadTreeNodeData alloc]initWithAnotation:annotation];
-//        [self.clusteredAnnotations addObject:node];
-//    }];
-//    [self.coordinateQuadTree buildTreeWithItems:self.clusteredAnnotations];
-//    
-//    if(self.clusterable){
-//        [self refreshAnnotationClusters];
-//        
-//    } else {
-//        [super addAnnotations:annotations];
-//    }
-//}
+
 
 
 -(NSArray*)annotations {

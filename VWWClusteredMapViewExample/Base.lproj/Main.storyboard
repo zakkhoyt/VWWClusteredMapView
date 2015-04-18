@@ -100,9 +100,9 @@
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="LsO-98-Htf" secondAttribute="centerY" id="Ghe-gk-u22"/>
-                                                <constraint firstAttribute="trailing" secondItem="LsO-98-Htf" secondAttribute="trailing" constant="8" id="x0M-f9-gsh"/>
-                                                <constraint firstItem="LsO-98-Htf" firstAttribute="leading" secondItem="mEG-7x-7KX" secondAttribute="leading" constant="8" id="xGt-Kp-AS9"/>
+                                                <constraint firstAttribute="trailing" secondItem="LsO-98-Htf" secondAttribute="trailing" constant="8" id="EhP-0X-xcw"/>
+                                                <constraint firstItem="LsO-98-Htf" firstAttribute="leading" secondItem="mEG-7x-7KX" secondAttribute="leading" constant="8" id="LAm-8m-XSh"/>
+                                                <constraint firstAttribute="centerY" secondItem="LsO-98-Htf" secondAttribute="centerY" id="qdI-h7-Wn0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
@@ -153,9 +153,9 @@
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1ko-JL-1Y0" firstAttribute="trailing" secondItem="hac-aJ-NDZ" secondAttribute="trailingMargin" id="Cj6-3N-s9X"/>
-                                                <constraint firstAttribute="centerY" secondItem="1ko-JL-1Y0" secondAttribute="centerY" id="jjR-lT-rVP"/>
-                                                <constraint firstItem="1ko-JL-1Y0" firstAttribute="leading" secondItem="hac-aJ-NDZ" secondAttribute="leadingMargin" id="kk8-SR-KDy"/>
+                                                <constraint firstAttribute="centerY" secondItem="1ko-JL-1Y0" secondAttribute="centerY" id="BP1-C8-NQM"/>
+                                                <constraint firstAttribute="trailing" secondItem="1ko-JL-1Y0" secondAttribute="trailing" constant="8" id="azO-pC-bj0"/>
+                                                <constraint firstItem="1ko-JL-1Y0" firstAttribute="leading" secondItem="hac-aJ-NDZ" secondAttribute="leading" constant="8" id="hF6-bX-Mds"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
