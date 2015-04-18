@@ -5,7 +5,6 @@
 //  Created by Zakk Hoyt on 3/28/15.
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 
-
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "VWWClusteredAnnotation.h"
@@ -18,7 +17,6 @@ typedef enum {
 
 // Defined at bottom of file
 @protocol VWWClusteredMapViewDelegate;
-
 
 @interface VWWClusteredMapView : UIView
 // If set not onscreen / offscreen annotations will be clustered
