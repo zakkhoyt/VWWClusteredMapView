@@ -25,7 +25,6 @@
     self.mapTypeSegment.selectedSegmentIndex = 0;
     self.annotationsAreClusterableSwitch.on = self.mapView.annotationsAreClusterable;
     self.clusterDensitySegment.selectedSegmentIndex = (NSUInteger)self.mapView.clusterDensity;
-    self.annotationsAreSnapableSwitch.on = self.mapView.annotationsAreSnapable;
 }
 
 #pragma mark Public methods
@@ -48,9 +47,6 @@
     self.mapView.clusterDensity = (ClusterMapViewDensity)sender.selectedSegmentIndex;
 }
 
-- (IBAction)annotationsAreSnapableSwitchValueChanged:(UISwitch*)sender {
-    self.mapView.annotationsAreSnapable = sender.on;
-}
 
 - (IBAction)doneButtonTouchUpInside:(id)sender {
     if(_hideButtonActionBlock) {

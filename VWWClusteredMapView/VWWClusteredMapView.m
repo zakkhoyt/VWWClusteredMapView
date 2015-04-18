@@ -9,9 +9,7 @@
 #import "VWWClusteredMapView+ClassExtension.h"
 #import "VWWClusteredMapView+Private.h"
 #import "VWWClusteredMapView+MKMapViewDelegate.h"
-#import "VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h"
-#import "VWWClusteredMapView+UICollectionViewDataSource.h"
-#import "VWWClusteredMapView+UICollectionViewDelegate.h"
+
 
 #import "VWWQuadTree.h"
 #import "VWWSnapAnnotationCollectionViewCell.h"
@@ -49,23 +47,6 @@
     [self setAnnotationsAreClusterable:YES];
     [self setAnimateReclusting:YES];
     [self setClusterDensity:ClusterMapViewDensityNormal];
-    [self setAnnotationsAreSnapable:YES];
-    
-    VWWSnapAnnotationsCollectionViewLayout *layout = [[VWWSnapAnnotationsCollectionViewLayout alloc]init];
-    layout.delegate = self;
-    [self setLayout:layout];
-    
-    VWWSnapAnnotationsCollectionView *collectionView = [[VWWSnapAnnotationsCollectionView alloc]initWithFrame:self.frame collectionViewLayout:self.layout];
-    [collectionView registerClass:[VWWSnapAnnotationCollectionViewCell class] forCellWithReuseIdentifier:VWWSnapAnnotationCollectionViewCellKey];
-    collectionView.dataSource = self;
-    collectionView.delegate = self;
-    collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    collectionView.collectionViewLayout = self.layout;
-    collectionView.backgroundColor = [UIColor clearColor];
-    [self addSubview:collectionView];
-    [self setCollectionView:collectionView];
-    CADisplayLink *link = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateViewsBasedOnMapRegion:)];
-    [link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 
     
 }
@@ -91,26 +72,12 @@
     _animateReclusting = animateReclusting;
 }
 
--(void)setAnnotationsAreSnapable:(BOOL)annotationsAreSnapable {
-    _annotationsAreSnapable = annotationsAreSnapable;
-    [self.collectionView reloadData];
-}
-
--(void)setSnapInset:(UIEdgeInsets)snapInset {
-    _snapInset = snapInset;
-}
 
 // TODO:
 - (MKAnnotationView *)viewForClusteredAnnotation:(id <MKAnnotation>)annotation {
     NSLog(@"TODO: %s", __PRETTY_FUNCTION__);
     return nil;
 }
-// TODO:
-- (MKAnnotationView *)viewForSnappedAnnotation:(id <MKAnnotation>)annotation {
-    NSLog(@"TODO: %s", __PRETTY_FUNCTION__);
-    return nil;
-}
-
 
 @end
 

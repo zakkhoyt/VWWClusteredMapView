@@ -10,6 +10,8 @@
 #import <MapKit/MapKit.h>
 #import "VWWClusteredAnnotation.h"
 
+
+
 typedef enum {
     ClusterMapViewDensityWimpy = 0,
     ClusterMapViewDensityNormal = 1,
@@ -29,16 +31,10 @@ typedef enum {
 // Animate as annotations join and split
 @property (nonatomic) BOOL animateReclusting;
 
-// If set, annotations will be snapped to the side of the screen
-@property (nonatomic) BOOL annotationsAreSnapable;
-// Inset for snapped annotations
-@property (nonatomic) UIEdgeInsets snapInset;
-
 @property (weak, nonatomic) id<VWWClusteredMapViewDelegate> delegate;
 
 
 - (MKAnnotationView *)viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
-- (MKAnnotationView *)viewForSnappedAnnotation:(id <MKAnnotation>)annotation;
 @end
 
 @interface VWWClusteredMapView (MKMapView)
@@ -248,9 +244,6 @@ typedef enum {
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 
 
-- (MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForSnappedAnnotation:(id <MKAnnotation>)annotation;
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectSnapedAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectSnappedAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 
 
 

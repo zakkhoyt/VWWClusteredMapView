@@ -19,9 +19,6 @@
 @property (nonatomic, strong) VWWCoordinateQuadTree *coordinateQuadTree;
 @property (nonatomic, strong) NSSet *lastAnnotations;
 
-
-@property (nonatomic, strong) VWWSnapAnnotationsCollectionView *collectionView;
-@property (nonatomic, strong) VWWSnapAnnotationsCollectionViewLayout *layout;
 @property (nonatomic) MKCoordinateRegion lastRegion;
 
 @end

@@ -17,9 +17,6 @@
 		CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */; };
 		CF5742311AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742141AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m */; };
 		CF5742321AC7CF0100300A05 /* VWWClusteredMapView+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742161AC7CF0100300A05 /* VWWClusteredMapView+Private.m */; };
-		CF5742331AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742181AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m */; };
-		CF5742341AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57421A1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.m */; };
-		CF5742351AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57421C1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.m */; };
 		CF5742361AC7CF0100300A05 /* VWWClusteredMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57421E1AC7CF0100300A05 /* VWWClusteredMapView.m */; };
 		CF5742371AC7CF0100300A05 /* VWWClusteredAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742211AC7CF0100300A05 /* VWWClusteredAnnotation.m */; };
 		CF5742381AC7CF0100300A05 /* VWWCoordinateQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742231AC7CF0100300A05 /* VWWCoordinateQuadTree.m */; };
@@ -66,12 +63,6 @@
 		CF5742141AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+MKMapViewDelegate.m"; sourceTree = "<group>"; };
 		CF5742151AC7CF0100300A05 /* VWWClusteredMapView+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+Private.h"; sourceTree = "<group>"; };
 		CF5742161AC7CF0100300A05 /* VWWClusteredMapView+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+Private.m"; sourceTree = "<group>"; };
-		CF5742171AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h"; sourceTree = "<group>"; };
-		CF5742181AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m"; sourceTree = "<group>"; };
-		CF5742191AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+UICollectionViewDataSource.h"; sourceTree = "<group>"; };
-		CF57421A1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+UICollectionViewDataSource.m"; sourceTree = "<group>"; };
-		CF57421B1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+UICollectionViewDelegate.h"; sourceTree = "<group>"; };
-		CF57421C1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+UICollectionViewDelegate.m"; sourceTree = "<group>"; };
 		CF57421D1AC7CF0100300A05 /* VWWClusteredMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredMapView.h; sourceTree = "<group>"; };
 		CF57421E1AC7CF0100300A05 /* VWWClusteredMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredMapView.m; sourceTree = "<group>"; };
 		CF5742201AC7CF0100300A05 /* VWWClusteredAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredAnnotation.h; sourceTree = "<group>"; };
@@ -185,12 +176,6 @@
 				CF5742141AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m */,
 				CF5742151AC7CF0100300A05 /* VWWClusteredMapView+Private.h */,
 				CF5742161AC7CF0100300A05 /* VWWClusteredMapView+Private.m */,
-				CF5742171AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h */,
-				CF5742181AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m */,
-				CF5742191AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.h */,
-				CF57421A1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.m */,
-				CF57421B1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.h */,
-				CF57421C1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.m */,
 				CF57421D1AC7CF0100300A05 /* VWWClusteredMapView.h */,
 				CF57421E1AC7CF0100300A05 /* VWWClusteredMapView.m */,
 				CF57421F1AC7CF0100300A05 /* QuadTree */,
@@ -361,10 +346,7 @@
 				CF57423F1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionViewLayout.m in Sources */,
 				CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */,
 				CF5741EB1AC7CE9200300A05 /* main.m in Sources */,
-				CF5742331AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m in Sources */,
-				CF5742351AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.m in Sources */,
 				CF5742391AC7CF0100300A05 /* VWWQuadTree.m in Sources */,
-				CF5742341AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.m in Sources */,
 				CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */,
 				CF5742361AC7CF0100300A05 /* VWWClusteredMapView.m in Sources */,
 				CF5742381AC7CF0100300A05 /* VWWCoordinateQuadTree.m in Sources */,
