@@ -116,13 +116,10 @@
     [self panToAnnotationView:view withPrettyFunction:(char*)__PRETTY_FUNCTION__];
 }
 
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(MKAnnotationView *)view {
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view {
     [self panToAnnotationView:view withPrettyFunction:(char*)__PRETTY_FUNCTION__];
 }
 
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectSnapedAnnotationView:(MKAnnotationView *)view {
-    [self panToAnnotationView:view withPrettyFunction:(char*)__PRETTY_FUNCTION__];
-}
 
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "VWWClusteredAnnotation.h"
-
+#import "VWWClusteredAnnotationView.h"
 
 
 typedef enum {
@@ -240,8 +240,8 @@ typedef enum {
 // *********************************************************
 // Methods below here are additional to MKMapViewDelegate
 - (MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 
 
 

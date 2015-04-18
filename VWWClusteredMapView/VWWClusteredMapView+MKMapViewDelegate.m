@@ -95,7 +95,12 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0) {
     if(self.annotationsAreClusterable) {
         if([self.delegate respondsToSelector:@selector(clusteredMapView:didSelectClusteredAnnotationView:)]) {
-            [self.delegate clusteredMapView:self didSelectClusteredAnnotationView:view];
+            if([view isKindOfClass:[VWWClusteredAnnotationView class]] == NO) {
+                NSAssert(NO, @"View for clusteredAnnotation must inherit from VWWClusteredAnnotationView");
+                return;
+            } else {
+                [self.delegate clusteredMapView:self didSelectClusteredAnnotationView:(VWWClusteredAnnotationView*)view];
+            }
         }
     } else {
         if([self.delegate respondsToSelector:@selector(clusteredMapView:didSelectAnnotationView:)]) {
@@ -104,8 +109,19 @@
     }
 }
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0) {
-    if([self.delegate respondsToSelector:@selector(clusteredMapView:didDeselectAnnotationView:)]) {
-        [self.delegate clusteredMapView:self didDeselectAnnotationView:view];
+    if(self.annotationsAreClusterable) {
+        if([self.delegate respondsToSelector:@selector(clusteredMapView:didDeselectClusteredAnnotationView:)]) {
+            if([view isKindOfClass:[VWWClusteredAnnotationView class]] == NO) {
+                NSAssert(NO, @"View for clusteredAnnotation must inherit from VWWClusteredAnnotationView");
+                return;
+            } else {
+                [self.delegate clusteredMapView:self didDeselectClusteredAnnotationView:(VWWClusteredAnnotationView*)view];
+            }
+        }
+    } else {
+        if([self.delegate respondsToSelector:@selector(clusteredMapView:didDeselectAnnotationView:)]) {
+            [self.delegate clusteredMapView:self didDeselectAnnotationView:view];
+        }
     }
 }
 
