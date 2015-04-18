@@ -13,9 +13,12 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
 
 @implementation VWWClusteredAnnotationView
 
-
 -(void)didMoveToSuperview{
     [super didMoveToSuperview];
+    
+    if(self.animateReclusting){
+    // Coming soon is to merge and join annotatoins as the user zooms (like in the Photos app's map view).
+    // This commented out code doesn't quite work correctly.
 //    if(CGPointEqualToPoint(self.mergeToPoint, CGPointZero)){
         [self animateAdd];
 //    } else {
@@ -23,9 +26,11 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
 //            [super removeFromSuperview];
 //        }];
 //    }
+    }
 }
 
 //-(void)removeFromSuperview{
+//if(self.animateReclusting){
 ////    if(CGPointEqualToPoint(self.splitFromPoint, CGPointZero)){
 //        [self animateRemoveWithCompletionBlock:^{
 //            [super removeFromSuperview];
@@ -35,6 +40,7 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
 ////            [super removeFromSuperview];
 ////        }];
 ////    }
+//}
 //}
 
 
@@ -58,31 +64,15 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
             self.transform = CGAffineTransformMakeScale(1.0, 1.0);
         }];
     } completion:nil];
-    
-//    CAKeyframeAnimation *bounceAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
-//    
-//    bounceAnimation.values = @[@(0.05), @(1.5), @(0.7), @(1)];
-//    
-//    bounceAnimation.duration = 0.6;
-//    NSMutableArray *timingFunctions = [[NSMutableArray alloc] initWithCapacity:bounceAnimation.values.count];
-//    for (NSUInteger i = 0; i < bounceAnimation.values.count; i++) {
-//        [timingFunctions addObject:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-//    }
-//    [bounceAnimation setTimingFunctions:timingFunctions.copy];
-//    bounceAnimation.removedOnCompletion = NO;
-//    
-//    [view.layer addAnimation:bounceAnimation forKey:@"bounce"];
-}
+    }
 
 -(void)animateRemoveWithCompletionBlock:(VWWClusteredAnnotationViewEmptyBlock)completionBlock{
     CGFloat duration = 0.5;
     
     [UIView animateWithDuration:duration animations:^{
-//        self.transform = CGAffineTransformMakeScale(0.001, 0.001);
-        self.alpha = 0.0;
+        self.transform = CGAffineTransformMakeScale(0.001, 0.001);
     } completion:^(BOOL finished) {
-//        self.transform = CGAffineTransformIdentity;
-        self.alpha = 1.0;
+        self.transform = CGAffineTransformIdentity;
         completionBlock();
     }];
 }
@@ -98,13 +88,6 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
 
     CGRect endFrame = CGRectMake(origin.x, origin.y, self.frame.size.width, self.frame.size.height);
     
-//    if(!CGRectEqualToRect(startFrame, endFrame)){
-//        NSLog(@"----------------------------------------------------------------");
-//        NSLog(@"start: %@", NSStringFromCGRect(startFrame));
-//        NSLog(@"end  : %@", NSStringFromCGRect(endFrame));
-//    }
-    
-    
     CGFloat duration = 0.5;
     [UIView animateWithDuration:duration animations:^{
         self.frame = endFrame;
@@ -117,8 +100,6 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
     CGFloat duration = 0.5;
     
     [UIView animateWithDuration:duration animations:^{
-//        self.center = self.mergeToPoint;
-//        self.center = CGPointMake(self.center.x + 100, self.center.y);
         CGPoint origin = self.frame.origin;
         origin.x += 100;
         self.frame = CGRectMake(origin.x, origin.y, self.frame.size.width, self.frame.size.height);
@@ -127,33 +108,5 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
     }];
 
 }
-
-//-(void)test{
-//    NSSet *annotationStacks = [NSSet setWithArray:annotation.stacks];
-//    __block BOOL foundInLastAnnotations = NO;
-//    for(VWWClusterAnnotation *lastAnnotation in self.lastAnnotations){
-//        if([lastAnnotation isKindOfClass:[VWWClusterAnnotation class]]){
-//            NSSet *lastAnnotationStacks = [NSSet setWithArray:lastAnnotation.stacks];
-//            
-//            if([annotationStacks isSubsetOfSet:lastAnnotationStacks]){
-//                foundInLastAnnotations = YES;
-//                CGPoint fromPoint = [self.mapView convertCoordinate:lastAnnotation.coordinate toPointToView:self.view];
-//                annotationView.center = fromPoint;
-//                CGPoint toPoint = [self.mapView convertCoordinate:annotation.coordinate toPointToView:self.view];
-//                //                [UIView animateWithDuration:0.3 animations:^{
-//                [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-//                    annotationView.center = toPoint;
-//                } completion:^(BOOL finished) {
-//                    
-//                }];
-//                break;
-//            }
-//        }
-//    }
-//    
-//    if(foundInLastAnnotations == NO){
-//        [self addBounceAnnimationToView:annotationView];
-//    }
-//}
 
 @end

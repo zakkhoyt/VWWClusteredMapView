@@ -12,6 +12,8 @@
 
 @interface VWWClusteredAnnotationView : MKAnnotationView
 
+// These properties are not meant to be set by the end user.
+@property (nonatomic) BOOL animateReclusting;
 @property (nonatomic) CGPoint splitFromPoint; // initial position
 @property (nonatomic) CGPoint point;
 @property (nonatomic) CGPoint mergeToPoint; // final position

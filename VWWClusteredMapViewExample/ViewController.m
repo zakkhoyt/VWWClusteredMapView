@@ -28,7 +28,7 @@
     [super viewDidLoad];
     self.settingsButton.layer.cornerRadius = self.settingsButton.frame.size.height / 2.0;
     self.settingsButton.layer.borderWidth = 4;
-    self.settingsButton.layer.borderColor = [UIColor greenColor].CGColor;
+    self.settingsButton.layer.borderColor = [UIColor orangeColor].CGColor;
     self.settingsContainerView.alpha = 1.0;
     self.bottomConstraint.constant = -self.settingsContainerView.bounds.size.height;
     self.mapView.delegate = self;
@@ -88,7 +88,7 @@
 @implementation ViewController (ClusteredMapViewDelegate)
 
 #pragma mark Annotation Views
--(MKAnnotationView*)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForAnnotation:(id<MKAnnotation>)annotation {
+-(MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForAnnotation:(id<MKAnnotation>)annotation {
     HotelAnnotationView *annotationView = (HotelAnnotationView *)[clusteredMapView dequeueReusableAnnotationViewWithIdentifier:@"AnnotationView"];
     if (!annotationView) {
         annotationView = [[HotelAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"AnnotationView"];
@@ -98,7 +98,7 @@
     return annotationView;
 }
 
--(MKAnnotationView*)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id<MKAnnotation>)annotation {
+-(VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id<MKAnnotation>)annotation {
     HotelAnnotationView *annotationView = (HotelAnnotationView *)[clusteredMapView dequeueReusableAnnotationViewWithIdentifier:@"AnnotationView"];
     if (!annotationView) {
         annotationView = [[HotelAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ClusteredAnnotationView"];

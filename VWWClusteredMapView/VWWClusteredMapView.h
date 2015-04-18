@@ -28,7 +28,8 @@ typedef enum {
 
 // The aggressiveness of clustering
 @property (nonatomic) ClusterMapViewDensity clusterDensity;
-// Animate as annotations join and split
+
+// Animate as annotations are added and removed
 @property (nonatomic) BOOL animateReclusting;
 
 @property (weak, nonatomic) id<VWWClusteredMapViewDelegate> delegate;
@@ -239,7 +240,7 @@ typedef enum {
 
 // *********************************************************
 // Methods below here are additional to MKMapViewDelegate
-- (MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
+- (VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 

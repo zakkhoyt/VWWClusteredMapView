@@ -63,7 +63,9 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     if(self.annotationsAreClusterable){
         if([self.delegate respondsToSelector:@selector(clusteredMapView:viewForClusteredAnnotation:)]) {
-            return [self.delegate clusteredMapView:self viewForClusteredAnnotation:annotation];
+            VWWClusteredAnnotationView *view = [self.delegate clusteredMapView:self viewForClusteredAnnotation:annotation];
+            view.animateReclusting = self.animateReclusting;
+            return view;
         }
     } else {
         if([self.delegate respondsToSelector:@selector(clusteredMapView:viewForAnnotation:)]) {
