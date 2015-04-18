@@ -16,7 +16,7 @@ static NSString *const VWWAnnotatioViewReuseID = @"VWWAnnotatioViewReuseID";
 @property (assign, nonatomic) CLLocationCoordinate2D coordinate;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *subtitle;
-@property (nonatomic, strong) NSArray *annotations;
-@property (nonatomic) CGPoint initialPoint;
-@property (nonatomic) CGPoint finalPoint;
+
+// TODO: Can this be an NSSet?
+@property (nonatomic, strong) NSArray *annotations; // [VWWClusteredAnnotation]
 @end

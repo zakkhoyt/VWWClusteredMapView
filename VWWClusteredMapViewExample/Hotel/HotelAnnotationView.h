@@ -7,8 +7,9 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "VWWClusteredAnnotationView.h"
 
-@interface HotelAnnotationView : MKAnnotationView
+@interface HotelAnnotationView : VWWClusteredAnnotationView
 
 @property (assign, nonatomic) NSUInteger count;
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF4E8E6C1AE222DC00F19500 /* VWWClusteredAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4E8E6B1AE222DC00F19500 /* VWWClusteredAnnotationView.m */; };
 		CF5741EB1AC7CE9200300A05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741EA1AC7CE9200300A05 /* main.m */; };
 		CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741ED1AC7CE9200300A05 /* AppDelegate.m */; };
 		CF5741F11AC7CE9200300A05 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741F01AC7CE9200300A05 /* ViewController.m */; };
@@ -17,19 +18,10 @@
 		CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */; };
 		CF5742311AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742141AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m */; };
 		CF5742321AC7CF0100300A05 /* VWWClusteredMapView+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742161AC7CF0100300A05 /* VWWClusteredMapView+Private.m */; };
-		CF5742331AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742181AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m */; };
-		CF5742341AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57421A1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.m */; };
-		CF5742351AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57421C1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.m */; };
 		CF5742361AC7CF0100300A05 /* VWWClusteredMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57421E1AC7CF0100300A05 /* VWWClusteredMapView.m */; };
 		CF5742371AC7CF0100300A05 /* VWWClusteredAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742211AC7CF0100300A05 /* VWWClusteredAnnotation.m */; };
 		CF5742381AC7CF0100300A05 /* VWWCoordinateQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742231AC7CF0100300A05 /* VWWCoordinateQuadTree.m */; };
 		CF5742391AC7CF0100300A05 /* VWWQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742251AC7CF0100300A05 /* VWWQuadTree.m */; };
-		CF57423A1AC7CF0100300A05 /* SnapAnnotationImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5742281AC7CF0100300A05 /* SnapAnnotationImage.png */; };
-		CF57423B1AC7CF0100300A05 /* SnapAnnotationImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF5742291AC7CF0100300A05 /* SnapAnnotationImage@2x.png */; };
-		CF57423C1AC7CF0100300A05 /* SnapAnnotationImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF57422A1AC7CF0100300A05 /* SnapAnnotationImage@3x.png */; };
-		CF57423D1AC7CF0100300A05 /* VWWSnapAnnotationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57422C1AC7CF0100300A05 /* VWWSnapAnnotationCollectionViewCell.m */; };
-		CF57423E1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57422E1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionView.m */; };
-		CF57423F1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742301AC7CF0100300A05 /* VWWSnapAnnotationsCollectionViewLayout.m */; };
 		CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742421AC7CF1600300A05 /* HotelAnnotation.m */; };
 		CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742441AC7CF1600300A05 /* HotelAnnotationView.m */; };
 		CF5742481AC7CF1600300A05 /* USA-HotelMotel.csv in Resources */ = {isa = PBXBuildFile; fileRef = CF5742451AC7CF1600300A05 /* USA-HotelMotel.csv */; };
@@ -46,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF4E8E6A1AE222DC00F19500 /* VWWClusteredAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredAnnotationView.h; sourceTree = "<group>"; };
+		CF4E8E6B1AE222DC00F19500 /* VWWClusteredAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredAnnotationView.m; sourceTree = "<group>"; };
 		CF5741E51AC7CE9200300A05 /* VWWClusteredMapViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VWWClusteredMapViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5741E91AC7CE9200300A05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5741EA1AC7CE9200300A05 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,29 +60,14 @@
 		CF5742141AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+MKMapViewDelegate.m"; sourceTree = "<group>"; };
 		CF5742151AC7CF0100300A05 /* VWWClusteredMapView+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+Private.h"; sourceTree = "<group>"; };
 		CF5742161AC7CF0100300A05 /* VWWClusteredMapView+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+Private.m"; sourceTree = "<group>"; };
-		CF5742171AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h"; sourceTree = "<group>"; };
-		CF5742181AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m"; sourceTree = "<group>"; };
-		CF5742191AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+UICollectionViewDataSource.h"; sourceTree = "<group>"; };
-		CF57421A1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+UICollectionViewDataSource.m"; sourceTree = "<group>"; };
-		CF57421B1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+UICollectionViewDelegate.h"; sourceTree = "<group>"; };
-		CF57421C1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+UICollectionViewDelegate.m"; sourceTree = "<group>"; };
 		CF57421D1AC7CF0100300A05 /* VWWClusteredMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredMapView.h; sourceTree = "<group>"; };
 		CF57421E1AC7CF0100300A05 /* VWWClusteredMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredMapView.m; sourceTree = "<group>"; };
-		CF5742201AC7CF0100300A05 /* VWWClusteredAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredAnnotation.h; sourceTree = "<group>"; };
-		CF5742211AC7CF0100300A05 /* VWWClusteredAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredAnnotation.m; sourceTree = "<group>"; };
+		CF5742201AC7CF0100300A05 /* VWWClusteredAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWClusteredAnnotation.h; path = QuadTree/VWWClusteredAnnotation.h; sourceTree = "<group>"; };
+		CF5742211AC7CF0100300A05 /* VWWClusteredAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWClusteredAnnotation.m; path = QuadTree/VWWClusteredAnnotation.m; sourceTree = "<group>"; };
 		CF5742221AC7CF0100300A05 /* VWWCoordinateQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCoordinateQuadTree.h; sourceTree = "<group>"; };
 		CF5742231AC7CF0100300A05 /* VWWCoordinateQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCoordinateQuadTree.m; sourceTree = "<group>"; };
 		CF5742241AC7CF0100300A05 /* VWWQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWQuadTree.h; sourceTree = "<group>"; };
 		CF5742251AC7CF0100300A05 /* VWWQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWQuadTree.m; sourceTree = "<group>"; };
-		CF5742281AC7CF0100300A05 /* SnapAnnotationImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnapAnnotationImage.png; sourceTree = "<group>"; };
-		CF5742291AC7CF0100300A05 /* SnapAnnotationImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapAnnotationImage@2x.png"; sourceTree = "<group>"; };
-		CF57422A1AC7CF0100300A05 /* SnapAnnotationImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnapAnnotationImage@3x.png"; sourceTree = "<group>"; };
-		CF57422B1AC7CF0100300A05 /* VWWSnapAnnotationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSnapAnnotationCollectionViewCell.h; sourceTree = "<group>"; };
-		CF57422C1AC7CF0100300A05 /* VWWSnapAnnotationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSnapAnnotationCollectionViewCell.m; sourceTree = "<group>"; };
-		CF57422D1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSnapAnnotationsCollectionView.h; sourceTree = "<group>"; };
-		CF57422E1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSnapAnnotationsCollectionView.m; sourceTree = "<group>"; };
-		CF57422F1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSnapAnnotationsCollectionViewLayout.h; sourceTree = "<group>"; };
-		CF5742301AC7CF0100300A05 /* VWWSnapAnnotationsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSnapAnnotationsCollectionViewLayout.m; sourceTree = "<group>"; };
 		CF5742411AC7CF1600300A05 /* HotelAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelAnnotation.h; sourceTree = "<group>"; };
 		CF5742421AC7CF1600300A05 /* HotelAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelAnnotation.m; sourceTree = "<group>"; };
 		CF5742431AC7CF1600300A05 /* HotelAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelAnnotationView.h; sourceTree = "<group>"; };
@@ -114,6 +93,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF4E8E6D1AE2237900F19500 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				CF5742201AC7CF0100300A05 /* VWWClusteredAnnotation.h */,
+				CF5742211AC7CF0100300A05 /* VWWClusteredAnnotation.m */,
+				CF4E8E6A1AE222DC00F19500 /* VWWClusteredAnnotationView.h */,
+				CF4E8E6B1AE222DC00F19500 /* VWWClusteredAnnotationView.m */,
+			);
+			name = Annotations;
+			sourceTree = "<group>";
+		};
 		CF5741DC1AC7CE9200300A05 = {
 			isa = PBXGroup;
 			children = (
@@ -180,21 +170,15 @@
 		CF5742111AC7CF0100300A05 /* VWWClusteredMapView */ = {
 			isa = PBXGroup;
 			children = (
+				CF4E8E6D1AE2237900F19500 /* Annotations */,
+				CF57421F1AC7CF0100300A05 /* QuadTree */,
+				CF57421D1AC7CF0100300A05 /* VWWClusteredMapView.h */,
+				CF57421E1AC7CF0100300A05 /* VWWClusteredMapView.m */,
 				CF5742121AC7CF0100300A05 /* VWWClusteredMapView+ClassExtension.h */,
 				CF5742131AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.h */,
 				CF5742141AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m */,
 				CF5742151AC7CF0100300A05 /* VWWClusteredMapView+Private.h */,
 				CF5742161AC7CF0100300A05 /* VWWClusteredMapView+Private.m */,
-				CF5742171AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h */,
-				CF5742181AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m */,
-				CF5742191AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.h */,
-				CF57421A1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.m */,
-				CF57421B1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.h */,
-				CF57421C1AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.m */,
-				CF57421D1AC7CF0100300A05 /* VWWClusteredMapView.h */,
-				CF57421E1AC7CF0100300A05 /* VWWClusteredMapView.m */,
-				CF57421F1AC7CF0100300A05 /* QuadTree */,
-				CF5742261AC7CF0100300A05 /* SnapAnnotations */,
 			);
 			path = VWWClusteredMapView;
 			sourceTree = "<group>";
@@ -202,38 +186,12 @@
 		CF57421F1AC7CF0100300A05 /* QuadTree */ = {
 			isa = PBXGroup;
 			children = (
-				CF5742201AC7CF0100300A05 /* VWWClusteredAnnotation.h */,
-				CF5742211AC7CF0100300A05 /* VWWClusteredAnnotation.m */,
 				CF5742221AC7CF0100300A05 /* VWWCoordinateQuadTree.h */,
 				CF5742231AC7CF0100300A05 /* VWWCoordinateQuadTree.m */,
 				CF5742241AC7CF0100300A05 /* VWWQuadTree.h */,
 				CF5742251AC7CF0100300A05 /* VWWQuadTree.m */,
 			);
 			path = QuadTree;
-			sourceTree = "<group>";
-		};
-		CF5742261AC7CF0100300A05 /* SnapAnnotations */ = {
-			isa = PBXGroup;
-			children = (
-				CF5742271AC7CF0100300A05 /* Images */,
-				CF57422B1AC7CF0100300A05 /* VWWSnapAnnotationCollectionViewCell.h */,
-				CF57422C1AC7CF0100300A05 /* VWWSnapAnnotationCollectionViewCell.m */,
-				CF57422D1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionView.h */,
-				CF57422E1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionView.m */,
-				CF57422F1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionViewLayout.h */,
-				CF5742301AC7CF0100300A05 /* VWWSnapAnnotationsCollectionViewLayout.m */,
-			);
-			path = SnapAnnotations;
-			sourceTree = "<group>";
-		};
-		CF5742271AC7CF0100300A05 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				CF5742281AC7CF0100300A05 /* SnapAnnotationImage.png */,
-				CF5742291AC7CF0100300A05 /* SnapAnnotationImage@2x.png */,
-				CF57422A1AC7CF0100300A05 /* SnapAnnotationImage@3x.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		CF5742401AC7CF1600300A05 /* Hotel */ = {
@@ -328,11 +286,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF57423C1AC7CF0100300A05 /* SnapAnnotationImage@3x.png in Resources */,
-				CF57423B1AC7CF0100300A05 /* SnapAnnotationImage@2x.png in Resources */,
 				CF5741F41AC7CE9200300A05 /* Main.storyboard in Resources */,
 				CF5741F91AC7CE9200300A05 /* LaunchScreen.xib in Resources */,
-				CF57423A1AC7CF0100300A05 /* SnapAnnotationImage.png in Resources */,
 				CF5742481AC7CF1600300A05 /* USA-HotelMotel.csv in Resources */,
 				CF5741F61AC7CE9200300A05 /* Images.xcassets in Resources */,
 			);
@@ -353,23 +308,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5742311AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m in Sources */,
-				CF57423E1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionView.m in Sources */,
 				CF5742321AC7CF0100300A05 /* VWWClusteredMapView+Private.m in Sources */,
 				CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */,
 				CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */,
 				CF5741F11AC7CE9200300A05 /* ViewController.m in Sources */,
-				CF57423F1AC7CF0100300A05 /* VWWSnapAnnotationsCollectionViewLayout.m in Sources */,
 				CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */,
 				CF5741EB1AC7CE9200300A05 /* main.m in Sources */,
-				CF5742331AC7CF0100300A05 /* VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.m in Sources */,
-				CF5742351AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDelegate.m in Sources */,
 				CF5742391AC7CF0100300A05 /* VWWQuadTree.m in Sources */,
-				CF5742341AC7CF0100300A05 /* VWWClusteredMapView+UICollectionViewDataSource.m in Sources */,
 				CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */,
 				CF5742361AC7CF0100300A05 /* VWWClusteredMapView.m in Sources */,
+				CF4E8E6C1AE222DC00F19500 /* VWWClusteredAnnotationView.m in Sources */,
 				CF5742381AC7CF0100300A05 /* VWWCoordinateQuadTree.m in Sources */,
 				CF5742371AC7CF0100300A05 /* VWWClusteredAnnotation.m in Sources */,
-				CF57423D1AC7CF0100300A05 /* VWWSnapAnnotationCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

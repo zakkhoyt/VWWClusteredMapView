@@ -9,12 +9,9 @@
 #import "VWWClusteredMapView+ClassExtension.h"
 #import "VWWClusteredMapView+Private.h"
 #import "VWWClusteredMapView+MKMapViewDelegate.h"
-#import "VWWClusteredMapView+SnapAnnotationsCollectionViewLayoutDelegate.h"
-#import "VWWClusteredMapView+UICollectionViewDataSource.h"
-#import "VWWClusteredMapView+UICollectionViewDelegate.h"
 
 #import "VWWQuadTree.h"
-#import "VWWSnapAnnotationCollectionViewCell.h"
+
 
 @implementation VWWClusteredMapView 
 - (id)init {
@@ -49,23 +46,6 @@
     [self setAnnotationsAreClusterable:YES];
     [self setAnimateReclusting:YES];
     [self setClusterDensity:ClusterMapViewDensityNormal];
-    [self setAnnotationsAreSnapable:YES];
-    
-    VWWSnapAnnotationsCollectionViewLayout *layout = [[VWWSnapAnnotationsCollectionViewLayout alloc]init];
-    layout.delegate = self;
-    [self setLayout:layout];
-    
-    VWWSnapAnnotationsCollectionView *collectionView = [[VWWSnapAnnotationsCollectionView alloc]initWithFrame:self.frame collectionViewLayout:self.layout];
-    [collectionView registerClass:[VWWSnapAnnotationCollectionViewCell class] forCellWithReuseIdentifier:VWWSnapAnnotationCollectionViewCellKey];
-    collectionView.dataSource = self;
-    collectionView.delegate = self;
-    collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    collectionView.collectionViewLayout = self.layout;
-    collectionView.backgroundColor = [UIColor clearColor];
-    [self addSubview:collectionView];
-    [self setCollectionView:collectionView];
-    CADisplayLink *link = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateViewsBasedOnMapRegion:)];
-    [link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 
     
 }
@@ -91,26 +71,12 @@
     _animateReclusting = animateReclusting;
 }
 
--(void)setAnnotationsAreSnapable:(BOOL)annotationsAreSnapable {
-    _annotationsAreSnapable = annotationsAreSnapable;
-    [self.collectionView reloadData];
-}
-
--(void)setSnapInset:(UIEdgeInsets)snapInset {
-    _snapInset = snapInset;
-}
 
 // TODO:
 - (MKAnnotationView *)viewForClusteredAnnotation:(id <MKAnnotation>)annotation {
     NSLog(@"TODO: %s", __PRETTY_FUNCTION__);
     return nil;
 }
-// TODO:
-- (MKAnnotationView *)viewForSnappedAnnotation:(id <MKAnnotation>)annotation {
-    NSLog(@"TODO: %s", __PRETTY_FUNCTION__);
-    return nil;
-}
-
 
 @end
 
@@ -346,11 +312,9 @@
         VWWQuadTreeNodeData *node = [[VWWQuadTreeNodeData alloc]initWithAnotation:annotation];
         [treeAnnotations addObject:node];
     }];
-    [self.coordinateQuadTree buildTreeWithItems:treeAnnotations];
-    
-
     
     if(self.annotationsAreClusterable){
+        [self.coordinateQuadTree buildTreeWithItems:treeAnnotations];
         [self refreshClusterableAnnotations];
         
     } else {
@@ -366,49 +330,7 @@
     [self.mapView removeAnnotations:annotations];
 }
 
-//-(void)removeAnnotation:(id<MKAnnotation>)annotation{
-//    [super removeAnnotations:@[annotation]];
-//    // TODO: We need to find this in the quadtree and delete it there too
-//    [_clusteredAnnotations removeObject:annotation];
-//    [_unclusteredAnnotations removeObject:annotation];
-//    
-//}
-//-(void)removeAnnotations:(NSArray *)annotations{
-//    [super removeAnnotations:annotations];
-//    [_clusteredAnnotations removeAllObjects];
-//    [_unclusteredAnnotations removeAllObjects];
-//}
-//
-//-(void)addAnnotation:(id<MKAnnotation>)annotation{
-//    [self addAnnotations:@[annotation]];
-//}
-//-(void)addAnnotations:(NSArray *)annotations{
-//    // Unclustered
-//    if(!self.unclusteredAnnotations){
-//        self.unclusteredAnnotations = [@[]mutableCopy];
-//    }
-//    [self.unclusteredAnnotations addObjectsFromArray:annotations];
-//    
-//    
-//    // Clustered
-//    // Convert annotations (which are id<MKAnnotation> to VWWQuadTreeNodeData then load a tree search into the map
-//    if(!self.clusteredAnnotations){
-//        self.clusteredAnnotations = [@[]mutableCopy];
-//    }
-//    
-//    [annotations enumerateObjectsUsingBlock:^(id annotation, NSUInteger idx, BOOL *stop) {
-//        VWWQuadTreeNodeData *node = [[VWWQuadTreeNodeData alloc]initWithAnotation:annotation];
-//        [self.clusteredAnnotations addObject:node];
-//    }];
-//    [self.coordinateQuadTree buildTreeWithItems:self.clusteredAnnotations];
-//    
-//    if(self.clusterable){
-//        [self refreshAnnotationClusters];
-//        
-//    } else {
-//        [super addAnnotations:annotations];
-//    }
-//}
+
 
 
 -(NSArray*)annotations {

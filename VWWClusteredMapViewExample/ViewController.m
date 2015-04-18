@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIView *settingsContainerView;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
-
 @end
 
 @implementation ViewController
@@ -31,9 +30,9 @@
     self.settingsButton.layer.borderWidth = 4;
     self.settingsButton.layer.borderColor = [UIColor greenColor].CGColor;
     self.settingsContainerView.alpha = 1.0;
-    self.bottomConstraint.constant = -226;
+    self.bottomConstraint.constant = -self.settingsContainerView.bounds.size.height;
     self.mapView.delegate = self;
-    self.mapView.snapInset = UIEdgeInsetsMake(22, 22, 22, 22);
+
     
     // Load hotels from CSV file
     NSArray *hotelAnnotations = [HotelAnnotation readHotelsDataFile];
@@ -66,8 +65,12 @@
     }
 }
 
-
-#pragma mark Private methods
+#pragma mark Private Methods
+-(void)panToAnnotationView:(MKAnnotationView*)view withPrettyFunction:(char*)function {
+    id<MKAnnotation> annotation = view.annotation;
+//    NSLog(@"%s %.4f,%.f", function, annotation.coordinate.latitude, annotation.coordinate.longitude);
+    [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
+}
 
 
 #pragma mark IBActions
@@ -105,36 +108,18 @@
     return annotationView;
 }
 
-// If this delegate method is not implemented, the default arrow image will be used (similar to how the map uses pins)
--(MKAnnotationView*)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForSnappedAnnotation:(id<MKAnnotation>)annotation {
-//    MKAnnotationView *av = [[MKAnnotationView alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-//    av.backgroundColor = [UIColor yellowColor];
-//    return av;
-    return nil;
-}
 
 #pragma mark Annotation interaction
 
+
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectAnnotationView:(MKAnnotationView *)view {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    id<MKAnnotation> annotation = view.annotation;
-    NSLog(@"%.4f,%.f", annotation.coordinate.latitude, annotation.coordinate.longitude);
-    [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
+    [self panToAnnotationView:view withPrettyFunction:(char*)__PRETTY_FUNCTION__];
 }
 
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(MKAnnotationView *)view {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    id<MKAnnotation> annotation = view.annotation;
-    NSLog(@"%.4f,%.f", annotation.coordinate.latitude, annotation.coordinate.longitude);
-    [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view {
+    [self panToAnnotationView:view withPrettyFunction:(char*)__PRETTY_FUNCTION__];
 }
 
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectSnapedAnnotationView:(MKAnnotationView *)view {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    id<MKAnnotation> annotation = view.annotation;
-    NSLog(@"%.4f,%.f", annotation.coordinate.latitude, annotation.coordinate.longitude);
-    [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
-}
 
 
 @end

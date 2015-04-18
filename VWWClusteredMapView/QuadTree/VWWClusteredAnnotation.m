@@ -20,7 +20,7 @@
 }
 
 -(NSUInteger)hash {
-    NSString *toHash = [NSString stringWithFormat:@"%.5F%.5F", self.coordinate.latitude, self.coordinate.longitude];
+    NSString *toHash = [NSString stringWithFormat:@"%.6f%.6f", self.coordinate.latitude, self.coordinate.longitude];
     return [toHash hash];
 }
 
