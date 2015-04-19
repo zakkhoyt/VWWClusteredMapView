@@ -5,13 +5,12 @@
 
 
 
-# This pod is not published on trunk yet. YOu can use it by adding this to your podfile:
-# pod 'VWWClusteredMapView', :podspec => "https://raw.githubusercontent.com/zakkhoyt/VWWClusteredMapView/master/VWWClusteredMapView.podspec"
-
+# This pod is not published on trunk yet. You can use it by adding this to your podfile:
+# pod 'VWWClusteredMapView', :podspec => "https://raw.githubusercontent.com/zakkhoyt/VWWClusteredMapView/0.0.6/VWWClusteredMapView.podspec"
 
 Pod::Spec.new do |s|
   s.name         = "VWWClusteredMapView"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "MKMapView which automatically clusters your annotations into groups with some light animation"
   s.author        = { "Zakk Hoyt" => "vaporwarewolf@gmail.com" }
   s.homepage      = "http://github.com/zakkhoyt"
