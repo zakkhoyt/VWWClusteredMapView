@@ -94,7 +94,9 @@
     
     NSUInteger sectionCount = [self.dataSource numberOfSectionsInMapView:self];
     self.quadTrees = [[NSMutableArray alloc]initWithCapacity:sectionCount];
+    self.lastAnnotations = [[NSMutableArray alloc]initWithCapacity:sectionCount];
     for(NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++){
+        VWWCoordinateQuadTree *quadTree = [[VWWCoordinateQuadTree alloc]init];
         NSMutableArray *annotationsForSection = [@[]mutableCopy];
         NSUInteger itemCount = [self.dataSource mapView:self numberOfAnnotationsInSection:sectionIndex];
         for(NSUInteger itemIndex = 0; itemIndex < itemCount; itemIndex++){
@@ -107,20 +109,11 @@
             VWWQuadTreeNodeData *node = [[VWWQuadTreeNodeData alloc]initWithAnotation:annotation];
             [nodes addObject:node];
         }];
-        VWWCoordinateQuadTree *quadTree = self.quadTrees[sectionIndex];
         [quadTree buildTreeWithItems:nodes];
-        
+        [self.quadTrees addObject:quadTree];
     }
     
-//    NSMutableArray *nodes = [@[]mutableCopy];
-//    [annotations enumerateObjectsUsingBlock:^(id annotation, NSUInteger idx, BOOL *stop) {
-//        VWWQuadTreeNodeData *node = [[VWWQuadTreeNodeData alloc]initWithAnotation:annotation];
-//        [nodes addObject:node];
-//    }];
-    
-    
-//        [self.coordinateQuadTree buildTreeWithItems:nodes];
-        [self refreshClusterableAnnotations];
+    [self refreshClusterableAnnotations];
 
 }
 

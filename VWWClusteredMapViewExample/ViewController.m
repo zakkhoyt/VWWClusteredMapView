@@ -46,9 +46,9 @@ typedef enum {
     
     // Load hotels from CSV file
     NSArray *allAnnotations = [HotelAnnotation readHotelsDataFile];
-    NSIndexSet *motelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 100)];
+    NSIndexSet *motelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 1)];
     self.motelAnnotations = [allAnnotations objectsAtIndexes:motelIndexSet];
-    NSIndexSet *hotelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(100, 100)];
+    NSIndexSet *hotelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(100, 1)];
     self.hotelAnnotations = [allAnnotations objectsAtIndexes:hotelIndexSet];
     
     [self.mapView reloadData];
@@ -104,7 +104,7 @@ typedef enum {
 
 #pragma mark VWWClusteredMapViewDelegate
 - (NSInteger)numberOfSectionsInMapView:(VWWClusteredMapView*)mapView{
-    return 1;
+    return 2;
 }
 - (NSInteger)mapView:(VWWClusteredMapView*)mapView numberOfAnnotationsInSection:(NSInteger)section{
     switch (section) {
