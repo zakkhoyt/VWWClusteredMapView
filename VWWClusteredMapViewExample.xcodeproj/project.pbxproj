@@ -25,6 +25,11 @@
 		CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742421AC7CF1600300A05 /* HotelAnnotation.m */; };
 		CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742441AC7CF1600300A05 /* HotelAnnotationView.m */; };
 		CF5742481AC7CF1600300A05 /* USA-HotelMotel.csv in Resources */ = {isa = PBXBuildFile; fileRef = CF5742451AC7CF1600300A05 /* USA-HotelMotel.csv */; };
+		CFDBD9131B01B63B00981B96 /* Ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = CFDBD9121B01B63B00981B96 /* Ideas.txt */; };
+		CFDBD91D1B01B6CB00981B96 /* Ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = CFDBD9161B01B6CB00981B96 /* Ideas.txt */; };
+		CFDBD91E1B01B6CB00981B96 /* VWWSnapAnnotationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDBD9181B01B6CB00981B96 /* VWWSnapAnnotationCollectionViewCell.m */; };
+		CFDBD91F1B01B6CB00981B96 /* VWWSnapAnnotationsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDBD91A1B01B6CB00981B96 /* VWWSnapAnnotationsCollectionView.m */; };
+		CFDBD9201B01B6CB00981B96 /* VWWSnapAnnotationsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDBD91C1B01B6CB00981B96 /* VWWSnapAnnotationsCollectionViewLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +78,14 @@
 		CF5742431AC7CF1600300A05 /* HotelAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelAnnotationView.h; sourceTree = "<group>"; };
 		CF5742441AC7CF1600300A05 /* HotelAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelAnnotationView.m; sourceTree = "<group>"; };
 		CF5742451AC7CF1600300A05 /* USA-HotelMotel.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "USA-HotelMotel.csv"; sourceTree = "<group>"; };
+		CFDBD9121B01B63B00981B96 /* Ideas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ideas.txt; path = Documents/Ideas.txt; sourceTree = "<group>"; };
+		CFDBD9161B01B6CB00981B96 /* Ideas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Ideas.txt; sourceTree = "<group>"; };
+		CFDBD9171B01B6CB00981B96 /* VWWSnapAnnotationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSnapAnnotationCollectionViewCell.h; sourceTree = "<group>"; };
+		CFDBD9181B01B6CB00981B96 /* VWWSnapAnnotationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSnapAnnotationCollectionViewCell.m; sourceTree = "<group>"; };
+		CFDBD9191B01B6CB00981B96 /* VWWSnapAnnotationsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSnapAnnotationsCollectionView.h; sourceTree = "<group>"; };
+		CFDBD91A1B01B6CB00981B96 /* VWWSnapAnnotationsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSnapAnnotationsCollectionView.m; sourceTree = "<group>"; };
+		CFDBD91B1B01B6CB00981B96 /* VWWSnapAnnotationsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSnapAnnotationsCollectionViewLayout.h; sourceTree = "<group>"; };
+		CFDBD91C1B01B6CB00981B96 /* VWWSnapAnnotationsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSnapAnnotationsCollectionViewLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +120,7 @@
 		CF5741DC1AC7CE9200300A05 = {
 			isa = PBXGroup;
 			children = (
+				CFDBD9141B01B6CB00981B96 /* VWWSnapAnnotationsCollectionView */,
 				CF5742111AC7CF0100300A05 /* VWWClusteredMapView */,
 				CF5741E71AC7CE9200300A05 /* VWWClusteredMapViewExample */,
 				CF5742011AC7CE9200300A05 /* VWWClusteredMapViewExampleTests */,
@@ -170,6 +184,7 @@
 		CF5742111AC7CF0100300A05 /* VWWClusteredMapView */ = {
 			isa = PBXGroup;
 			children = (
+				CFDBD9121B01B63B00981B96 /* Ideas.txt */,
 				CF4E8E6D1AE2237900F19500 /* Annotations */,
 				CF57421F1AC7CF0100300A05 /* QuadTree */,
 				CF57421D1AC7CF0100300A05 /* VWWClusteredMapView.h */,
@@ -204,6 +219,28 @@
 				CF5742451AC7CF1600300A05 /* USA-HotelMotel.csv */,
 			);
 			path = Hotel;
+			sourceTree = "<group>";
+		};
+		CFDBD9141B01B6CB00981B96 /* VWWSnapAnnotationsCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				CFDBD9151B01B6CB00981B96 /* Documents */,
+				CFDBD9171B01B6CB00981B96 /* VWWSnapAnnotationCollectionViewCell.h */,
+				CFDBD9181B01B6CB00981B96 /* VWWSnapAnnotationCollectionViewCell.m */,
+				CFDBD9191B01B6CB00981B96 /* VWWSnapAnnotationsCollectionView.h */,
+				CFDBD91A1B01B6CB00981B96 /* VWWSnapAnnotationsCollectionView.m */,
+				CFDBD91B1B01B6CB00981B96 /* VWWSnapAnnotationsCollectionViewLayout.h */,
+				CFDBD91C1B01B6CB00981B96 /* VWWSnapAnnotationsCollectionViewLayout.m */,
+			);
+			path = VWWSnapAnnotationsCollectionView;
+			sourceTree = "<group>";
+		};
+		CFDBD9151B01B6CB00981B96 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				CFDBD9161B01B6CB00981B96 /* Ideas.txt */,
+			);
+			path = Documents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,8 +323,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFDBD9131B01B63B00981B96 /* Ideas.txt in Resources */,
 				CF5741F41AC7CE9200300A05 /* Main.storyboard in Resources */,
 				CF5741F91AC7CE9200300A05 /* LaunchScreen.xib in Resources */,
+				CFDBD91D1B01B6CB00981B96 /* Ideas.txt in Resources */,
 				CF5742481AC7CF1600300A05 /* USA-HotelMotel.csv in Resources */,
 				CF5741F61AC7CE9200300A05 /* Images.xcassets in Resources */,
 			);
@@ -309,6 +348,8 @@
 			files = (
 				CF5742311AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m in Sources */,
 				CF5742321AC7CF0100300A05 /* VWWClusteredMapView+Private.m in Sources */,
+				CFDBD91F1B01B6CB00981B96 /* VWWSnapAnnotationsCollectionView.m in Sources */,
+				CFDBD91E1B01B6CB00981B96 /* VWWSnapAnnotationCollectionViewCell.m in Sources */,
 				CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */,
 				CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */,
 				CF5741F11AC7CE9200300A05 /* ViewController.m in Sources */,
@@ -317,6 +358,7 @@
 				CF5742391AC7CF0100300A05 /* VWWQuadTree.m in Sources */,
 				CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */,
 				CF5742361AC7CF0100300A05 /* VWWClusteredMapView.m in Sources */,
+				CFDBD9201B01B6CB00981B96 /* VWWSnapAnnotationsCollectionViewLayout.m in Sources */,
 				CF4E8E6C1AE222DC00F19500 /* VWWClusteredAnnotationView.m in Sources */,
 				CF5742381AC7CF0100300A05 /* VWWCoordinateQuadTree.m in Sources */,
 				CF5742371AC7CF0100300A05 /* VWWClusteredAnnotation.m in Sources */,

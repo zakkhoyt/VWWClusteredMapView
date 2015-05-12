@@ -19,6 +19,9 @@
         NSArray *annotations = [self.coordinateQuadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
         NSLog(@"%ld clustered annotations", (long)annotations.count);
         [self updateMapViewAnnotationsWithAnnotations:annotations];
+        
+        NSUInteger leafs = [self.coordinateQuadTree leafCount];
+        NSLog(@"%lu leafs", leafs);
     }
 }
 

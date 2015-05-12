@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWClusteredMapView/VWWClusteredMapView+Private.m"
-            timestampString = "451033516.415306"
+            timestampString = "453099414.688024"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "-refreshAnnotations"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWClusteredMapView/VWWClusteredMapView+Private.m"
-            timestampString = "451033516.415306"
+            timestampString = "453099414.688024"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-refreshAnnotations"
             landmarkType = "5">
          </BreakpointContent>
@@ -129,6 +129,22 @@
             endingLineNumber = "100"
             landmarkName = "@implementation VWWClusteredMapView(MKMapViewDelegate)"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VWWClusteredMapView/QuadTree/VWWCoordinateQuadTree.m"
+            timestampString = "453099332.504276"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-calculateLeafCountFromNode:count:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

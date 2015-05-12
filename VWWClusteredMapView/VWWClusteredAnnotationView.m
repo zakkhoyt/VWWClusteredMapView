@@ -64,7 +64,7 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
             self.transform = CGAffineTransformMakeScale(1.0, 1.0);
         }];
     } completion:nil];
-    }
+}
 
 -(void)animateRemoveWithCompletionBlock:(VWWClusteredAnnotationViewEmptyBlock)completionBlock{
     CGFloat duration = 0.5;

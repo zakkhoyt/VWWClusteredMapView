@@ -34,8 +34,6 @@ typedef enum {
 
 @property (weak, nonatomic) id<VWWClusteredMapViewDelegate> delegate;
 
-
-- (MKAnnotationView *)viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
 @end
 
 @interface VWWClusteredMapView (MKMapView)
@@ -243,9 +241,4 @@ typedef enum {
 - (VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
-
-
-
-
-
 @end

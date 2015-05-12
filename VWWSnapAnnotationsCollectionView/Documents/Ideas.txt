@@ -1,0 +1,4 @@
+
+* Distant annotations to support NSIndexPath as well. Each section is a layer.
+
+

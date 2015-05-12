@@ -20,6 +20,7 @@
 @property (nonatomic) CLLocationDegrees xf;
 @property (nonatomic) CLLocationDegrees yf;
 -(instancetype)initWithX0:(CLLocationDegrees)x0 Y0:(CLLocationDegrees)y0 XF:(CLLocationDegrees)xf YF:(CLLocationDegrees)yf;
++(VWWBoundingBox*)boundingBoxForWorld;
 @end
 
 @interface VWWQuadTreeNode : NSObject
@@ -45,4 +46,5 @@ typedef void(^VWWDataReturnBlock)(VWWQuadTreeNodeData* data);
 +(void)quadTree:(VWWQuadTreeNode*)node gatherDataInRange:(VWWBoundingBox*)range block:(VWWDataReturnBlock)block;
 +(BOOL)quadTree:(VWWQuadTreeNode*)node insertData:(VWWQuadTreeNodeData*)data;
 +(VWWQuadTreeNode*)quadTreeBuildWithData:(NSArray*)data count:(NSInteger)count boundingBox:(VWWBoundingBox*)boundingBox capacity:(NSInteger)capacity;
+
 @end

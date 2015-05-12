@@ -37,6 +37,11 @@
 
 - (void)commonInitWithFrame:(CGRect)frame {
     self.coordinateQuadTree = [[VWWCoordinateQuadTree alloc] init];
+
+    
+    _annotationsAreClusterable = YES;
+
+    
     
     MKMapView *mapView = [[MKMapView alloc]initWithFrame:frame];
     mapView.delegate = (id<MKMapViewDelegate>)self;

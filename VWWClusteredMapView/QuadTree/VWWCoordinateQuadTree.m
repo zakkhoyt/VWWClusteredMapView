@@ -24,9 +24,11 @@
 }
 
 -(void)buildTreeWithItems:(NSArray*)data{
-    VWWBoundingBox *world = [[VWWBoundingBox alloc]initWithX0:-90 Y0:-180 XF:90 YF:180];
+    VWWBoundingBox *world = [VWWBoundingBox boundingBoxForWorld];
     self.root = [VWWQuadTree quadTreeBuildWithData:data count:data.count boundingBox:world capacity:4];
 }
+
+
 
 - (NSArray *)clusteredAnnotationsWithinMapRect:(MKMapRect)rect withZoomScale:(double)zoomScale
 {
@@ -85,8 +87,44 @@
     return _clusterDensity - 1;
 }
 
-#pragma mark Private methods
 
+-(NSUInteger)leafCount{
+    
+//    self.root
+    NSUInteger count = 0;
+    [self calculateLeafCountFromNode:self.root count:&count];
+    return count;
+}
+-(NSUInteger)treeHeight{
+    return 0;
+}
+
+
+#pragma mark Private methods
+-(void)calculateLeafCountFromNode:(VWWQuadTreeNode*)node count:(NSUInteger*)count{
+    
+    // Base case
+    if(node == self.root && *count){
+        return;
+    }
+    
+    if(node.northWest){
+        [self calculateLeafCountFromNode:node.northWest count:count];
+    }
+    if(node.northEast){
+        [self calculateLeafCountFromNode:node.northEast count:count];
+    }
+    if(node.southWest){
+        [self calculateLeafCountFromNode:node.southWest count:count];
+    }
+    if(node.southEast){
+        [self calculateLeafCountFromNode:node.southEast count:count];
+    }
+    
+    // No children.. we have a leaf here.
+    (*count)++;
+    return;
+}
 
 -(float)cellSizeForZoomScale:(MKZoomScale)zoomScale {
     NSInteger zoomLevel = [self zoomScaleToZoomLevel:zoomScale];

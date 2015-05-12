@@ -22,4 +22,9 @@
 -(NSArray*)clusteredAnnotationsWithinMapRect:(MKMapRect)rect withZoomScale:(double)zoomScale;
 -(void)setClusterDensity:(NSUInteger)density;
 -(NSUInteger)clusterDensity;
+
+-(NSUInteger)leafCount;
+-(NSUInteger)treeHeight;
+
+
 @end
