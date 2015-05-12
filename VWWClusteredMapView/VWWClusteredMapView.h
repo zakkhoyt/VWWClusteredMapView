@@ -19,6 +19,7 @@ typedef enum {
 } ClusterMapViewDensity;
 
 // Defined at bottom of file
+@protocol VWWClusteredMapViewDataSource;
 @protocol VWWClusteredMapViewDelegate;
 
 
@@ -32,8 +33,10 @@ typedef enum {
 // Animate as annotations are added and removed
 @property (nonatomic) BOOL animateReclusting;
 
+@property (weak, nonatomic) id<VWWClusteredMapViewDataSource> dataSource;
 @property (weak, nonatomic) id<VWWClusteredMapViewDelegate> delegate;
 
+-(void)reloadData;
 @end
 
 @interface VWWClusteredMapView (MKMapView)
@@ -115,13 +118,13 @@ typedef enum {
 // Returns YES if the user's location is displayed within the currently visible map region.
 @property (nonatomic, readonly, getter=isUserLocationVisible) BOOL userLocationVisible;
 
-// Annotations are models used to annotate coordinates on the map.
-// Implement mapView:viewForAnnotation: on MKMapViewDelegate to return the annotation view for each annotation.
-- (void)addAnnotation:(id <MKAnnotation>)annotation;
-- (void)addAnnotations:(NSArray *)annotations;
-
-- (void)removeAnnotation:(id <MKAnnotation>)annotation;
-- (void)removeAnnotations:(NSArray *)annotations;
+//// Annotations are models used to annotate coordinates on the map.
+//// Implement mapView:viewForAnnotation: on MKMapViewDelegate to return the annotation view for each annotation.
+//- (void)addAnnotation:(id <MKAnnotation>)annotation;
+//- (void)addAnnotations:(NSArray *)annotations;
+//
+//- (void)removeAnnotation:(id <MKAnnotation>)annotation;
+//- (void)removeAnnotations:(NSArray *)annotations;
 
 @property (nonatomic, readonly) NSArray *annotations;
 - (NSSet *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2);
@@ -189,12 +192,30 @@ typedef enum {
 @end
 
 
-@protocol VWWClusteredMapViewDelegate <NSObject>
 
+
+
+@protocol VWWClusteredMapViewDataSource <NSObject>
+@required
+- (NSInteger)numberOfSectionsInMapView:(VWWClusteredMapView*)mapView;
+- (NSInteger)mapView:(VWWClusteredMapView*)mapView numberOfAnnotationsInSection:(NSInteger)section;
+- (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndexPath:(NSIndexPath *)indexPath;
+@end
+
+@protocol VWWClusteredMapViewDelegate <NSObject>
+@required
+
+    
 @optional
 // *********************************************************
-// Methods in this section are wrapped versions of MKMapViewDelegate
+// Methods in this section are additional to MKMapViewDelegate
+- (VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 
+
+// *********************************************************
+// Methods in this section are wrapped versions of MKMapViewDelegate
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView regionWillChangeAnimated:(BOOL)animated;
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView regionDidChangeAnimated:(BOOL)animated;
 
@@ -236,9 +257,4 @@ typedef enum {
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didAddOverlayViews:(NSArray *)overlayViews NS_DEPRECATED_IOS(4_0, 7_0);
 #endif
 
-// *********************************************************
-// Methods below here are additional to MKMapViewDelegate
-- (VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 @end

@@ -14,13 +14,16 @@
 @implementation VWWClusteredMapView (Private)
 
 -(void)refreshClusterableAnnotations{
-    if(self.annotationsAreClusterable) {
+
+    NSUInteger sectionCount = [self.dataSource numberOfSectionsInMapView:self];
+    for(NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++){
         double scale = self.bounds.size.width / self.visibleMapRect.size.width;
-        NSArray *annotations = [self.coordinateQuadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
-        NSLog(@"%ld clustered annotations", (long)annotations.count);
+        VWWCoordinateQuadTree *quadTree = self.quadTrees[sectionIndex];
+        NSArray *annotations = [quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
+        NSLog(@"%ld clustered annotations for section(%lu)", (long)annotations.count, (unsigned long)sectionIndex);
         [self updateMapViewAnnotationsWithAnnotations:annotations];
         
-        NSUInteger leafs = [self.coordinateQuadTree leafCount];
+        NSUInteger leafs = [quadTree leafCount];
         NSLog(@"%lu leafs", leafs);
     }
 }

@@ -14,8 +14,17 @@
 
 #import "VWWClusteredMapView.h"
 
-@interface ViewController () <VWWClusteredMapViewDelegate, UIPopoverPresentationControllerDelegate>
+typedef enum {
+    ViewControllerSectionMotels = 0,
+    ViewControllerSectionHotels = 1,
+} ViewControllerSection;
+
+
+@interface ViewController () <VWWClusteredMapViewDelegate, VWWClusteredMapViewDataSource, UIPopoverPresentationControllerDelegate>
 @property (weak, nonatomic) IBOutlet VWWClusteredMapView *mapView;
+@property (nonatomic, strong) NSArray *motelAnnotations;
+@property (nonatomic, strong) NSArray *hotelAnnotations;
+
 @property (nonatomic, strong) UIPopoverPresentationController *popover;
 @property (weak, nonatomic) IBOutlet UIView *settingsContainerView;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
@@ -32,11 +41,19 @@
     self.settingsContainerView.alpha = 1.0;
     self.bottomConstraint.constant = -self.settingsContainerView.bounds.size.height;
     self.mapView.delegate = self;
+    self.mapView.dataSource = self;
 
     
     // Load hotels from CSV file
-    NSArray *hotelAnnotations = [HotelAnnotation readHotelsDataFile];
-    [self.mapView addAnnotations:hotelAnnotations];
+    NSArray *allAnnotations = [HotelAnnotation readHotelsDataFile];
+    NSIndexSet *motelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 100)];
+    self.motelAnnotations = [allAnnotations objectsAtIndexes:motelIndexSet];
+    NSIndexSet *hotelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(100, 100)];
+    self.hotelAnnotations = [allAnnotations objectsAtIndexes:hotelIndexSet];
+    
+    [self.mapView reloadData];
+    
+//    [self.mapView addAnnotations:hotelAnnotations];
 }
 
 
@@ -83,11 +100,43 @@
     }];
 }
 
-@end
 
-@implementation ViewController (ClusteredMapViewDelegate)
 
-#pragma mark Annotation Views
+#pragma mark VWWClusteredMapViewDelegate
+- (NSInteger)numberOfSectionsInMapView:(VWWClusteredMapView*)mapView{
+    return 1;
+}
+- (NSInteger)mapView:(VWWClusteredMapView*)mapView numberOfAnnotationsInSection:(NSInteger)section{
+    switch (section) {
+        case 0:
+            return self.motelAnnotations.count;
+            break;
+        case 1:
+            return self.hotelAnnotations.count;
+            break;
+        default:
+            return 0;
+            break;
+    }
+}
+
+- (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.section) {
+        case 0:
+            return self.motelAnnotations[indexPath.item];
+            break;
+        case 1:
+            return self.hotelAnnotations[indexPath.item];
+            break;
+        default:
+            return nil;
+            break;
+    }
+}
+
+
+
+#pragma mark VWWClusteredMapViewDelegate (Annotation Views)
 -(MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForAnnotation:(id<MKAnnotation>)annotation {
     HotelAnnotationView *annotationView = (HotelAnnotationView *)[clusteredMapView dequeueReusableAnnotationViewWithIdentifier:@"AnnotationView"];
     if (!annotationView) {

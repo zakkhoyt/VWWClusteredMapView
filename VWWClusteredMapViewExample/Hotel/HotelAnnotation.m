@@ -34,8 +34,8 @@
         NSArray *lines = [data componentsSeparatedByString:@"\n"];
         NSInteger count = lines.count - 1;
         NSMutableArray *dataArray = [[NSMutableArray alloc]initWithCapacity:count];
-        for (NSInteger index = 0; index < 100; index++) {
-            //        for (NSInteger index = 0; index < count; index++) {
+//        for (NSInteger index = 0; index < 100; index++) {
+        for (NSInteger index = 0; index < count; index++) {
             HotelAnnotation* data = [self dataFromLine:lines[index]];
             [dataArray addObject:data];
         }

@@ -14,7 +14,8 @@
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *clusteredAnnotations;
 @property (nonatomic, strong) NSMutableArray *unclusteredAnnotations;
-@property (nonatomic, strong) VWWCoordinateQuadTree *coordinateQuadTree;
+//@property (nonatomic, strong) VWWCoordinateQuadTree *coordinateQuadTree;
+@property (nonatomic, strong) NSMutableArray *quadTrees;
 @property (nonatomic, strong) NSSet *lastAnnotations;
 
 @property (nonatomic) MKCoordinateRegion lastRegion;
