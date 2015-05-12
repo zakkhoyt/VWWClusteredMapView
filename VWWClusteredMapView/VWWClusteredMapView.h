@@ -24,8 +24,8 @@ typedef enum {
 
 
 @interface VWWClusteredMapView : UIView
-// If set not onscreen / offscreen annotations will be clustered
-@property (nonatomic) BOOL annotationsAreClusterable;
+//// If set not onscreen / offscreen annotations will be clustered
+//@property (nonatomic) BOOL annotationsAreClusterable;
 
 // The aggressiveness of clustering
 @property (nonatomic) ClusterMapViewDensity clusterDensity;
@@ -126,8 +126,8 @@ typedef enum {
 //- (void)removeAnnotation:(id <MKAnnotation>)annotation;
 //- (void)removeAnnotations:(NSArray *)annotations;
 
-@property (nonatomic, readonly) NSArray *annotations;
-- (NSSet *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2);
+//@property (nonatomic, readonly) NSArray *annotations;
+//- (NSSet *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2);
 
 // Currently displayed view for an annotation; returns nil if the view for the annotation isn't being displayed.
 - (MKAnnotationView *)viewForAnnotation:(id <MKAnnotation>)annotation;

@@ -20,6 +20,7 @@
 
 //@property (nonatomic, strong) NSSet *lastAnnotations;
 @property (nonatomic, strong) NSMutableArray *lastAnnotations;
+@property (nonatomic, strong) NSMutableArray *annotations;
 
 @property (nonatomic) MKCoordinateRegion lastRegion;
 

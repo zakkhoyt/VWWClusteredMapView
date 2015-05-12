@@ -15,41 +15,64 @@
 
 -(void)refreshClusterableAnnotations{
 
+    NSMutableSet *toAddFromAllSections = [[NSMutableSet alloc]init];
+    NSMutableSet *toRemoveFromAllSections = [[NSMutableSet alloc]init];
+    
     NSUInteger sectionCount = [self.dataSource numberOfSectionsInMapView:self];
     for(NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++){
         double scale = self.bounds.size.width / self.visibleMapRect.size.width;
         VWWCoordinateQuadTree *quadTree = self.quadTrees[sectionIndex];
-        NSArray *annotations = [quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
-        NSLog(@"%ld clustered annotations for section(%lu)", (long)annotations.count, (unsigned long)sectionIndex);
-        [self updateMapViewAnnotationsWithAnnotations:annotations section:sectionIndex];
+        NSArray *clusteredAnnotations = [quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
+        NSLog(@"%ld clustered annotations for section(%lu)", (long)clusteredAnnotations.count, (unsigned long)sectionIndex);
+
+        NSArray *annotations = clusteredAnnotations;
+        NSMutableSet *before = [NSMutableSet setWithArray:annotations];
+        self.lastAnnotations[sectionIndex] = [NSSet setWithSet:before];
+        [before removeObject:[self userLocation]];
+        NSSet *after = [NSSet setWithArray:annotations];
+        NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
+        [toKeep intersectSet:after];
+        NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
+        [toAdd minusSet:toKeep];
+        NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
+        [toRemove minusSet:after];
+        
+        [toAddFromAllSections unionSet:toAdd];
+        [toRemoveFromAllSections unionSet:toRemove];
+        
+        
         
         NSUInteger leafs = [quadTree leafCount];
         NSLog(@"%lu leafs", leafs);
     }
+    
+    [self.mapView addAnnotations:[toAddFromAllSections allObjects]];
+    [self.mapView removeAnnotations:[toRemoveFromAllSections allObjects]];
+
 }
 
-- (void)updateMapViewAnnotationsWithAnnotations:(NSArray *)annotations section:(NSUInteger)section{
-    NSMutableSet *before = [NSMutableSet setWithArray:self.annotations];
-    
-    self.lastAnnotations[section] = [NSSet setWithSet:before];
-    
-    [before removeObject:[self userLocation]];
-    
-    NSSet *after = [NSSet setWithArray:annotations];
-    
-    NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
-    [toKeep intersectSet:after];
-    
-    NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
-    [toAdd minusSet:toKeep];
-    
-    NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
-    [toRemove minusSet:after];
-    
-    [self.mapView addAnnotations:[toAdd allObjects]];
-    [self.mapView removeAnnotations:[toRemove allObjects]];
-    
-}
+//- (void)updateMapViewAnnotationsWithAnnotations:(NSArray *)annotations section:(NSUInteger)section{
+//    NSMutableSet *before = [NSMutableSet setWithArray:self.annotations];
+//    
+//    self.lastAnnotations[section] = [NSSet setWithSet:before];
+//    
+//    [before removeObject:[self userLocation]];
+//    
+//    NSSet *after = [NSSet setWithArray:annotations];
+//    
+//    NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
+//    [toKeep intersectSet:after];
+//    
+//    NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
+//    [toAdd minusSet:toKeep];
+//    
+//    NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
+//    [toRemove minusSet:after];
+//    
+//    [self.mapView addAnnotations:[toAdd allObjects]];
+//    [self.mapView removeAnnotations:[toRemove allObjects]];
+//    
+//}
 
 -(void)setAnimationPointsForAnnotationView:(VWWClusteredAnnotationView*)annotationView{
     
@@ -86,12 +109,7 @@
 
 -(void)refreshAnnotations{
     [self.mapView removeAnnotations:self.annotations];
-    if(self.annotationsAreClusterable){
-        [self refreshClusterableAnnotations];
-    } else {
-        [self.mapView addAnnotations:self.unclusteredAnnotations];
-    }
-    
+    [self refreshClusterableAnnotations];
 }
 
 

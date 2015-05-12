@@ -39,7 +39,7 @@
 //    self.coordinateQuadTree = [[VWWCoordinateQuadTree alloc] init];
 
     
-    _annotationsAreClusterable = YES;
+//    _annotationsAreClusterable = YES;
 
     
     
@@ -48,7 +48,7 @@
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:mapView];
     [self setMapView:mapView];
-    [self setAnnotationsAreClusterable:YES];
+//    [self setAnnotationsAreClusterable:YES];
     [self setAnimateReclusting:YES];
     [self setClusterDensity:ClusterMapViewDensityNormal];
 
@@ -56,10 +56,10 @@
 }
 
 
--(void)setAnnotationsAreClusterable:(BOOL)annotationsAreClusterable {
-    _annotationsAreClusterable = annotationsAreClusterable;
-    [self refreshAnnotations];
-}
+//-(void)setAnnotationsAreClusterable:(BOOL)annotationsAreClusterable {
+//    _annotationsAreClusterable = annotationsAreClusterable;
+//    [self refreshAnnotations];
+//}
 
 -(ClusterMapViewDensity)clusterDensity{
     VWWCoordinateQuadTree *quadTree = [self.quadTrees firstObject];
@@ -94,18 +94,24 @@
     
     NSUInteger sectionCount = [self.dataSource numberOfSectionsInMapView:self];
     self.quadTrees = [[NSMutableArray alloc]initWithCapacity:sectionCount];
+    self.annotations = [[NSMutableArray alloc]initWithCapacity:sectionCount];
     self.lastAnnotations = [[NSMutableArray alloc]initWithCapacity:sectionCount];
+    
     for(NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++){
+        // Get annotations for section
         VWWCoordinateQuadTree *quadTree = [[VWWCoordinateQuadTree alloc]init];
-        NSMutableArray *annotationsForSection = [@[]mutableCopy];
+        NSMutableArray *annotations = [@[]mutableCopy];
         NSUInteger itemCount = [self.dataSource mapView:self numberOfAnnotationsInSection:sectionIndex];
         for(NSUInteger itemIndex = 0; itemIndex < itemCount; itemIndex++){
             id<MKAnnotation> annotation = [self.dataSource mapView:self annotationForItemAtIndexPath:[NSIndexPath indexPathForItem:itemIndex inSection:sectionIndex]];
-            [annotationsForSection addObject:annotation];
+            [annotations addObject:annotation];
         }
+//        [self.annotations addObject:[NSArray arrayWithArray:annotations]];
+        [self.annotations addObject:[NSArray new]];
         
+        // Cluster annotations for section
         NSMutableArray *nodes = [@[]mutableCopy];
-        [annotationsForSection enumerateObjectsUsingBlock:^(id<MKAnnotation> annotation, NSUInteger idx, BOOL *stop) {
+        [annotations enumerateObjectsUsingBlock:^(id<MKAnnotation> annotation, NSUInteger idx, BOOL *stop) {
             VWWQuadTreeNodeData *node = [[VWWQuadTreeNodeData alloc]initWithAnotation:annotation];
             [nodes addObject:node];
         }];
@@ -371,14 +377,14 @@
 
 
 
-
--(NSArray*)annotations {
-    return self.mapView.annotations;
-}
-
-- (NSSet *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2) {
-    return [self.mapView annotationsInMapRect:mapRect];
-}
+//
+//-(NSArray*)annotations {
+//    return self.mapView.annotations;
+//}
+//
+//- (NSSet *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2) {
+//    return [self.mapView annotationsInMapRect:mapRect];
+//}
 
 - (MKAnnotationView *)viewForAnnotation:(id <MKAnnotation>)annotation {
     return [self.mapView viewForAnnotation:annotation];
