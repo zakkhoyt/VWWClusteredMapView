@@ -15,7 +15,7 @@
 
 
 
-
+// ******* original
 //-(void)refreshClusterableAnnotations{
 //    if(self.annotationsAreClusterable) {
 //        double scale = self.bounds.size.width / self.visibleMapRect.size.width;
@@ -25,19 +25,16 @@
 //    }
 //}
 -(void)refreshClusterableAnnotations{
-
+    double scale = self.bounds.size.width / self.visibleMapRect.size.width;
+    
     NSMutableSet *toAddFromAllSections = [[NSMutableSet alloc]init];
     NSMutableSet *toRemoveFromAllSections = [[NSMutableSet alloc]init];
     
     NSUInteger sectionCount = [self.dataSource numberOfSectionsInMapView:self];
     for(NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++){
-        double scale = self.bounds.size.width / self.visibleMapRect.size.width;
         VWWCoordinateQuadTree *quadTree = self.quadTrees[sectionIndex];
         NSArray *clusteredAnnotations = [quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
-        NSLog(@"%ld clustered annotations for section(%lu)", (long)clusteredAnnotations.count, (unsigned long)sectionIndex);
-
-        NSMutableSet *before = [NSMutableSet setWithArray:clusteredAnnotations];
-        self.lastAnnotations[sectionIndex] = [NSSet setWithSet:before];
+        NSMutableSet *before = self.clusteredAnnotations[sectionIndex];
         [before removeObject:[self userLocation]];
         NSSet *after = [NSSet setWithArray:clusteredAnnotations];
         NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
@@ -47,24 +44,22 @@
         NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
         [toRemove minusSet:after];
         
+        self.clusteredAnnotations[sectionIndex] = toAdd;
         [toAddFromAllSections unionSet:toAdd];
         [toRemoveFromAllSections unionSet:toRemove];
-        
-        
-        
-        NSUInteger leafs = [quadTree leafCount];
-        NSLog(@"%lu leafs", leafs);
     }
-    
+
+    NSLog(@"toRemoveFromAllSections.count: %lu", toRemoveFromAllSections.count);
+    NSLog(@"toAddFromAllSections.coutn: %lu", toAddFromAllSections.count);
     [self.mapView removeAnnotations:[toRemoveFromAllSections allObjects]];
     [self.mapView addAnnotations:[toAddFromAllSections allObjects]];
-    
-
+    NSLog(@"self.mapView.annotations.count: %lu", (unsigned long) self.mapView.annotations.count);
 }
 
+// ******* original
 //- (void)updateMapViewAnnotationsWithAnnotations:(NSArray *)annotations {
 //    NSMutableSet *before = [NSMutableSet setWithArray:self.annotations];
-//    self.lastAnnotations = [NSSet setWithSet:before];
+//    self.lastClusteredAnnotations = [NSSet setWithSet:before];
 //    [before removeObject:[self userLocation]];
 //    
 //    NSSet *after = [NSSet setWithArray:annotations];
@@ -86,7 +81,7 @@
 //- (void)updateMapViewAnnotationsWithAnnotations:(NSArray *)annotations section:(NSUInteger)section{
 //    NSMutableSet *before = [NSMutableSet setWithArray:self.annotations];
 //    
-//    self.lastAnnotations[section] = [NSSet setWithSet:before];
+//    self.lastClusteredAnnotations[section] = [NSSet setWithSet:before];
 //    
 //    [before removeObject:[self userLocation]];
 //    
@@ -118,9 +113,9 @@
 //
 //    
 //    // Find splits
-//    for(VWWClusteredAnnotation *lastAnnotation in self.lastAnnotations){
-//        NSSet *lastAnnotationStacks = [NSSet setWithArray:lastAnnotation.annotations];
-//        if([annotationStacks isSubsetOfSet:lastAnnotationStacks]){
+//    for(VWWClusteredAnnotation *lastAnnotation in self.lastClusteredAnnotations){
+//        NSSet *lastClusteredAnnotationstacks = [NSSet setWithArray:lastAnnotation.annotations];
+//        if([annotationStacks isSubsetOfSet:lastClusteredAnnotationstacks]){
 //            CGPoint fromPoint = [self.mapView convertCoordinate:lastAnnotation.coordinate toPointToView:self];
 //            annotationView.splitFromPoint = fromPoint;
 //            break;
@@ -128,9 +123,9 @@
 //    }
 //    
 //    // Find merges
-//    for(VWWClusteredAnnotation *lastAnnotation in self.lastAnnotations){
-//        NSSet *lastAnnotationStacks = [NSSet setWithArray:lastAnnotation.annotations];
-//        if([lastAnnotationStacks isSubsetOfSet:annotationStacks]){
+//    for(VWWClusteredAnnotation *lastAnnotation in self.lastClusteredAnnotations){
+//        NSSet *lastClusteredAnnotationstacks = [NSSet setWithArray:lastAnnotation.annotations];
+//        if([lastClusteredAnnotationstacks isSubsetOfSet:annotationStacks]){
 //            CGPoint toPoint = [self.mapView convertCoordinate:annotation.coordinate toPointToView:self];
 //            annotationView.mergeToPoint = toPoint;
 //            break;
@@ -139,10 +134,10 @@
 
 }
 
--(void)refreshAnnotations{
-    [self.mapView removeAnnotations:self.annotations];
-    [self refreshClusterableAnnotations];
-}
+//-(void)refreshAnnotations{
+//    [self.mapView removeAnnotations:self.annotations];
+//    [self refreshClusterableAnnotations];
+//}
 
 
 

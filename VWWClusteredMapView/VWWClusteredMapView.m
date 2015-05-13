@@ -36,30 +36,14 @@
 }
 
 - (void)commonInitWithFrame:(CGRect)frame {
-//    self.coordinateQuadTree = [[VWWCoordinateQuadTree alloc] init];
-
-    
-//    _annotationsAreClusterable = YES;
-
-    
-    
     MKMapView *mapView = [[MKMapView alloc]initWithFrame:frame];
     mapView.delegate = (id<MKMapViewDelegate>)self;
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:mapView];
     [self setMapView:mapView];
-//    [self setAnnotationsAreClusterable:YES];
     [self setAnimateReclusting:YES];
     [self setClusterDensity:ClusterMapViewDensityNormal];
-
-    
 }
-
-
-//-(void)setAnnotationsAreClusterable:(BOOL)annotationsAreClusterable {
-//    _annotationsAreClusterable = annotationsAreClusterable;
-//    [self refreshAnnotations];
-//}
 
 -(ClusterMapViewDensity)clusterDensity{
     VWWCoordinateQuadTree *quadTree = [self.quadTrees firstObject];
@@ -93,10 +77,17 @@
 -(void)reloadData{
     
     NSUInteger sectionCount = [self.dataSource numberOfSectionsInMapView:self];
+    // Prep some iVars for the future
     self.quadTrees = [[NSMutableArray alloc]initWithCapacity:sectionCount];
-    self.annotations = [[NSMutableArray alloc]initWithCapacity:sectionCount];
-    self.lastAnnotations = [[NSMutableArray alloc]initWithCapacity:sectionCount];
-    
+    self.clusteredAnnotations = [[NSMutableArray alloc]initWithCapacity:sectionCount];
+    self.lastClusteredAnnotations = [[NSMutableArray alloc]initWithCapacity:sectionCount];
+    for(NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++){
+        [self.clusteredAnnotations addObject:[NSMutableSet new]];
+        [self.lastClusteredAnnotations addObject:[NSMutableSet new]];
+    }
+
+
+    // Build clustered annotations from loose annotations
     for(NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++){
         // Get annotations for section
         VWWCoordinateQuadTree *quadTree = [[VWWCoordinateQuadTree alloc]init];
@@ -106,9 +97,7 @@
             id<MKAnnotation> annotation = [self.dataSource mapView:self annotationForItemAtIndexPath:[NSIndexPath indexPathForItem:itemIndex inSection:sectionIndex]];
             [annotations addObject:annotation];
         }
-//        [self.annotations addObject:[NSArray arrayWithArray:annotations]];
-        [self.annotations addObject:[NSArray new]];
-        
+
         // Cluster annotations for section
         NSMutableArray *nodes = [@[]mutableCopy];
         [annotations enumerateObjectsUsingBlock:^(id<MKAnnotation> annotation, NSUInteger idx, BOOL *stop) {
@@ -118,6 +107,31 @@
         [quadTree buildTreeWithItems:nodes];
         [self.quadTrees addObject:quadTree];
     }
+    
+
+    
+    
+//    // Initial add
+//    [self.mapView removeAnnotations:self.mapView.annotations];
+//    for(NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++){
+//        double scale = self.bounds.size.width / self.visibleMapRect.size.width;
+//        VWWCoordinateQuadTree *quadTree = self.quadTrees[sectionIndex];
+//        NSArray *clusteredAnnotations = [quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
+//        
+////        NSMutableSet *before = [NSMutableSet setWithArray:clusteredAnnotations];
+////        //        self.lastClusteredAnnotations[sectionIndex] = [NSSet setWithSet:before];
+////        [before removeObject:[self userLocation]];
+////        NSSet *after = [NSSet setWithArray:clusteredAnnotations];
+////        NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
+////        [toKeep intersectSet:after];
+////        NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
+////        [toAdd minusSet:toKeep];
+////        NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
+////        [toRemove minusSet:after];
+//
+//        [self.mapView addAnnotations:clusteredAnnotations];
+//    }
+//    NSLog(@"Self.mapview.annotations.count: %lu", (unsigned long) self.mapView.annotations.count);
     
     [self refreshClusterableAnnotations];
 

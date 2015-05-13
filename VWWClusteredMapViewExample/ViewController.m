@@ -46,9 +46,9 @@ typedef enum {
     
     // Load hotels from CSV file
     NSArray *allAnnotations = [HotelAnnotation readHotelsDataFile];
-    NSIndexSet *motelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 1)];
+    NSIndexSet *motelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 10)];
     self.motelAnnotations = [allAnnotations objectsAtIndexes:motelIndexSet];
-    NSIndexSet *hotelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(100, 1)];
+    NSIndexSet *hotelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(100, 10)];
     self.hotelAnnotations = [allAnnotations objectsAtIndexes:hotelIndexSet];
     
     [self.mapView reloadData];
