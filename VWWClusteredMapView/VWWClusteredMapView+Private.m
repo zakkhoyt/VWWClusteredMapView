@@ -13,6 +13,17 @@
 
 @implementation VWWClusteredMapView (Private)
 
+
+
+
+//-(void)refreshClusterableAnnotations{
+//    if(self.annotationsAreClusterable) {
+//        double scale = self.bounds.size.width / self.visibleMapRect.size.width;
+//        NSArray *annotations = [self.coordinateQuadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
+//        NSLog(@"%ld clustered annotations", (long)annotations.count);
+//        [self updateMapViewAnnotationsWithAnnotations:annotations];
+//    }
+//}
 -(void)refreshClusterableAnnotations{
 
     NSMutableSet *toAddFromAllSections = [[NSMutableSet alloc]init];
@@ -25,11 +36,10 @@
         NSArray *clusteredAnnotations = [quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
         NSLog(@"%ld clustered annotations for section(%lu)", (long)clusteredAnnotations.count, (unsigned long)sectionIndex);
 
-        NSArray *annotations = clusteredAnnotations;
-        NSMutableSet *before = [NSMutableSet setWithArray:annotations];
+        NSMutableSet *before = [NSMutableSet setWithArray:clusteredAnnotations];
         self.lastAnnotations[sectionIndex] = [NSSet setWithSet:before];
         [before removeObject:[self userLocation]];
-        NSSet *after = [NSSet setWithArray:annotations];
+        NSSet *after = [NSSet setWithArray:clusteredAnnotations];
         NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
         [toKeep intersectSet:after];
         NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
@@ -46,10 +56,32 @@
         NSLog(@"%lu leafs", leafs);
     }
     
-    [self.mapView addAnnotations:[toAddFromAllSections allObjects]];
     [self.mapView removeAnnotations:[toRemoveFromAllSections allObjects]];
+    [self.mapView addAnnotations:[toAddFromAllSections allObjects]];
+    
 
 }
+
+//- (void)updateMapViewAnnotationsWithAnnotations:(NSArray *)annotations {
+//    NSMutableSet *before = [NSMutableSet setWithArray:self.annotations];
+//    self.lastAnnotations = [NSSet setWithSet:before];
+//    [before removeObject:[self userLocation]];
+//    
+//    NSSet *after = [NSSet setWithArray:annotations];
+//    
+//    NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
+//    [toKeep intersectSet:after];
+//    
+//    NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
+//    [toAdd minusSet:toKeep];
+//    
+//    NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
+//    [toRemove minusSet:after];
+//    
+//    [self.mapView addAnnotations:[toAdd allObjects]];
+//    [self.mapView removeAnnotations:[toRemove allObjects]];
+//    
+//}
 
 //- (void)updateMapViewAnnotationsWithAnnotations:(NSArray *)annotations section:(NSUInteger)section{
 //    NSMutableSet *before = [NSMutableSet setWithArray:self.annotations];
