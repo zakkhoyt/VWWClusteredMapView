@@ -61,6 +61,7 @@
     }
 }
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+
     
     if([self.delegate respondsToSelector:@selector(clusteredMapView:viewForClusteredAnnotation:)]) {
         VWWClusteredAnnotationView *view = [self.delegate clusteredMapView:self viewForClusteredAnnotation:annotation];

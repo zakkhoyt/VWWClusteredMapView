@@ -84,7 +84,12 @@ static CGFloat const VWWScaleFactorBeta = 0.4;
     CGContextSetAllowsAntialiasing(context, true);
     
     UIColor *outerCircleStrokeColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
+    
     UIColor *innerCircleStrokeColor = [UIColor orangeColor];
+    if(self.annotationColor){
+        innerCircleStrokeColor = self.annotationColor;
+    }
+    
     UIColor *innerCircleFillColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
     
     CGRect circleFrame = CGRectInset(rect, 4, 4);

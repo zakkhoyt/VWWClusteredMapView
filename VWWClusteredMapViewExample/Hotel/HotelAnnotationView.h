@@ -12,5 +12,5 @@
 @interface HotelAnnotationView : VWWClusteredAnnotationView
 
 @property (assign, nonatomic) NSUInteger count;
-
+@property (nonatomic, copy) UIColor *annotationColor;
 @end

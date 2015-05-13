@@ -108,31 +108,6 @@
         [self.quadTrees addObject:quadTree];
     }
     
-
-    
-    
-//    // Initial add
-//    [self.mapView removeAnnotations:self.mapView.annotations];
-//    for(NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++){
-//        double scale = self.bounds.size.width / self.visibleMapRect.size.width;
-//        VWWCoordinateQuadTree *quadTree = self.quadTrees[sectionIndex];
-//        NSArray *clusteredAnnotations = [quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
-//        
-////        NSMutableSet *before = [NSMutableSet setWithArray:clusteredAnnotations];
-////        //        self.lastClusteredAnnotations[sectionIndex] = [NSSet setWithSet:before];
-////        [before removeObject:[self userLocation]];
-////        NSSet *after = [NSSet setWithArray:clusteredAnnotations];
-////        NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
-////        [toKeep intersectSet:after];
-////        NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
-////        [toAdd minusSet:toKeep];
-////        NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
-////        [toRemove minusSet:after];
-//
-//        [self.mapView addAnnotations:clusteredAnnotations];
-//    }
-//    NSLog(@"Self.mapview.annotations.count: %lu", (unsigned long) self.mapView.annotations.count);
-    
     [self refreshClusterableAnnotations];
 
 }

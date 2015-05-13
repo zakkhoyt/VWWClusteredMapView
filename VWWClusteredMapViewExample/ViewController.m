@@ -154,19 +154,36 @@ typedef enum {
     }
     annotationView.canShowCallout = YES;
     annotationView.count = ((VWWClusteredAnnotation*)annotation).annotations.count;
+
+    
+    
+    // Set color depending on source
+    VWWClusteredAnnotation *clusteredAnnotations = (VWWClusteredAnnotation *)annotation;
+    HotelAnnotation *firstAnnotation = [clusteredAnnotations.annotations firstObject];
+    if([self.motelAnnotations containsObject:firstAnnotation]){
+        annotationView.annotationColor = [UIColor blueColor];
+    } else if([self.hotelAnnotations containsObject:firstAnnotation]) {
+        annotationView.annotationColor = [UIColor yellowColor];
+    }
+    
     return annotationView;
 }
 
 
 #pragma mark Annotation interaction
 
-
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectAnnotationView:(MKAnnotationView *)view {
-    [self panToAnnotationView:view withPrettyFunction:(char*)__PRETTY_FUNCTION__];
-}
-
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view {
-    [self panToAnnotationView:view withPrettyFunction:(char*)__PRETTY_FUNCTION__];
+    if([view isKindOfClass:[HotelAnnotationView class]]){
+        VWWClusteredAnnotation *clusteredAnnotations = (VWWClusteredAnnotation*)view.annotation;
+        NSLog(@"Printing annotation source **************************************************");
+        [clusteredAnnotations.annotations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if([self.motelAnnotations containsObject:obj]){
+                NSLog(@"Annotation %lu is in self.motels", (unsigned long)idx);
+            } else if([self.hotelAnnotations containsObject:obj]) {
+                NSLog(@"Annotation %lu is in self.hotels", (unsigned long)idx);
+            }
+        }];
+    }
 }
 
 

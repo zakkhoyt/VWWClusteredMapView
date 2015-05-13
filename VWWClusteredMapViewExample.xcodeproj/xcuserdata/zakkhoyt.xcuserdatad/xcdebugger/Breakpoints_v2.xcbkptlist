@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWClusteredMapView/VWWClusteredMapView.m"
-            timestampString = "453231174.199605"
+            timestampString = "453231650.648192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-reloadData"
             landmarkType = "5">
          </BreakpointContent>
@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWClusteredMapView/VWWClusteredMapView+Private.m"
-            timestampString = "453231481.129725"
+            timestampString = "453231650.648192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "-refreshClusterableAnnotations"
             landmarkType = "5">
          </BreakpointContent>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWClusteredMapView/VWWClusteredMapView+Private.m"
-            timestampString = "453231481.129725"
+            timestampString = "453231650.648192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-refreshClusterableAnnotations"
             landmarkType = "5">
          </BreakpointContent>
@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWClusteredMapView/VWWClusteredMapView+Private.m"
-            timestampString = "453231495.598684"
+            timestampString = "453231650.648192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "-refreshClusterableAnnotations"
             landmarkType = "5">
          </BreakpointContent>
