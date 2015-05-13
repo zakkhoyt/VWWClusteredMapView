@@ -16,12 +16,16 @@ typedef void(^VWWClusteredMapViewEmptyBlock)(void);
 @implementation VWWClusteredMapView (Private)
 
 -(void)refreshClusterableAnnotations{
+    // A quick way to see if the class's dataSource and delegate have been setup
+    if(self.quadTrees == nil) return;
+    
     double scale = self.bounds.size.width / self.visibleMapRect.size.width;
     
     NSMutableSet *toAddFromAllSections = [[NSMutableSet alloc]init];
     NSMutableSet *toRemoveFromAllSections = [[NSMutableSet alloc]init];
     
     NSUInteger sectionCount = [self.dataSource numberOfSectionsInMapView:self];
+    
     for(NSUInteger sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++){
         VWWCoordinateQuadTree *quadTree = self.quadTrees[sectionIndex];
         NSArray *clusteredAnnotations = [quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
@@ -50,11 +54,14 @@ typedef void(^VWWClusteredMapViewEmptyBlock)(void);
         [self.mapView addAnnotations:[toAddFromAllSections allObjects]];
     }];
     
-    NSLog(@"self.mapView.annotations.count: %lu", (unsigned long) self.mapView.annotations.count);
+//    NSLog(@"self.mapView.annotations.count: %lu", (unsigned long) self.mapView.annotations.count);
 }
 
 - (void)removeAnnotations:(NSArray*)annotations completionBlock:(VWWClusteredMapViewEmptyBlock)completionBlock{
     
+    if(annotations.count == 0){
+        return completionBlock();
+    }
     if(self.animationType == VWWClusteredMapViewAnnotationAnimationNone){
         [self.mapView removeAnnotations:annotations];
         return completionBlock();
