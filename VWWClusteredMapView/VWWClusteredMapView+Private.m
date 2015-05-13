@@ -44,7 +44,11 @@
         NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
         [toRemove minusSet:after];
         
-        self.clusteredAnnotations[sectionIndex] = toAdd;
+        
+        NSMutableArray *nextCA = [[self.clusteredAnnotations[sectionIndex] allObjects]mutableCopy];
+        [nextCA addObjectsFromArray:[toAdd allObjects]];
+        [nextCA removeObjectsInArray:[toRemove allObjects]];
+        self.clusteredAnnotations[sectionIndex] = [NSMutableSet setWithArray:nextCA];
         [toAddFromAllSections unionSet:toAdd];
         [toRemoveFromAllSections unionSet:toRemove];
     }
