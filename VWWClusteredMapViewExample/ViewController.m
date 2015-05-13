@@ -22,8 +22,12 @@ typedef enum {
 
 @interface ViewController () <VWWClusteredMapViewDelegate, VWWClusteredMapViewDataSource, UIPopoverPresentationControllerDelegate>
 @property (weak, nonatomic) IBOutlet VWWClusteredMapView *mapView;
-@property (nonatomic, strong) NSArray *motelAnnotations;
 @property (nonatomic, strong) NSArray *hotelAnnotations;
+@property (nonatomic, strong) NSArray *restaurantAnnotations;
+@property (nonatomic, strong) NSArray *gasAnnotations;
+@property (nonatomic, strong) NSArray *beerAnnotations;
+
+
 
 @property (nonatomic, strong) UIPopoverPresentationController *popover;
 @property (weak, nonatomic) IBOutlet UIView *settingsContainerView;
@@ -46,10 +50,20 @@ typedef enum {
     
     // Load hotels from CSV file
     NSArray *allAnnotations = [HotelAnnotation readHotelsDataFile];
-    NSIndexSet *motelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 10)];
-    self.motelAnnotations = [allAnnotations objectsAtIndexes:motelIndexSet];
-    NSIndexSet *hotelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(100, 10)];
+    const NSUInteger kLength = 100;
+    NSIndexSet *hotelIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, kLength)];
     self.hotelAnnotations = [allAnnotations objectsAtIndexes:hotelIndexSet];
+    
+    NSIndexSet *restaurantIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1000, kLength)];
+    self.restaurantAnnotations = [allAnnotations objectsAtIndexes:restaurantIndexSet];
+    
+    NSIndexSet *gasIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2000, kLength)];
+    self.gasAnnotations = [allAnnotations objectsAtIndexes:gasIndexSet];
+    
+    NSIndexSet *beerIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(3000, kLength)];
+    self.beerAnnotations = [allAnnotations objectsAtIndexes:beerIndexSet];
+    
+    
     
     [self.mapView reloadData];
     
@@ -104,15 +118,26 @@ typedef enum {
 
 #pragma mark VWWClusteredMapViewDelegate
 - (NSInteger)numberOfSectionsInMapView:(VWWClusteredMapView*)mapView{
-    return 2;
+    return 4;
 }
 - (NSInteger)mapView:(VWWClusteredMapView*)mapView numberOfAnnotationsInSection:(NSInteger)section{
+//    @property (nonatomic, strong) NSArray *hotelAnnotations;
+//    @property (nonatomic, strong) NSArray *restaurantAnnotations;
+//    @property (nonatomic, strong) NSArray *gasAnnotations;
+//    @property (nonatomic, strong) NSArray *beerAnnotations;
+
     switch (section) {
         case 0:
-            return self.motelAnnotations.count;
+            return self.hotelAnnotations.count;
             break;
         case 1:
-            return self.hotelAnnotations.count;
+            return self.restaurantAnnotations.count;
+            break;
+        case 2:
+            return self.gasAnnotations.count;
+            break;
+        case 3:
+            return self.beerAnnotations.count;
             break;
         default:
             return 0;
@@ -123,10 +148,16 @@ typedef enum {
 - (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.section) {
         case 0:
-            return self.motelAnnotations[indexPath.item];
+            return self.hotelAnnotations[indexPath.item];
             break;
         case 1:
-            return self.hotelAnnotations[indexPath.item];
+            return self.restaurantAnnotations[indexPath.item];
+            break;
+        case 2:
+            return self.gasAnnotations[indexPath.item];
+            break;
+        case 3:
+            return self.beerAnnotations[indexPath.item];
             break;
         default:
             return nil;
@@ -160,10 +191,14 @@ typedef enum {
     // Set color depending on source
     VWWClusteredAnnotation *clusteredAnnotations = (VWWClusteredAnnotation *)annotation;
     HotelAnnotation *firstAnnotation = [clusteredAnnotations.annotations firstObject];
-    if([self.motelAnnotations containsObject:firstAnnotation]){
-        annotationView.annotationColor = [UIColor blueColor];
-    } else if([self.hotelAnnotations containsObject:firstAnnotation]) {
+    if([self.hotelAnnotations containsObject:firstAnnotation]) {
         annotationView.annotationColor = [UIColor yellowColor];
+    } else if([self.restaurantAnnotations containsObject:firstAnnotation]) {
+        annotationView.annotationColor = [UIColor redColor];
+    } else if([self.gasAnnotations containsObject:firstAnnotation]) {
+        annotationView.annotationColor = [UIColor greenColor];
+    } else if([self.beerAnnotations containsObject:firstAnnotation]) {
+        annotationView.annotationColor = [UIColor blueColor];
     }
     
     return annotationView;
@@ -177,10 +212,14 @@ typedef enum {
         VWWClusteredAnnotation *clusteredAnnotations = (VWWClusteredAnnotation*)view.annotation;
         NSLog(@"Printing annotation source **************************************************");
         [clusteredAnnotations.annotations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            if([self.motelAnnotations containsObject:obj]){
-                NSLog(@"Annotation %lu is in self.motels", (unsigned long)idx);
-            } else if([self.hotelAnnotations containsObject:obj]) {
+            if([self.hotelAnnotations containsObject:obj]) {
                 NSLog(@"Annotation %lu is in self.hotels", (unsigned long)idx);
+            } else if([self.restaurantAnnotations containsObject:obj]) {
+                NSLog(@"Annotation %lu is in self.restuarants", (unsigned long)idx);
+            } else if([self.gasAnnotations containsObject:obj]) {
+                NSLog(@"Annotation %lu is in self.gas", (unsigned long)idx);
+            } else if([self.beerAnnotations containsObject:obj]) {
+                NSLog(@"Annotation %lu is in self.beer", (unsigned long)idx);
             }
         }];
     }
