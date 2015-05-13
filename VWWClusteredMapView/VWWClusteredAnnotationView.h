@@ -8,7 +8,16 @@
 
 #import <MapKit/MapKit.h>
 
-
+typedef NS_ENUM(NSInteger, VWWClusteredMapViewAnnotationAnimation) {
+    VWWClusteredMapViewAnnotationAnimationNone = 0,
+    VWWClusteredMapViewAnnotationAnimationFade,
+    VWWClusteredMapViewAnnotationAnimationFadeStaggered,
+    VWWClusteredMapViewAnnotationAnimationGrow,
+    VWWClusteredMapViewAnnotationAnimationGrowStaggered,
+    VWWClusteredMapViewAnnotationAnimationRain,
+    VWWClusteredMapViewAnnotationAnimationRainStaggered,
+    VWWClusteredMapViewAnnotationAnimationAutomatic = 100
+};
 
 @interface VWWClusteredAnnotationView : MKAnnotationView
 
@@ -17,5 +26,5 @@
 @property (nonatomic) CGPoint splitFromPoint; // initial position
 @property (nonatomic) CGPoint point;
 @property (nonatomic) CGPoint mergeToPoint; // final position
-
+@property (nonatomic) VWWClusteredMapViewAnnotationAnimation animationType;
 @end

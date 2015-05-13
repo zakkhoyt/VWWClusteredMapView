@@ -11,12 +11,12 @@
 #import "VWWClusteredAnnotation.h"
 #import "VWWClusteredAnnotationView.h"
 
-
-typedef enum {
+typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
     ClusterMapViewDensityWimpy = 0,
-    ClusterMapViewDensityNormal = 1,
-    ClusterMapViewDensityMacho = 2,
-} ClusterMapViewDensity;
+    ClusterMapViewDensityNormal,
+    ClusterMapViewDensityMacho,
+};
+
 
 // Defined at bottom of file
 @protocol VWWClusteredMapViewDataSource;
@@ -24,19 +24,28 @@ typedef enum {
 
 
 @interface VWWClusteredMapView : UIView
-//// If set not onscreen / offscreen annotations will be clustered
-//@property (nonatomic) BOOL annotationsAreClusterable;
 
 // The aggressiveness of clustering
 @property (nonatomic) ClusterMapViewDensity clusterDensity;
 
 // Animate as annotations are added and removed
 @property (nonatomic) BOOL animateReclusting;
+@property (nonatomic) VWWClusteredMapViewAnnotationAnimation animationType;
 
 @property (weak, nonatomic) id<VWWClusteredMapViewDataSource> dataSource;
 @property (weak, nonatomic) id<VWWClusteredMapViewDelegate> delegate;
 
 -(void)reloadData;
+// TODO:
+//- (void)insertSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAnimation)animation;
+//- (void)deleteSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAnimation)animation;
+//- (void)reloadSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAnimation)animation;
+//
+//- (void)insertAnnotationsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
+//- (void)deleteAnnotationsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
+//- (void)reloadAnnotationsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
+//- (void)moveAnnotationsAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
+
 @end
 
 @interface VWWClusteredMapView (MKMapView)
@@ -200,6 +209,7 @@ typedef enum {
 - (NSInteger)numberOfSectionsInMapView:(VWWClusteredMapView*)mapView;
 - (NSInteger)mapView:(VWWClusteredMapView*)mapView numberOfAnnotationsInSection:(NSInteger)section;
 - (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 @protocol VWWClusteredMapViewDelegate <NSObject>

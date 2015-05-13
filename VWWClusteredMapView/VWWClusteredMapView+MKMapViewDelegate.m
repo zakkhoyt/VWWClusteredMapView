@@ -66,6 +66,7 @@
     if([self.delegate respondsToSelector:@selector(clusteredMapView:viewForClusteredAnnotation:)]) {
         VWWClusteredAnnotationView *view = [self.delegate clusteredMapView:self viewForClusteredAnnotation:annotation];
         view.animateReclusting = self.animateReclusting;
+        view.animationType = self.animationType;
         return view;
     }
     
