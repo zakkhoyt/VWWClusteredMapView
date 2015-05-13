@@ -27,4 +27,5 @@ typedef NS_ENUM(NSInteger, VWWClusteredMapViewAnnotationAnimation) {
 @property (nonatomic) CGPoint point;
 @property (nonatomic) CGPoint mergeToPoint; // final position
 @property (nonatomic) VWWClusteredMapViewAnnotationAnimation animationType;
+@property (nonatomic) NSTimeInterval addAnnotationAnimationDuration;
 @end

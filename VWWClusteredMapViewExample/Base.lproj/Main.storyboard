@@ -32,14 +32,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dP6-on-Rpz" customClass="VWWClusteredMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="468"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="424"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBs-Ey-tsO">
-                                <rect key="frame" x="0.0" y="468" width="600" height="132"/>
+                                <rect key="frame" x="0.0" y="424" width="600" height="176"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="132" id="JV1-sG-fq0"/>
+                                    <constraint firstAttribute="height" constant="176" id="JV1-sG-fq0"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="wPO-zX-V3j" kind="embed" identifier="SegueMainToSettings" id="Cbu-yM-4wN"/>
@@ -75,7 +75,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="SettingsTableViewController" id="wPO-zX-V3j" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1LW-si-PzV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="132"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="176"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
@@ -131,6 +131,35 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="ro1-Pr-aM1">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ro1-Pr-aM1" id="vyf-d8-sW2">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="spZ-gw-Y0D">
+                                                    <rect key="frame" x="8" y="8" width="584" height="29"/>
+                                                    <segments>
+                                                        <segment title="None"/>
+                                                        <segment title="Fade"/>
+                                                        <segment title="Fade S"/>
+                                                        <segment title="Grow"/>
+                                                        <segment title="Grow S"/>
+                                                        <segment title="Rain"/>
+                                                        <segment title="Rain S"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="animationSegmentValueChanged:" destination="wPO-zX-V3j" eventType="valueChanged" id="1pu-Qk-5Bd"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="spZ-gw-Y0D" firstAttribute="leading" secondItem="vyf-d8-sW2" secondAttribute="leading" constant="8" id="A3Z-Zo-azu"/>
+                                                <constraint firstAttribute="trailing" secondItem="spZ-gw-Y0D" secondAttribute="trailing" constant="8" id="pyX-AR-b8j"/>
+                                                <constraint firstAttribute="centerY" secondItem="spZ-gw-Y0D" secondAttribute="centerY" id="yrq-mD-fCe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="30" id="4aH-3y-09J">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4aH-3y-09J" id="f9H-lo-7bS">
@@ -169,6 +198,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="animationSegment" destination="spZ-gw-Y0D" id="GdY-gw-WLB"/>
                         <outlet property="clusterDensitySegment" destination="1ko-JL-1Y0" id="n5r-Sg-Lt0"/>
                         <outlet property="mapTypeSegment" destination="LsO-98-Htf" id="zB1-Zc-BA9"/>
                     </connections>

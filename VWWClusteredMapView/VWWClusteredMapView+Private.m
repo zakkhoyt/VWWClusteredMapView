@@ -54,10 +54,16 @@ typedef void(^VWWClusteredMapViewEmptyBlock)(void);
 }
 
 - (void)removeAnnotations:(NSArray*)annotations completionBlock:(VWWClusteredMapViewEmptyBlock)completionBlock{
+    
+    if(self.animationType == VWWClusteredMapViewAnnotationAnimationNone){
+        [self.mapView removeAnnotations:annotations];
+        return completionBlock();
+    }
+    
     __block NSUInteger count = 0;
     [annotations enumerateObjectsUsingBlock:^(id<MKAnnotation> annotation, NSUInteger idx, BOOL *stop) {
         MKAnnotationView *annotationView = [self.mapView viewForAnnotation:annotation];
-        [UIView animateWithDuration:0.3f animations:^(void){
+        [UIView animateWithDuration:self.removeAnnotationAnimationDuration animations:^(void){
             annotationView.transform = CGAffineTransformMakeScale(0.01, 0.01);
         } completion:^(BOOL finished) {
             [self.mapView removeAnnotation:annotation];

@@ -30,6 +30,9 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 
 // Animate as annotations are added and removed
 @property (nonatomic) BOOL animateReclusting;
+@property (nonatomic) NSTimeInterval addAnnotationAnimationDuration;
+@property (nonatomic) NSTimeInterval removeAnnotationAnimationDuration;
+
 @property (nonatomic) VWWClusteredMapViewAnnotationAnimation animationType;
 
 @property (weak, nonatomic) id<VWWClusteredMapViewDataSource> dataSource;

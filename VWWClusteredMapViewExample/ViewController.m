@@ -47,15 +47,7 @@ typedef enum {
     self.mapView.delegate = self;
     self.mapView.dataSource = self;
 
-    
-//    self.mapView.animationType = VWWClusteredMapViewAnnotationAnimationNone;
-//    self.mapView.animationType = VWWClusteredMapViewAnnotationAnimationFade;
-//    self.mapView.animationType = VWWClusteredMapViewAnnotationAnimationFadeStaggered;
-//    self.mapView.animationType = VWWClusteredMapViewAnnotationAnimationGrow;
-//    self.mapView.animationType = VWWClusteredMapViewAnnotationAnimationGrowStaggered;
-//    self.mapView.animationType = VWWClusteredMapViewAnnotationAnimationRain;
-    self.mapView.animationType = VWWClusteredMapViewAnnotationAnimationRainStaggered;
-//    self.mapView.animationType = VWWClusteredMapViewAnnotationAnimationAutomatic;
+    self.mapView.animationType = VWWClusteredMapViewAnnotationAnimationGrow;
 
     
     

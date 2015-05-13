@@ -21,13 +21,14 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
     // This commented out code doesn't quite work correctly.
 //    if(CGPointEqualToPoint(self.mergeToPoint, CGPointZero)){
         switch (self.animationType) {
-            case VWWClusteredMapViewAnnotationAnimationAutomatic:
             case VWWClusteredMapViewAnnotationAnimationFade:
                 [self animateAddFadeStaggered:NO];
                 break;
             case VWWClusteredMapViewAnnotationAnimationFadeStaggered:
                 [self animateAddFadeStaggered:YES];
                 break;
+                
+            case VWWClusteredMapViewAnnotationAnimationAutomatic:
             case VWWClusteredMapViewAnnotationAnimationGrow:
                 [self animateAddGrowStaggered:NO];
                 break;
@@ -41,6 +42,8 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
                 [self animateAddRainStaggered:YES];
                 break;
             case VWWClusteredMapViewAnnotationAnimationNone:
+                self.alpha = 1.0;
+                self.transform = CGAffineTransformIdentity;
             default:
                 break;
         }
@@ -76,7 +79,7 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
     self.transform = CGAffineTransformIdentity;
     self.alpha = 0.0;
 
-    [UIView animateWithDuration:0.3 delay:delay options:UIViewAnimationOptionLayoutSubviews animations:^{
+    [UIView animateWithDuration:self.addAnnotationAnimationDuration delay:delay options:UIViewAnimationOptionLayoutSubviews animations:^{
         self.alpha = 1.0;
     } completion:NULL];
 
@@ -86,7 +89,7 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
     
     double frameDuration = 1.0/4.0;
     self.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    [UIView animateKeyframesWithDuration:0.5 delay:delay options:UIViewKeyframeAnimationOptionCalculationModeCubicPaced animations:^{
+    [UIView animateKeyframesWithDuration:self.addAnnotationAnimationDuration delay:delay options:UIViewKeyframeAnimationOptionCalculationModeCubicPaced animations:^{
         [UIView addKeyframeWithRelativeStartTime:0*frameDuration relativeDuration:frameDuration animations:^{
             self.transform = CGAffineTransformMakeScale(0.05, 0.05);
         }];
@@ -109,7 +112,7 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
     double frameDuration = 1.0/4.0;
     self.transform = CGAffineTransformMakeScale(2.0, 2.0);
     self.alpha = 0.0;
-    [UIView animateKeyframesWithDuration:0.5 delay:delay options:UIViewKeyframeAnimationOptionCalculationModeCubicPaced animations:^{
+    [UIView animateKeyframesWithDuration:self.addAnnotationAnimationDuration delay:delay options:UIViewKeyframeAnimationOptionCalculationModeCubicPaced animations:^{
         [UIView addKeyframeWithRelativeStartTime:0*frameDuration relativeDuration:frameDuration animations:^{
             self.transform = CGAffineTransformMakeScale(0.7, 0.7);
             self.alpha = 0.1;
@@ -137,16 +140,6 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
     return delay;
 }
 
--(void)animateRemoveWithCompletionBlock:(VWWClusteredAnnotationViewEmptyBlock)completionBlock{
-    CGFloat duration = 0.5;
-    
-    [UIView animateWithDuration:duration animations:^{
-        self.transform = CGAffineTransformMakeScale(0.001, 0.001);
-    } completion:^(BOOL finished) {
-        self.transform = CGAffineTransformIdentity;
-        completionBlock();
-    }];
-}
 -(void)animateSplitWithCompletionBlock:(VWWClusteredAnnotationViewEmptyBlock)completionBlock{
 
     CGPoint origin = self.frame.origin;

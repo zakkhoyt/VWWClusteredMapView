@@ -36,9 +36,13 @@
 }
 
 - (void)commonInitWithFrame:(CGRect)frame {
+    self.addAnnotationAnimationDuration = 0.5;
+    self.removeAnnotationAnimationDuration = 0.2;
+    
     MKMapView *mapView = [[MKMapView alloc]initWithFrame:frame];
     mapView.delegate = (id<MKMapViewDelegate>)self;
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    mapView.showsUserLocation = NO;
     [self addSubview:mapView];
     [self setMapView:mapView];
     [self setAnimateReclusting:YES];
@@ -298,11 +302,13 @@
 }
 
 -(void)setShowsUserLocation:(BOOL)showsUserLocation {
-    [self.mapView setShowsUserLocation:showsUserLocation];
+//    [self.mapView setShowsUserLocation:showsUserLocation];
+        [self.mapView setShowsUserLocation:NO];
 }
 
 -(MKUserLocation*)userLocation {
     return self.mapView.userLocation;
+//    return nil;
 }
 
 
