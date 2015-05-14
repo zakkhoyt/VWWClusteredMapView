@@ -38,7 +38,7 @@
 - (void)commonInitWithFrame:(CGRect)frame {
     self.addAnnotationAnimationDuration = 0.5;
     self.removeAnnotationAnimationDuration = 0.2;
-    self.animationType = VWWClusteredMapViewAnnotationAnimationAutomatic;
+    self.addAnimationType = VWWClusteredMapViewAnnotationAddAnimationAutomatic;
     MKMapView *mapView = [[MKMapView alloc]initWithFrame:frame];
     mapView.delegate = (id<MKMapViewDelegate>)self;
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -47,6 +47,7 @@
     [self setMapView:mapView];
     [self setAnimateReclusting:YES];
     [self setClusterDensity:ClusterMapViewDensityNormal];
+    [self setupDynamics];
 }
 
 -(ClusterMapViewDensity)clusterDensity{
@@ -71,6 +72,11 @@
     _animateReclusting = animateReclusting;
 }
 
+-(void)setupDynamics{
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self];
+    self.gravity = [[UIGravityBehavior alloc]init];
+    self.gravity.magnitude = 5.0;
+}
 
 // TODO:
 - (MKAnnotationView *)viewForClusteredAnnotation:(id <MKAnnotation>)annotation {

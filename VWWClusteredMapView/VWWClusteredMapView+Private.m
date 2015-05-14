@@ -62,27 +62,53 @@ typedef void(^VWWClusteredMapViewEmptyBlock)(void);
     if(annotations.count == 0){
         return completionBlock();
     }
-    if(self.animationType == VWWClusteredMapViewAnnotationAnimationNone){
+    if(self.addAnimationType == VWWClusteredMapViewAnnotationAddAnimationNone){
         [self.mapView removeAnnotations:annotations];
         return completionBlock();
     }
     
-    __block NSUInteger count = 0;
-    [annotations enumerateObjectsUsingBlock:^(id<MKAnnotation> annotation, NSUInteger idx, BOOL *stop) {
-        MKAnnotationView *annotationView = [self.mapView viewForAnnotation:annotation];
-        [UIView animateWithDuration:self.removeAnnotationAnimationDuration animations:^(void){
-            annotationView.transform = CGAffineTransformMakeScale(0.01, 0.01);
-        } completion:^(BOOL finished) {
-            [self.mapView removeAnnotation:annotation];
-            annotationView.transform = CGAffineTransformIdentity;
-            count++;
-            if(count == annotations.count){
-                if(completionBlock){
-                    completionBlock();
-                }
+    if(self.removeAnimationType == VWWClusteredMapViewAnnotationRemoveAnimationGravity){
+        // Gravity remove animation
+        //    http://www.raywenderlich.com/50197/uikit-dynamics-tutorial
+        [annotations enumerateObjectsUsingBlock:^(id<MKAnnotation> annotation, NSUInteger idx, BOOL *stop) {
+            MKAnnotationView *annotationView = [self.mapView viewForAnnotation:annotation];
+            if(annotationView){
+                [self.gravity addItem:annotationView];
             }
         }];
-    }];
+        
+        [self.animator addBehavior:self.gravity];
+        
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.animator removeBehavior:self.gravity];
+            completionBlock();
+        });
+        
+    } else {
+        __block NSUInteger count = 0;
+        [annotations enumerateObjectsUsingBlock:^(id<MKAnnotation> annotation, NSUInteger idx, BOOL *stop) {
+            MKAnnotationView *annotationView = [self.mapView viewForAnnotation:annotation];
+            [UIView animateWithDuration:self.removeAnnotationAnimationDuration animations:^(void){
+                annotationView.transform = CGAffineTransformMakeScale(0.01, 0.01);
+            } completion:^(BOOL finished) {
+                [self.mapView removeAnnotation:annotation];
+                annotationView.transform = CGAffineTransformIdentity;
+                count++;
+                if(count == annotations.count){
+                    if(completionBlock){
+                        completionBlock();
+                    }
+                }
+            }];
+        }];
+        
+    }
+
+  
+    
+    
+    
 }
 
 -(void)setAnimationPointsForAnnotationView:(VWWClusteredAnnotationView*)annotationView{

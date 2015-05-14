@@ -21,27 +21,27 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
     // This commented out code doesn't quite work correctly.
 //    if(CGPointEqualToPoint(self.mergeToPoint, CGPointZero)){
         switch (self.animationType) {
-            case VWWClusteredMapViewAnnotationAnimationFade:
+            case VWWClusteredMapViewAnnotationAddAnimationFade:
                 [self animateAddFadeStaggered:NO];
                 break;
-            case VWWClusteredMapViewAnnotationAnimationFadeStaggered:
+            case VWWClusteredMapViewAnnotationAddAnimationFadeStaggered:
                 [self animateAddFadeStaggered:YES];
                 break;
                 
-            case VWWClusteredMapViewAnnotationAnimationAutomatic:
-            case VWWClusteredMapViewAnnotationAnimationGrow:
+            case VWWClusteredMapViewAnnotationAddAnimationAutomatic:
+            case VWWClusteredMapViewAnnotationAddAnimationGrow:
                 [self animateAddGrowStaggered:NO];
                 break;
-            case VWWClusteredMapViewAnnotationAnimationGrowStaggered:
+            case VWWClusteredMapViewAnnotationAddAnimationGrowStaggered:
                 [self animateAddGrowStaggered:YES];
                 break;
-            case VWWClusteredMapViewAnnotationAnimationRain:
+            case VWWClusteredMapViewAnnotationAddAnimationRain:
                 [self animateAddRainStaggered:NO];
                 break;
-            case VWWClusteredMapViewAnnotationAnimationRainStaggered:
+            case VWWClusteredMapViewAnnotationAddAnimationRainStaggered:
                 [self animateAddRainStaggered:YES];
                 break;
-            case VWWClusteredMapViewAnnotationAnimationNone:
+            case VWWClusteredMapViewAnnotationAddAnimationNone:
                 self.alpha = 1.0;
                 self.transform = CGAffineTransformIdentity;
             default:

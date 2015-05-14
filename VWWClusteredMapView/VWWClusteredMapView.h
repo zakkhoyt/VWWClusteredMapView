@@ -33,16 +33,16 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 @property (nonatomic) NSTimeInterval addAnnotationAnimationDuration;
 @property (nonatomic) NSTimeInterval removeAnnotationAnimationDuration;
 
-@property (nonatomic) VWWClusteredMapViewAnnotationAnimation animationType;
-
+@property (nonatomic) VWWClusteredMapViewAnnotationAddAnimation addAnimationType;
+@property (nonatomic) VWWClusteredMapViewAnnotationRemoveAnimation removeAnimationType;
 @property (weak, nonatomic) id<VWWClusteredMapViewDataSource> dataSource;
 @property (weak, nonatomic) id<VWWClusteredMapViewDelegate> delegate;
 
 -(void)reloadData;
 // TODO:
-//- (void)insertSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAnimation)animation;
-//- (void)deleteSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAnimation)animation;
-//- (void)reloadSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAnimation)animation;
+//- (void)insertSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAddAnimation)animation;
+//- (void)deleteSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAddAnimation)animation;
+//- (void)reloadSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAddAnimation)animation;
 //
 //- (void)insertAnnotationsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
 //- (void)deleteAnnotationsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;

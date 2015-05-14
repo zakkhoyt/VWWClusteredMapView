@@ -47,8 +47,8 @@ typedef enum {
     self.mapView.delegate = self;
     self.mapView.dataSource = self;
 
-    self.mapView.animationType = VWWClusteredMapViewAnnotationAnimationGrow;
-
+    self.mapView.addAnimationType = VWWClusteredMapViewAnnotationAddAnimationGrow;
+    self.mapView.removeAnimationType = VWWClusteredMapViewAnnotationRemoveAnimationGravity;
     
     
     

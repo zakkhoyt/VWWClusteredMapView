@@ -29,7 +29,7 @@
     [super viewWillAppear:animated];
     self.mapTypeSegment.selectedSegmentIndex = 0;
     self.clusterDensitySegment.selectedSegmentIndex = (NSUInteger)self.mapView.clusterDensity;
-    self.animationSegment.selectedSegmentIndex = (NSUInteger)self.mapView.animationType;
+    self.animationSegment.selectedSegmentIndex = (NSUInteger)self.mapView.addAnimationType;
     
 }
 
@@ -61,7 +61,7 @@
 }
 
 - (IBAction)animationSegmentValueChanged:(UISegmentedControl*)sender {
-    self.mapView.animationType = (VWWClusteredMapViewAnnotationAnimation)sender.selectedSegmentIndex;
+    self.mapView.addAnimationType = (VWWClusteredMapViewAnnotationAddAnimation)sender.selectedSegmentIndex;
 }
 
 
