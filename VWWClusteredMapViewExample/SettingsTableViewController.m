@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapTypeSegment.selectedSegmentIndex = 0;
-    self.annotationsAreClusterableSwitch.on = self.mapView.annotationsAreClusterable;
+//    self.annotationsAreClusterableSwitch.on = self.mapView.annotationsAreClusterable;
     self.clusterDensitySegment.selectedSegmentIndex = (NSUInteger)self.mapView.clusterDensity;
 }
 
@@ -40,7 +40,7 @@
 }
 
 - (IBAction)annotationsAreClusterableSwitchValueChanged:(UISwitch*)sender {
-    self.mapView.annotationsAreClusterable = sender.on;
+//    self.mapView.annotationsAreClusterable = sender.on;
 }
 
 - (IBAction)clusterDensitySegmentValueChanged:(UISegmentedControl*)sender {

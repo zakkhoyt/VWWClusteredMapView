@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6B401511C23CBD500DED8E4 /* VWWAnnotationFanoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B401501C23CBD500DED8E4 /* VWWAnnotationFanoutView.m */; };
 		CF4E8E6C1AE222DC00F19500 /* VWWClusteredAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4E8E6B1AE222DC00F19500 /* VWWClusteredAnnotationView.m */; };
 		CF5741EB1AC7CE9200300A05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741EA1AC7CE9200300A05 /* main.m */; };
 		CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741ED1AC7CE9200300A05 /* AppDelegate.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C6B4014F1C23CBD500DED8E4 /* VWWAnnotationFanoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAnnotationFanoutView.h; sourceTree = "<group>"; };
+		C6B401501C23CBD500DED8E4 /* VWWAnnotationFanoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAnnotationFanoutView.m; sourceTree = "<group>"; };
 		CF4E8E6A1AE222DC00F19500 /* VWWClusteredAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredAnnotationView.h; sourceTree = "<group>"; };
 		CF4E8E6B1AE222DC00F19500 /* VWWClusteredAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredAnnotationView.m; sourceTree = "<group>"; };
 		CF5741E51AC7CE9200300A05 /* VWWClusteredMapViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VWWClusteredMapViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +173,8 @@
 		CF5742111AC7CF0100300A05 /* VWWClusteredMapView */ = {
 			isa = PBXGroup;
 			children = (
+				C6B4014F1C23CBD500DED8E4 /* VWWAnnotationFanoutView.h */,
+				C6B401501C23CBD500DED8E4 /* VWWAnnotationFanoutView.m */,
 				CF4E8E6D1AE2237900F19500 /* Annotations */,
 				CF57421F1AC7CF0100300A05 /* QuadTree */,
 				CF57421D1AC7CF0100300A05 /* VWWClusteredMapView.h */,
@@ -318,6 +323,7 @@
 				CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */,
 				CF5742361AC7CF0100300A05 /* VWWClusteredMapView.m in Sources */,
 				CF4E8E6C1AE222DC00F19500 /* VWWClusteredAnnotationView.m in Sources */,
+				C6B401511C23CBD500DED8E4 /* VWWAnnotationFanoutView.m in Sources */,
 				CF5742381AC7CF0100300A05 /* VWWCoordinateQuadTree.m in Sources */,
 				CF5742371AC7CF0100300A05 /* VWWClusteredAnnotation.m in Sources */,
 			);

@@ -24,10 +24,13 @@
 }
 
 -(void)buildTreeWithItems:(NSArray*)data{
-    VWWBoundingBox *world = [[VWWBoundingBox alloc]initWithX0:-90 Y0:-180 XF:90 YF:180];
+    VWWBoundingBox *world = [VWWBoundingBox boundingBoxForWorld];
     self.root = [VWWQuadTree quadTreeBuildWithData:data count:data.count boundingBox:world capacity:4];
 }
 
+
+// If set use average of all child annotations. Else use the first
+#define ZH_COORDINATE_QUAD_TREE_CLUSTER_AVERAGE 1
 - (NSArray *)clusteredAnnotationsWithinMapRect:(MKMapRect)rect withZoomScale:(double)zoomScale
 {
     double cellSize = [self cellSizeForZoomScale:zoomScale];
@@ -41,6 +44,7 @@
     NSMutableArray *clusteredAnnotations = [[NSMutableArray alloc] init];
     for (NSInteger x = minX; x <= maxX; x++) {
         for (NSInteger y = minY; y <= maxY; y++) {
+#if defined(ZH_COORDINATE_QUAD_TREE_CLUSTER_AVERAGE)
             MKMapRect mapRect = MKMapRectMake(x / scaleFactor, y / scaleFactor, 1.0 / scaleFactor, 1.0 / scaleFactor);
             
             __block double totalX = 0;
@@ -49,12 +53,12 @@
             
             NSMutableArray *annotations = [[NSMutableArray alloc]init];
             VWWBoundingBox *boundingBox = [self boundingBoxForMapRect:mapRect];
-            [VWWQuadTree quadTree:self.root gatherDataInRange:boundingBox block:^(VWWQuadTreeNodeData *data) {
+            [VWWQuadTree quadTree:self.root gatherDataInRange:boundingBox block:^(VWWQuadTreeNodeData *nodeData) {
                 count++;
-                totalX += data.coordinate.latitude;
-                totalY += data.coordinate.longitude;
+                totalX += nodeData.coordinate.latitude;
+                totalY += nodeData.coordinate.longitude;
                 
-                NSObject* annotation = data.data;
+                NSObject* annotation = nodeData.data;
                 [annotations addObject:annotation];
             }];
             
@@ -63,6 +67,30 @@
 
             VWWClusteredAnnotation *annotation = [[VWWClusteredAnnotation alloc]initWithCoordinate:coordinate annotations:annotations];
             [clusteredAnnotations addObject:annotation];
+#else
+            MKMapRect mapRect = MKMapRectMake(x / scaleFactor, y / scaleFactor, 1.0 / scaleFactor, 1.0 / scaleFactor);
+            
+            __block double firstX = 0;
+            __block double firstY = 0;
+            __block int count = 0;
+            
+            NSMutableArray *annotations = [[NSMutableArray alloc]init];
+            VWWBoundingBox *boundingBox = [self boundingBoxForMapRect:mapRect];
+            [VWWQuadTree quadTree:self.root gatherDataInRange:boundingBox block:^(VWWQuadTreeNodeData *nodeData) {
+                count++;
+                if(firstX == 0) {
+                    firstX += nodeData.coordinate.latitude;
+                    firstY += nodeData.coordinate.longitude;
+                }
+                NSObject* annotation = nodeData.data;
+                [annotations addObject:annotation];
+            }];
+            
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(firstX, firstY);
+
+            VWWClusteredAnnotation *annotation = [[VWWClusteredAnnotation alloc]initWithCoordinate:coordinate annotations:annotations];
+            [clusteredAnnotations addObject:annotation];
+#endif
         }
     }
     
@@ -85,13 +113,50 @@
     return _clusterDensity - 1;
 }
 
-#pragma mark Private methods
 
+-(NSUInteger)leafCount{
+    
+//    self.root
+    NSUInteger count = 0;
+    [self calculateLeafCountFromNode:self.root count:&count];
+    return count;
+}
+-(NSUInteger)treeHeight{
+    return 0;
+}
+
+
+#pragma mark Private methods
+-(void)calculateLeafCountFromNode:(VWWQuadTreeNode*)node count:(NSUInteger*)count{
+    
+    // Base case
+    if(node == self.root && *count){
+        return;
+    }
+    
+    if(node.northWest){
+        [self calculateLeafCountFromNode:node.northWest count:count];
+    }
+    if(node.northEast){
+        [self calculateLeafCountFromNode:node.northEast count:count];
+    }
+    if(node.southWest){
+        [self calculateLeafCountFromNode:node.southWest count:count];
+    }
+    if(node.southEast){
+        [self calculateLeafCountFromNode:node.southEast count:count];
+    }
+    
+    // No children.. we have a leaf here.
+    (*count)++;
+    return;
+}
 
 -(float)cellSizeForZoomScale:(MKZoomScale)zoomScale {
     NSInteger zoomLevel = [self zoomScaleToZoomLevel:zoomScale];
     
     switch (zoomLevel) {
+            
         case 13:
         case 14:
         case 15:
@@ -99,12 +164,15 @@
         case 16:
         case 17:
         case 18:
-            return 16 * _clusterDensity;
-        case 19:
-            return 8 * _clusterDensity;
             
+            return 100 * _clusterDensity;
+        case 19:
+        case 20:
+        case 21:
+        case 22:
+            return 500 * _clusterDensity;
         default:
-            return 44 * _clusterDensity;
+            return 24 * _clusterDensity;
     }
 }
 

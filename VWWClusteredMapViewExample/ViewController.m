@@ -14,12 +14,13 @@
 
 #import "VWWClusteredMapView.h"
 
-@interface ViewController () <VWWClusteredMapViewDelegate, UIPopoverPresentationControllerDelegate>
+@interface ViewController () <VWWClusteredMapViewDelegate, VWWClusteredMapViewDataSource, UIPopoverPresentationControllerDelegate>
 @property (weak, nonatomic) IBOutlet VWWClusteredMapView *mapView;
 @property (nonatomic, strong) UIPopoverPresentationController *popover;
 @property (weak, nonatomic) IBOutlet UIView *settingsContainerView;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (nonatomic, strong) NSArray *hotelAnnotations;
 @end
 
 @implementation ViewController
@@ -31,12 +32,14 @@
     self.settingsButton.layer.borderColor = [UIColor orangeColor].CGColor;
     self.settingsContainerView.alpha = 1.0;
     self.bottomConstraint.constant = -self.settingsContainerView.bounds.size.height;
+    
     self.mapView.delegate = self;
+    self.mapView.dataSource = self;
 
     
     // Load hotels from CSV file
-    NSArray *hotelAnnotations = [HotelAnnotation readHotelsDataFile];
-    [self.mapView addAnnotations:hotelAnnotations];
+    self.hotelAnnotations = [HotelAnnotation readHotelsDataFile];
+//    [self.mapView addAnnotations:hotelAnnotations];
 }
 
 

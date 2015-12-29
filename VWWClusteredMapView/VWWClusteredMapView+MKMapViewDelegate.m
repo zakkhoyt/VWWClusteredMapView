@@ -19,10 +19,7 @@
     }
 }
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-//    if(self.annotationsAreClusterable){
-        [self refreshClusterableAnnotations];
-//    }
-    
+    [self refreshClusterableAnnotations];
     if([self.delegate respondsToSelector:@selector(clusteredMapView:regionDidChangeAnimated:)]) {
         [self.delegate clusteredMapView:self regionDidChangeAnimated:animated];
     }
@@ -61,16 +58,14 @@
     }
 }
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    if(self.annotationsAreClusterable){
-        if([self.delegate respondsToSelector:@selector(clusteredMapView:viewForClusteredAnnotation:)]) {
-            VWWClusteredAnnotationView *view = [self.delegate clusteredMapView:self viewForClusteredAnnotation:annotation];
-            view.animateReclusting = self.animateReclusting;
-            return view;
-        }
-    } else {
-        if([self.delegate respondsToSelector:@selector(clusteredMapView:viewForAnnotation:)]) {
-            return [self.delegate clusteredMapView:self viewForAnnotation:annotation];
-        }
+
+    
+    if([self.delegate respondsToSelector:@selector(clusteredMapView:viewForClusteredAnnotation:)]) {
+        VWWClusteredAnnotationView *view = [self.delegate clusteredMapView:self viewForClusteredAnnotation:annotation];
+        view.animateReclusting = self.animateReclusting;
+        view.animationType = self.addAnimationType;
+        view.addAnnotationAnimationDuration = self.addAnnotationAnimationDuration;
+        return view;
     }
     
     return nil;
@@ -80,7 +75,7 @@
     [views enumerateObjectsUsingBlock:^(VWWClusteredAnnotationView *view, NSUInteger idx, BOOL *stop) {
         [self setAnimationPointsForAnnotationView:view];
     }];
-
+    
     if([self.delegate respondsToSelector:@selector(clusteredMapView:didAddAnnotationViews:)]) {
         [self.delegate clusteredMapView:self didAddAnnotationViews:views];
     }
@@ -95,34 +90,46 @@
 #endif
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0) {
-    if(self.annotationsAreClusterable) {
-        if([self.delegate respondsToSelector:@selector(clusteredMapView:didSelectClusteredAnnotationView:)]) {
-            if([view isKindOfClass:[VWWClusteredAnnotationView class]] == NO) {
-                NSAssert(NO, @"View for clusteredAnnotation must inherit from VWWClusteredAnnotationView");
-                return;
-            } else {
+    if([NSStringFromClass([view class]) isEqualToString:@"MKModernUserLocationView"]){
+        NSLog(@"Interacted with MKModernUserLocationView. Returning");
+        return;
+    }
+    
+    if([self.delegate respondsToSelector:@selector(clusteredMapView:didSelectClusteredAnnotationView:)]) {
+        if([view isKindOfClass:[VWWClusteredAnnotationView class]] == NO) {
+            NSAssert(NO, @"View for clusteredAnnotation must inherit from VWWClusteredAnnotationView");
+            return;
+        } else {
+            NSSet *annotationViews = [self annotationViewsOverlappingWithAnnotationView:(VWWClusteredAnnotationView*)view];
+            NSLog(@"Found %ld annotations overlapping: ", (unsigned long)annotationViews.count);
+            if(annotationViews.count == 1){
                 [self.delegate clusteredMapView:self didSelectClusteredAnnotationView:(VWWClusteredAnnotationView*)view];
+            } else {
+                CGPoint point = view.center;
+                VWWAnnotationFanoutView *contextMenu = [[VWWAnnotationFanoutView alloc]init];
+                [contextMenu showContextForMapView:self.mapView
+                                           atPoint:point
+                                         menuViews:annotationViews.allObjects completionBlock:^(NSUInteger index) {
+                                             VWWClusteredAnnotationView *view = annotationViews.allObjects[index];
+                                             [self.delegate clusteredMapView:self didSelectClusteredAnnotationView:(VWWClusteredAnnotationView*)view];
+                                         }];
             }
-        }
-    } else {
-        if([self.delegate respondsToSelector:@selector(clusteredMapView:didSelectAnnotationView:)]) {
-            [self.delegate clusteredMapView:self didSelectAnnotationView:view];
         }
     }
 }
+
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0) {
-    if(self.annotationsAreClusterable) {
-        if([self.delegate respondsToSelector:@selector(clusteredMapView:didDeselectClusteredAnnotationView:)]) {
-            if([view isKindOfClass:[VWWClusteredAnnotationView class]] == NO) {
-                NSAssert(NO, @"View for clusteredAnnotation must inherit from VWWClusteredAnnotationView");
-                return;
-            } else {
-                [self.delegate clusteredMapView:self didDeselectClusteredAnnotationView:(VWWClusteredAnnotationView*)view];
-            }
-        }
-    } else {
-        if([self.delegate respondsToSelector:@selector(clusteredMapView:didDeselectAnnotationView:)]) {
-            [self.delegate clusteredMapView:self didDeselectAnnotationView:view];
+    if([NSStringFromClass([view class]) isEqualToString:@"MKModernUserLocationView"]){
+        NSLog(@"Interacted with MKModernUserLocationView. Returning");
+        return;
+    }
+
+    if([self.delegate respondsToSelector:@selector(clusteredMapView:didDeselectClusteredAnnotationView:)]) {
+        if([view isKindOfClass:[VWWClusteredAnnotationView class]] == NO) {
+            NSAssert(NO, @"View for clusteredAnnotation must inherit from VWWClusteredAnnotationView");
+            return;
+        } else {
+            [self.delegate clusteredMapView:self didDeselectClusteredAnnotationView:(VWWClusteredAnnotationView*)view];
         }
     }
 }
@@ -183,7 +190,7 @@
         return [self.delegate clusteredMapView:self viewForOverlay:overlay];
     }
     return nil;
-
+    
 }
 
 - (void)mapView:(MKMapView *)mapView didAddOverlayViews:(NSArray *)overlayViews NS_DEPRECATED_IOS(4_0, 7_0) {
