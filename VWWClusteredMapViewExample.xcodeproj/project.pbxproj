@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C6D1D3F31C33370B0040BCF7 /* VWWAnnotationFanoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D1D3F21C33370B0040BCF7 /* VWWAnnotationFanoutView.m */; };
-		C6D1D3FA1C3337490040BCF7 /* UIColor+ZH.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D1D3F71C3337490040BCF7 /* UIColor+ZH.m */; };
-		C6D1D3FB1C3337490040BCF7 /* UIView+RenderToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D1D3F91C3337490040BCF7 /* UIView+RenderToImage.m */; };
-		CF4E8E6C1AE222DC00F19500 /* VWWClusteredAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4E8E6B1AE222DC00F19500 /* VWWClusteredAnnotationView.m */; };
 		CF5741EB1AC7CE9200300A05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741EA1AC7CE9200300A05 /* main.m */; };
 		CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741ED1AC7CE9200300A05 /* AppDelegate.m */; };
 		CF5741F11AC7CE9200300A05 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741F01AC7CE9200300A05 /* ViewController.m */; };
@@ -19,12 +15,6 @@
 		CF5741F91AC7CE9200300A05 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5741F71AC7CE9200300A05 /* LaunchScreen.xib */; };
 		CF5742051AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742041AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m */; };
 		CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */; };
-		CF5742311AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742141AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m */; };
-		CF5742321AC7CF0100300A05 /* VWWClusteredMapView+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742161AC7CF0100300A05 /* VWWClusteredMapView+Private.m */; };
-		CF5742361AC7CF0100300A05 /* VWWClusteredMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57421E1AC7CF0100300A05 /* VWWClusteredMapView.m */; };
-		CF5742371AC7CF0100300A05 /* VWWClusteredAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742211AC7CF0100300A05 /* VWWClusteredAnnotation.m */; };
-		CF5742381AC7CF0100300A05 /* VWWCoordinateQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742231AC7CF0100300A05 /* VWWCoordinateQuadTree.m */; };
-		CF5742391AC7CF0100300A05 /* VWWQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742251AC7CF0100300A05 /* VWWQuadTree.m */; };
 		CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742421AC7CF1600300A05 /* HotelAnnotation.m */; };
 		CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742441AC7CF1600300A05 /* HotelAnnotationView.m */; };
 		CF5742481AC7CF1600300A05 /* USA-HotelMotel.csv in Resources */ = {isa = PBXBuildFile; fileRef = CF5742451AC7CF1600300A05 /* USA-HotelMotel.csv */; };
@@ -41,14 +31,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C6D1D3F11C33370B0040BCF7 /* VWWAnnotationFanoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAnnotationFanoutView.h; sourceTree = "<group>"; };
-		C6D1D3F21C33370B0040BCF7 /* VWWAnnotationFanoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAnnotationFanoutView.m; sourceTree = "<group>"; };
-		C6D1D3F61C3337490040BCF7 /* UIColor+ZH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZH.h"; sourceTree = "<group>"; };
-		C6D1D3F71C3337490040BCF7 /* UIColor+ZH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZH.m"; sourceTree = "<group>"; };
-		C6D1D3F81C3337490040BCF7 /* UIView+RenderToImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RenderToImage.h"; sourceTree = "<group>"; };
-		C6D1D3F91C3337490040BCF7 /* UIView+RenderToImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RenderToImage.m"; sourceTree = "<group>"; };
-		CF4E8E6A1AE222DC00F19500 /* VWWClusteredAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredAnnotationView.h; sourceTree = "<group>"; };
-		CF4E8E6B1AE222DC00F19500 /* VWWClusteredAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredAnnotationView.m; sourceTree = "<group>"; };
 		CF5741E51AC7CE9200300A05 /* VWWClusteredMapViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VWWClusteredMapViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5741E91AC7CE9200300A05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5741EA1AC7CE9200300A05 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -64,19 +46,6 @@
 		CF5742041AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredMapViewExampleTests.m; sourceTree = "<group>"; };
 		CF57420E1AC7CEF300300A05 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
-		CF5742121AC7CF0100300A05 /* VWWClusteredMapView+ClassExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+ClassExtension.h"; sourceTree = "<group>"; };
-		CF5742131AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+MKMapViewDelegate.h"; sourceTree = "<group>"; };
-		CF5742141AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+MKMapViewDelegate.m"; sourceTree = "<group>"; };
-		CF5742151AC7CF0100300A05 /* VWWClusteredMapView+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+Private.h"; sourceTree = "<group>"; };
-		CF5742161AC7CF0100300A05 /* VWWClusteredMapView+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+Private.m"; sourceTree = "<group>"; };
-		CF57421D1AC7CF0100300A05 /* VWWClusteredMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredMapView.h; sourceTree = "<group>"; };
-		CF57421E1AC7CF0100300A05 /* VWWClusteredMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredMapView.m; sourceTree = "<group>"; };
-		CF5742201AC7CF0100300A05 /* VWWClusteredAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWClusteredAnnotation.h; path = QuadTree/VWWClusteredAnnotation.h; sourceTree = "<group>"; };
-		CF5742211AC7CF0100300A05 /* VWWClusteredAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWClusteredAnnotation.m; path = QuadTree/VWWClusteredAnnotation.m; sourceTree = "<group>"; };
-		CF5742221AC7CF0100300A05 /* VWWCoordinateQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCoordinateQuadTree.h; sourceTree = "<group>"; };
-		CF5742231AC7CF0100300A05 /* VWWCoordinateQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCoordinateQuadTree.m; sourceTree = "<group>"; };
-		CF5742241AC7CF0100300A05 /* VWWQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWQuadTree.h; sourceTree = "<group>"; };
-		CF5742251AC7CF0100300A05 /* VWWQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWQuadTree.m; sourceTree = "<group>"; };
 		CF5742411AC7CF1600300A05 /* HotelAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelAnnotation.h; sourceTree = "<group>"; };
 		CF5742421AC7CF1600300A05 /* HotelAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelAnnotation.m; sourceTree = "<group>"; };
 		CF5742431AC7CF1600300A05 /* HotelAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelAnnotationView.h; sourceTree = "<group>"; };
@@ -102,26 +71,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C6D1D3F01C33370B0040BCF7 /* Fanout */ = {
-			isa = PBXGroup;
-			children = (
-				C6D1D3F11C33370B0040BCF7 /* VWWAnnotationFanoutView.h */,
-				C6D1D3F21C33370B0040BCF7 /* VWWAnnotationFanoutView.m */,
-			);
-			path = Fanout;
-			sourceTree = "<group>";
-		};
-		C6D1D3F51C3337260040BCF7 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				C6D1D3F61C3337490040BCF7 /* UIColor+ZH.h */,
-				C6D1D3F71C3337490040BCF7 /* UIColor+ZH.m */,
-				C6D1D3F81C3337490040BCF7 /* UIView+RenderToImage.h */,
-				C6D1D3F91C3337490040BCF7 /* UIView+RenderToImage.m */,
-			);
-			name = Categories;
-			sourceTree = "<group>";
-		};
 		C6D1D4021C33399F0040BCF7 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,21 +81,9 @@
 			name = UserInterface;
 			sourceTree = "<group>";
 		};
-		CF4E8E6D1AE2237900F19500 /* Annotations */ = {
-			isa = PBXGroup;
-			children = (
-				CF5742201AC7CF0100300A05 /* VWWClusteredAnnotation.h */,
-				CF5742211AC7CF0100300A05 /* VWWClusteredAnnotation.m */,
-				CF4E8E6A1AE222DC00F19500 /* VWWClusteredAnnotationView.h */,
-				CF4E8E6B1AE222DC00F19500 /* VWWClusteredAnnotationView.m */,
-			);
-			name = Annotations;
-			sourceTree = "<group>";
-		};
 		CF5741DC1AC7CE9200300A05 = {
 			isa = PBXGroup;
 			children = (
-				CF5742111AC7CF0100300A05 /* VWWClusteredMapView */,
 				CF5741E71AC7CE9200300A05 /* VWWClusteredMapViewExample */,
 				CF5742011AC7CE9200300A05 /* VWWClusteredMapViewExampleTests */,
 				CF5741E61AC7CE9200300A05 /* Products */,
@@ -202,35 +139,6 @@
 				CF5742031AC7CE9200300A05 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CF5742111AC7CF0100300A05 /* VWWClusteredMapView */ = {
-			isa = PBXGroup;
-			children = (
-				C6D1D3F51C3337260040BCF7 /* Categories */,
-				C6D1D3F01C33370B0040BCF7 /* Fanout */,
-				CF4E8E6D1AE2237900F19500 /* Annotations */,
-				CF57421F1AC7CF0100300A05 /* QuadTree */,
-				CF57421D1AC7CF0100300A05 /* VWWClusteredMapView.h */,
-				CF57421E1AC7CF0100300A05 /* VWWClusteredMapView.m */,
-				CF5742121AC7CF0100300A05 /* VWWClusteredMapView+ClassExtension.h */,
-				CF5742131AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.h */,
-				CF5742141AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m */,
-				CF5742151AC7CF0100300A05 /* VWWClusteredMapView+Private.h */,
-				CF5742161AC7CF0100300A05 /* VWWClusteredMapView+Private.m */,
-			);
-			path = VWWClusteredMapView;
-			sourceTree = "<group>";
-		};
-		CF57421F1AC7CF0100300A05 /* QuadTree */ = {
-			isa = PBXGroup;
-			children = (
-				CF5742221AC7CF0100300A05 /* VWWCoordinateQuadTree.h */,
-				CF5742231AC7CF0100300A05 /* VWWCoordinateQuadTree.m */,
-				CF5742241AC7CF0100300A05 /* VWWQuadTree.h */,
-				CF5742251AC7CF0100300A05 /* VWWQuadTree.m */,
-			);
-			path = QuadTree;
 			sourceTree = "<group>";
 		};
 		CF5742401AC7CF1600300A05 /* Hotel */ = {
@@ -346,22 +254,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF5742311AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m in Sources */,
-				CF5742321AC7CF0100300A05 /* VWWClusteredMapView+Private.m in Sources */,
 				CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */,
-				C6D1D3FA1C3337490040BCF7 /* UIColor+ZH.m in Sources */,
 				CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */,
 				CF5741F11AC7CE9200300A05 /* ViewController.m in Sources */,
 				CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */,
 				CF5741EB1AC7CE9200300A05 /* main.m in Sources */,
-				CF5742391AC7CF0100300A05 /* VWWQuadTree.m in Sources */,
 				CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */,
-				CF5742361AC7CF0100300A05 /* VWWClusteredMapView.m in Sources */,
-				C6D1D3FB1C3337490040BCF7 /* UIView+RenderToImage.m in Sources */,
-				CF4E8E6C1AE222DC00F19500 /* VWWClusteredAnnotationView.m in Sources */,
-				C6D1D3F31C33370B0040BCF7 /* VWWAnnotationFanoutView.m in Sources */,
-				CF5742381AC7CF0100300A05 /* VWWCoordinateQuadTree.m in Sources */,
-				CF5742371AC7CF0100300A05 /* VWWClusteredAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 2.)	Add this line to your Podfile:
 
-pod 'VWWClusteredMapView', :git => 'https://github.com/zakkhoyt/VWWClusteredMapView', :branch => 'cocoapods'
+pod 'VWWClusteredMapView', :git => 'https://github.com/zakkhoyt/VWWClusteredMapView', :branch => 'master'
 
 3.) Run pod install
 
