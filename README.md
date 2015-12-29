@@ -2,11 +2,11 @@
 
 ## Overview
 
-## Example Project
+## Installation and Example project
 
 1.) Clone this repository
 
-2.)	add this line to your Podfile:
+2.)	Add this line to your Podfile:
 
 pod 'VWWClusteredMapView', :git => 'https://github.com/zakkhoyt/VWWClusteredMapView', :branch => 'cocoapods'
 
