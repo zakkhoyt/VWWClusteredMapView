@@ -1,13 +1,12 @@
 //
-//  VWWAnnotationView..m
-//  TBAnnotationClustering
+//  HotelAnnotationView..m
+//  VWWClusteredMapViewExample
 //
 //  Created by Zakk Hoyt on 9/25/14.
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
 #import "HotelAnnotationView.h"
-//#import "VWWClusterAnnotation.h"
 
 static CGFloat const VWWScaleFactorAlpha = 0.3;
 static CGFloat const VWWScaleFactorBeta = 0.4;
@@ -25,30 +24,6 @@ static CGFloat const VWWScaleFactorBeta = 0.4;
         [self setCount:1];
     }
     return self;
-}
-
--(void)didMoveToSuperview{
-    [super didMoveToSuperview];
-    
-//    CGFloat duration = 0.6;
-//    CGFloat delay = 0;
-//    double frameDuration = 1.0/5.0; // 4 = number of keyframes
-//    self.transform = CGAffineTransformMakeScale(0.01, 0.01);
-//    [UIView animateKeyframesWithDuration:duration delay:delay options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
-//        [UIView addKeyframeWithRelativeStartTime:0*frameDuration relativeDuration:frameDuration animations:^{
-//            self.transform = CGAffineTransformMakeScale(0.05, 0.05);
-//        }];
-//        [UIView addKeyframeWithRelativeStartTime:1*frameDuration relativeDuration:frameDuration animations:^{
-//            self.transform = CGAffineTransformMakeScale(1.5, 1.5);
-//        }];
-//        [UIView addKeyframeWithRelativeStartTime:2*frameDuration relativeDuration:frameDuration animations:^{
-//            self.transform = CGAffineTransformMakeScale(0.9, 0.9);
-//        }];
-//        [UIView addKeyframeWithRelativeStartTime:3*frameDuration relativeDuration:frameDuration animations:^{
-//            self.transform = CGAffineTransformMakeScale(1.0, 1.0);
-//        }];
-//    } completion:nil];
-
 }
 
 - (void)setupLabel{
