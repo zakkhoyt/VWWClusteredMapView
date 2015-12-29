@@ -1,6 +1,6 @@
 
 # This pod is not published on trunk yet. You can use it by adding this to your podfile:
-# pod 'VWWPermissionKit', :podspec => "https://raw.githubusercontent.com/zakkhoyt/VWWPermissionKit/1.0.2/VWWPermissionKit.podspec"
+#pod 'VWWClusteredMapView', :git => 'https://github.com/zakkhoyt/VWWClusteredMapView', :branch => 'cocoapods'
 
 Pod::Spec.new do |s|
   s.name         = "VWWClusteredMapView"
