@@ -8,10 +8,13 @@
 
 #import "VWWClusteredMapView.h"
 #import "VWWClusteredAnnotationView.h"
+#import "VWWAnnotationFanoutView.h"
+typedef void(^VWWClusteredMapViewEmptyBlock)(void);
 
 @interface VWWClusteredMapView (Private)
 -(void)refreshClusterableAnnotations;
--(void)refreshAnnotations;
 -(void)updateViewsBasedOnMapRegion:(CADisplayLink *)link;
 -(void)setAnimationPointsForAnnotationView:(VWWClusteredAnnotationView*)annotationView;
+-(void)removeAnnotations:(NSArray*)annotations completionBlock:(VWWClusteredMapViewEmptyBlock)completionBlock;
+-(NSSet*)annotationViewsOverlappingWithAnnotationView:(VWWClusteredAnnotationView*)view;
 @end

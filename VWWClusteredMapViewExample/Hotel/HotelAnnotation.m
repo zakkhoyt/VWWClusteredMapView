@@ -1,6 +1,6 @@
 //
 //  HotelAnnotation.h
-//  TBAnnotationClustering
+//  VWWClusteredMapViewExample
 //
 //  Created by Zakk Hoyt on 9/25/14.
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
@@ -24,7 +24,8 @@
 
 @implementation HotelAnnotation (ReadFile)
 
-+(NSArray*)readHotelsDataFile{
+//+(NSArray*)readHotelsDataFile{
++(NSArray*)annotationsFromFile {
     @autoreleasepool {
         NSString *data = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"USA-HotelMotel" ofType:@"csv"] encoding:NSASCIIStringEncoding error:nil];
         if(data == nil){
@@ -33,13 +34,14 @@
         }
         NSArray *lines = [data componentsSeparatedByString:@"\n"];
         NSInteger count = lines.count - 1;
-        NSMutableArray *dataArray = [[NSMutableArray alloc]initWithCapacity:count];
-        for (NSInteger index = 0; index < 100; index++) {
-            //        for (NSInteger index = 0; index < count; index++) {
+        NSMutableArray *hotels = [[NSMutableArray alloc]initWithCapacity:count];
+        // TODO: Fast enumeration
+//        for (NSInteger index = 0; index < 100; index++) {
+        for (NSInteger index = 0; index < count; index++) {
             HotelAnnotation* data = [self dataFromLine:lines[index]];
-            [dataArray addObject:data];
+            [hotels addObject:data];
         }
-        return dataArray;
+        return hotels;
     }
 }
 

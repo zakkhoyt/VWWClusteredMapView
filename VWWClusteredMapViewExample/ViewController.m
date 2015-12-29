@@ -14,37 +14,50 @@
 
 #import "VWWClusteredMapView.h"
 
-@interface ViewController () <VWWClusteredMapViewDelegate, UIPopoverPresentationControllerDelegate>
+@interface ViewController ()
+
+// Clustered map view UI
 @property (weak, nonatomic) IBOutlet VWWClusteredMapView *mapView;
-@property (nonatomic, strong) UIPopoverPresentationController *popover;
+
+// Settings UI
 @property (weak, nonatomic) IBOutlet UIView *settingsContainerView;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+
+// Data source
+@property (nonatomic, strong) NSArray *hotelAnnotations;
+
 @end
+
+@interface ViewController (VWWClusteredMapViewDataSource) <VWWClusteredMapViewDataSource>
+@end
+
+@interface ViewController (VWWClusteredMapViewDelegate) <VWWClusteredMapViewDelegate>
+@end
+
 
 @implementation ViewController
 
+#pragma mark UIViewController methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Setup our settings UI stuff
     self.settingsButton.layer.cornerRadius = self.settingsButton.frame.size.height / 2.0;
     self.settingsButton.layer.borderWidth = 4;
     self.settingsButton.layer.borderColor = [UIColor orangeColor].CGColor;
     self.settingsContainerView.alpha = 1.0;
     self.bottomConstraint.constant = -self.settingsContainerView.bounds.size.height;
-    self.mapView.delegate = self;
-
     
+    // Configure mapview data source and delegate
+    self.mapView.delegate = self;
+    self.mapView.dataSource = self;
+
     // Load hotels from CSV file
-    NSArray *hotelAnnotations = [HotelAnnotation readHotelsDataFile];
-    [self.mapView addAnnotations:hotelAnnotations];
-}
-
-
--(void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
-    [self.view bringSubviewToFront:self.settingsButton];
-    [self.view bringSubviewToFront:self.settingsContainerView];
-
+    self.hotelAnnotations = [HotelAnnotation annotationsFromFile];
+    [self.mapView reloadData];
+    
 }
 
 -(BOOL)prefersStatusBarHidden{
@@ -65,14 +78,6 @@
     }
 }
 
-#pragma mark Private Methods
--(void)panToAnnotationView:(MKAnnotationView*)view withPrettyFunction:(char*)function {
-    id<MKAnnotation> annotation = view.annotation;
-//    NSLog(@"%s %.4f,%.f", function, annotation.coordinate.latitude, annotation.coordinate.longitude);
-    [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
-}
-
-
 #pragma mark IBActions
 
 - (IBAction)settingsButtonTouchUpInside:(id)sender {
@@ -85,41 +90,49 @@
 
 @end
 
-@implementation ViewController (ClusteredMapViewDelegate)
+@implementation ViewController (VWWClusteredMapViewDataSource)
 
-#pragma mark Annotation Views
--(MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    HotelAnnotationView *annotationView = (HotelAnnotationView *)[clusteredMapView dequeueReusableAnnotationViewWithIdentifier:@"AnnotationView"];
-    if (!annotationView) {
-        annotationView = [[HotelAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"AnnotationView"];
-    }
-    annotationView.canShowCallout = NO;
-    annotationView.count = 1;
-    return annotationView;
+- (NSInteger)numberOfSectionsInMapView:(VWWClusteredMapView*)mapView{
+    return 1;
+}
+- (NSInteger)mapView:(VWWClusteredMapView*)mapView numberOfAnnotationsInSection:(NSInteger)section{
+    return self.hotelAnnotations.count;
 }
 
--(VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id<MKAnnotation>)annotation {
-    HotelAnnotationView *annotationView = (HotelAnnotationView *)[clusteredMapView dequeueReusableAnnotationViewWithIdentifier:@"AnnotationView"];
-    if (!annotationView) {
-        annotationView = [[HotelAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ClusteredAnnotationView"];
-    }
-    annotationView.canShowCallout = YES;
-    annotationView.count = ((VWWClusteredAnnotation*)annotation).annotations.count;
-    return annotationView;
+- (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return self.hotelAnnotations[indexPath.item];
 }
 
+@end
 
-#pragma mark Annotation interaction
+@implementation ViewController (VWWClusteredMapViewDelegate)
 
+-(VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(VWWClusteredAnnotation*)annotation {
+    if([annotation isKindOfClass:[MKUserLocation class]]){
+        return nil;
+    }
 
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectAnnotationView:(MKAnnotationView *)view {
-    [self panToAnnotationView:view withPrettyFunction:(char*)__PRETTY_FUNCTION__];
+    id obj = [annotation.annotations firstObject];
+    if([obj isKindOfClass:[HotelAnnotation class]]){
+        
+        HotelAnnotationView *annotationView = (HotelAnnotationView *)[clusteredMapView dequeueReusableAnnotationViewWithIdentifier:@"HotelAnnotationView"];
+        if (!annotationView) {
+            annotationView = [[HotelAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"HotelAnnotationView"];
+        }
+        annotationView.canShowCallout = NO;
+        annotationView.count = ((VWWClusteredAnnotation*)annotation).annotations.count;
+        return annotationView;
+    }
+    
+    return nil;
 }
 
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view {
-    [self panToAnnotationView:view withPrettyFunction:(char*)__PRETTY_FUNCTION__];
+    NSLog(@"TODO: show details");
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Tapped" message:@"Annotation cluster tapped. Do what you will." preferredStyle:UIAlertControllerStyleAlert];
+    [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
+    [self presentViewController:ac animated:YES completion:NULL];
 }
 
-
-
 @end
+

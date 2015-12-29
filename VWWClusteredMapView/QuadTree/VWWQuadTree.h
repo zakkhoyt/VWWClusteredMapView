@@ -20,6 +20,7 @@
 @property (nonatomic) CLLocationDegrees xf;
 @property (nonatomic) CLLocationDegrees yf;
 -(instancetype)initWithX0:(CLLocationDegrees)x0 Y0:(CLLocationDegrees)y0 XF:(CLLocationDegrees)xf YF:(CLLocationDegrees)yf;
++(VWWBoundingBox*)boundingBoxForWorld;
 @end
 
 @interface VWWQuadTreeNode : NSObject
@@ -28,6 +29,7 @@
 @property (nonatomic, strong) VWWQuadTreeNode *southWest;
 @property (nonatomic, strong) VWWQuadTreeNode *southEast;
 @property (nonatomic, strong) VWWBoundingBox *boundingBox;
+// TODO MAP: no need for bucketCapacity in obj-c. This is a byproduct of the port from C code. Remove with caution.
 @property (nonatomic) NSInteger bucketCapacity;
 @property (nonatomic, strong) NSMutableArray *points; // Contains VWWQuadTreeNodeData*
 @property (nonatomic) NSInteger count;
@@ -45,4 +47,5 @@ typedef void(^VWWDataReturnBlock)(VWWQuadTreeNodeData* data);
 +(void)quadTree:(VWWQuadTreeNode*)node gatherDataInRange:(VWWBoundingBox*)range block:(VWWDataReturnBlock)block;
 +(BOOL)quadTree:(VWWQuadTreeNode*)node insertData:(VWWQuadTreeNodeData*)data;
 +(VWWQuadTreeNode*)quadTreeBuildWithData:(NSArray*)data count:(NSInteger)count boundingBox:(VWWBoundingBox*)boundingBox capacity:(NSInteger)capacity;
+
 @end

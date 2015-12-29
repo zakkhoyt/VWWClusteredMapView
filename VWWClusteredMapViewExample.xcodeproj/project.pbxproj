@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6D1D3F31C33370B0040BCF7 /* VWWAnnotationFanoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D1D3F21C33370B0040BCF7 /* VWWAnnotationFanoutView.m */; };
+		C6D1D3FA1C3337490040BCF7 /* UIColor+ZH.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D1D3F71C3337490040BCF7 /* UIColor+ZH.m */; };
+		C6D1D3FB1C3337490040BCF7 /* UIView+RenderToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D1D3F91C3337490040BCF7 /* UIView+RenderToImage.m */; };
 		CF4E8E6C1AE222DC00F19500 /* VWWClusteredAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4E8E6B1AE222DC00F19500 /* VWWClusteredAnnotationView.m */; };
 		CF5741EB1AC7CE9200300A05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741EA1AC7CE9200300A05 /* main.m */; };
 		CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741ED1AC7CE9200300A05 /* AppDelegate.m */; };
@@ -38,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C6D1D3F11C33370B0040BCF7 /* VWWAnnotationFanoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAnnotationFanoutView.h; sourceTree = "<group>"; };
+		C6D1D3F21C33370B0040BCF7 /* VWWAnnotationFanoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAnnotationFanoutView.m; sourceTree = "<group>"; };
+		C6D1D3F61C3337490040BCF7 /* UIColor+ZH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZH.h"; sourceTree = "<group>"; };
+		C6D1D3F71C3337490040BCF7 /* UIColor+ZH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZH.m"; sourceTree = "<group>"; };
+		C6D1D3F81C3337490040BCF7 /* UIView+RenderToImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RenderToImage.h"; sourceTree = "<group>"; };
+		C6D1D3F91C3337490040BCF7 /* UIView+RenderToImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RenderToImage.m"; sourceTree = "<group>"; };
 		CF4E8E6A1AE222DC00F19500 /* VWWClusteredAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredAnnotationView.h; sourceTree = "<group>"; };
 		CF4E8E6B1AE222DC00F19500 /* VWWClusteredAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredAnnotationView.m; sourceTree = "<group>"; };
 		CF5741E51AC7CE9200300A05 /* VWWClusteredMapViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VWWClusteredMapViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +102,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6D1D3F01C33370B0040BCF7 /* Fanout */ = {
+			isa = PBXGroup;
+			children = (
+				C6D1D3F11C33370B0040BCF7 /* VWWAnnotationFanoutView.h */,
+				C6D1D3F21C33370B0040BCF7 /* VWWAnnotationFanoutView.m */,
+			);
+			path = Fanout;
+			sourceTree = "<group>";
+		};
+		C6D1D3F51C3337260040BCF7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C6D1D3F61C3337490040BCF7 /* UIColor+ZH.h */,
+				C6D1D3F71C3337490040BCF7 /* UIColor+ZH.m */,
+				C6D1D3F81C3337490040BCF7 /* UIView+RenderToImage.h */,
+				C6D1D3F91C3337490040BCF7 /* UIView+RenderToImage.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		C6D1D4021C33399F0040BCF7 /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				CF5741F21AC7CE9200300A05 /* Main.storyboard */,
+				CF5741F51AC7CE9200300A05 /* Images.xcassets */,
+				CF5741F71AC7CE9200300A05 /* LaunchScreen.xib */,
+			);
+			name = UserInterface;
+			sourceTree = "<group>";
+		};
 		CF4E8E6D1AE2237900F19500 /* Annotations */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,15 +166,11 @@
 			isa = PBXGroup;
 			children = (
 				CF5742401AC7CF1600300A05 /* Hotel */,
-				CF5741EC1AC7CE9200300A05 /* AppDelegate.h */,
-				CF5741ED1AC7CE9200300A05 /* AppDelegate.m */,
 				CF5741EF1AC7CE9200300A05 /* ViewController.h */,
 				CF5741F01AC7CE9200300A05 /* ViewController.m */,
 				CF57420E1AC7CEF300300A05 /* SettingsTableViewController.h */,
 				CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */,
-				CF5741F21AC7CE9200300A05 /* Main.storyboard */,
-				CF5741F51AC7CE9200300A05 /* Images.xcassets */,
-				CF5741F71AC7CE9200300A05 /* LaunchScreen.xib */,
+				C6D1D4021C33399F0040BCF7 /* UserInterface */,
 				CF5741E81AC7CE9200300A05 /* Supporting Files */,
 			);
 			path = VWWClusteredMapViewExample;
@@ -144,6 +179,8 @@
 		CF5741E81AC7CE9200300A05 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF5741EC1AC7CE9200300A05 /* AppDelegate.h */,
+				CF5741ED1AC7CE9200300A05 /* AppDelegate.m */,
 				CF5741E91AC7CE9200300A05 /* Info.plist */,
 				CF5741EA1AC7CE9200300A05 /* main.m */,
 			);
@@ -170,6 +207,8 @@
 		CF5742111AC7CF0100300A05 /* VWWClusteredMapView */ = {
 			isa = PBXGroup;
 			children = (
+				C6D1D3F51C3337260040BCF7 /* Categories */,
+				C6D1D3F01C33370B0040BCF7 /* Fanout */,
 				CF4E8E6D1AE2237900F19500 /* Annotations */,
 				CF57421F1AC7CF0100300A05 /* QuadTree */,
 				CF57421D1AC7CF0100300A05 /* VWWClusteredMapView.h */,
@@ -310,6 +349,7 @@
 				CF5742311AC7CF0100300A05 /* VWWClusteredMapView+MKMapViewDelegate.m in Sources */,
 				CF5742321AC7CF0100300A05 /* VWWClusteredMapView+Private.m in Sources */,
 				CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */,
+				C6D1D3FA1C3337490040BCF7 /* UIColor+ZH.m in Sources */,
 				CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */,
 				CF5741F11AC7CE9200300A05 /* ViewController.m in Sources */,
 				CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */,
@@ -317,7 +357,9 @@
 				CF5742391AC7CF0100300A05 /* VWWQuadTree.m in Sources */,
 				CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */,
 				CF5742361AC7CF0100300A05 /* VWWClusteredMapView.m in Sources */,
+				C6D1D3FB1C3337490040BCF7 /* UIView+RenderToImage.m in Sources */,
 				CF4E8E6C1AE222DC00F19500 /* VWWClusteredAnnotationView.m in Sources */,
+				C6D1D3F31C33370B0040BCF7 /* VWWAnnotationFanoutView.m in Sources */,
 				CF5742381AC7CF0100300A05 /* VWWCoordinateQuadTree.m in Sources */,
 				CF5742371AC7CF0100300A05 /* VWWClusteredAnnotation.m in Sources */,
 			);

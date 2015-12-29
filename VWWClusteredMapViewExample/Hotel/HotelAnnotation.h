@@ -1,6 +1,6 @@
 //
 //  HotelAnnotation.h
-//  TBAnnotationClustering
+//  VWWClusteredMapViewExample
 //
 //  Created by Zakk Hoyt on 9/25/14.
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
@@ -25,7 +25,8 @@
 
 @interface HotelAnnotation (ReadFile)
 // Read hotels from file
-+(NSArray*)readHotelsDataFile;
+
++(NSArray*)annotationsFromFile;
 +(HotelAnnotation*)dataFromLine:(NSString*)line;
 @end
 

@@ -8,7 +8,11 @@
 #import "VWWQuadTree.h"
 
 
+@interface VWWQuadTreeNodeData (){
+    NSInteger _height;
+}
 
+@end
 @implementation VWWQuadTreeNodeData
 
 -(instancetype)initWithAnotation:(id<MKAnnotation>)annotation{
@@ -36,6 +40,10 @@
 -(NSString*)description{
     return [NSString stringWithFormat:@"x0:%f xf:%f y0:%f yf:%f", _x0, _xf, _y0, _yf];
 }
+
++(VWWBoundingBox*)boundingBoxForWorld{
+    return [[VWWBoundingBox alloc]initWithX0:-90 Y0:-180 XF:90 YF:180];
+}; 
 
 @end
 
@@ -75,6 +83,29 @@
             (long)self.count,
             (long)self.points.count];
 }
+
+
+//-(NSUInteger)heightFromNode:(VWWQuadTreeNode*)node height:(NSUInteger)height{
+//    
+//    // Base case
+//    
+//    
+//    // Recursion
+//    if(node.northWest){
+//        [self heightFromNode:node.northWest height:height];
+//    }
+//    if(node.northEast){
+//        [self heightFromNode:node.northWest height:height];
+//    }
+//    if(node.southWest){
+//        [self heightFromNode:node.northWest height:height];
+//    }
+//    if(node.southEast){
+//        [self heightFromNode:node.northWest height:height];
+//    }
+//    return 0;
+//}
+
 
 @end
 
@@ -184,7 +215,6 @@
     }
     return root;
 }
-
 
 
 #pragma mark Private methods
