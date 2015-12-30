@@ -6,35 +6,12 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 
 #import <Foundation/Foundation.h>
+#import "VWWQuadTreeNodeData.h"
+#import "VWWBoundingBox.h"
+#import "VWWQuadTreeNode.h"
+
+
 @import MapKit;
-
-@interface VWWQuadTreeNodeData : NSObject
--(instancetype)initWithAnotation:(id<MKAnnotation>) annotation;
-@property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (nonatomic, strong) NSObject *data;
-@end
-
-@interface VWWBoundingBox : NSObject
-@property (nonatomic) CLLocationDegrees x0;
-@property (nonatomic) CLLocationDegrees y0;
-@property (nonatomic) CLLocationDegrees xf;
-@property (nonatomic) CLLocationDegrees yf;
--(instancetype)initWithX0:(CLLocationDegrees)x0 Y0:(CLLocationDegrees)y0 XF:(CLLocationDegrees)xf YF:(CLLocationDegrees)yf;
-+(VWWBoundingBox*)boundingBoxForWorld;
-@end
-
-@interface VWWQuadTreeNode : NSObject
-@property (nonatomic, strong) VWWQuadTreeNode *northWest;
-@property (nonatomic, strong) VWWQuadTreeNode *northEast;
-@property (nonatomic, strong) VWWQuadTreeNode *southWest;
-@property (nonatomic, strong) VWWQuadTreeNode *southEast;
-@property (nonatomic, strong) VWWBoundingBox *boundingBox;
-// TODO MAP: no need for bucketCapacity in obj-c. This is a byproduct of the port from C code. Remove with caution.
-@property (nonatomic) NSInteger bucketCapacity;
-@property (nonatomic, strong) NSMutableArray *points; // Contains VWWQuadTreeNodeData*
-@property (nonatomic) NSInteger count;
--(instancetype)initWithBoundingBox:(VWWBoundingBox*)boundingBox capacity:(NSInteger)capacity;
-@end
 
 typedef void(^VWWQuadTreeTraverseBlock)(VWWQuadTreeNode* currentNode);
 typedef void(^VWWDataReturnBlock)(VWWQuadTreeNodeData* data);

@@ -1,0 +1,7 @@
+
+
+Update readme with a full description
+Break out all node classes to their own files
+Add api for fanout
+Swift example
+ZH -> VWW
