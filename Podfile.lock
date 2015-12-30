@@ -3,16 +3,16 @@ PODS:
 
 DEPENDENCIES:
   - VWWClusteredMapView (from `https://github.com/zakkhoyt/VWWClusteredMapView`, branch
-    `breakout`)
+    `master`)
 
 EXTERNAL SOURCES:
   VWWClusteredMapView:
-    :branch: breakout
+    :branch: master
     :git: https://github.com/zakkhoyt/VWWClusteredMapView
 
 CHECKOUT OPTIONS:
   VWWClusteredMapView:
-    :commit: 1beade9d65581b5be91545afee23f934dfee001c
+    :commit: b3e8a05ebcf0309175cfb9d018511942f5ac3172
     :git: https://github.com/zakkhoyt/VWWClusteredMapView
 
 SPEC CHECKSUMS:
