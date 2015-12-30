@@ -1,0 +1,21 @@
+PODS:
+  - VWWClusteredMapView (1.0.0)
+
+DEPENDENCIES:
+  - VWWClusteredMapView (from `https://github.com/zakkhoyt/VWWClusteredMapView`, branch
+    `master`)
+
+EXTERNAL SOURCES:
+  VWWClusteredMapView:
+    :branch: master
+    :git: https://github.com/zakkhoyt/VWWClusteredMapView
+
+CHECKOUT OPTIONS:
+  VWWClusteredMapView:
+    :commit: b2bc9ee047170b2a63256220c393c65d5feda780
+    :git: https://github.com/zakkhoyt/VWWClusteredMapView
+
+SPEC CHECKSUMS:
+  VWWClusteredMapView: 9769306182e5d7b64b83f4f04ca2e9c3aaae7767
+
+COCOAPODS: 0.38.2

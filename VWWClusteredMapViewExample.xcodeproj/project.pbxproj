@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8EC806FFCC21FB988F9DF377 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DF75F764D10C16154C4343 /* libPods.a */; };
+		C6048F671C33484D00FBE0B8 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = C6048F661C33484D00FBE0B8 /* TODO.txt */; };
+		C6048F8B1C33739000FBE0B8 /* Ideas.txt in Resources */ = {isa = PBXBuildFile; fileRef = C6048F731C33739000FBE0B8 /* Ideas.txt */; };
+		C6048F8C1C33739000FBE0B8 /* VWWAnnotationFanoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6048F761C33739000FBE0B8 /* VWWAnnotationFanoutView.m */; };
+		C6048F8D1C33739000FBE0B8 /* VWWClusteredAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C6048F791C33739000FBE0B8 /* VWWClusteredAnnotation.m */; };
+		C6048F8E1C33739000FBE0B8 /* VWWCoordinateQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = C6048F7B1C33739000FBE0B8 /* VWWCoordinateQuadTree.m */; };
+		C6048F8F1C33739000FBE0B8 /* VWWQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = C6048F7D1C33739000FBE0B8 /* VWWQuadTree.m */; };
+		C6048F901C33739000FBE0B8 /* UIColor+ZH.m in Sources */ = {isa = PBXBuildFile; fileRef = C6048F7F1C33739000FBE0B8 /* UIColor+ZH.m */; };
+		C6048F911C33739000FBE0B8 /* UIView+RenderToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C6048F811C33739000FBE0B8 /* UIView+RenderToImage.m */; };
+		C6048F921C33739000FBE0B8 /* VWWClusteredAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6048F831C33739000FBE0B8 /* VWWClusteredAnnotationView.m */; };
+		C6048F931C33739000FBE0B8 /* VWWClusteredMapView+MKMapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C6048F861C33739000FBE0B8 /* VWWClusteredMapView+MKMapViewDelegate.m */; };
+		C6048F941C33739000FBE0B8 /* VWWClusteredMapView+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = C6048F881C33739000FBE0B8 /* VWWClusteredMapView+Private.m */; };
+		C6048F951C33739000FBE0B8 /* VWWClusteredMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6048F8A1C33739000FBE0B8 /* VWWClusteredMapView.m */; };
 		CF5741EB1AC7CE9200300A05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741EA1AC7CE9200300A05 /* main.m */; };
 		CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741ED1AC7CE9200300A05 /* AppDelegate.m */; };
 		CF5741F11AC7CE9200300A05 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5741F01AC7CE9200300A05 /* ViewController.m */; };
@@ -31,6 +44,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C6048F661C33484D00FBE0B8 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		C6048F731C33739000FBE0B8 /* Ideas.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Ideas.txt; sourceTree = "<group>"; };
+		C6048F751C33739000FBE0B8 /* VWWAnnotationFanoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAnnotationFanoutView.h; sourceTree = "<group>"; };
+		C6048F761C33739000FBE0B8 /* VWWAnnotationFanoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAnnotationFanoutView.m; sourceTree = "<group>"; };
+		C6048F781C33739000FBE0B8 /* VWWClusteredAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredAnnotation.h; sourceTree = "<group>"; };
+		C6048F791C33739000FBE0B8 /* VWWClusteredAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredAnnotation.m; sourceTree = "<group>"; };
+		C6048F7A1C33739000FBE0B8 /* VWWCoordinateQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCoordinateQuadTree.h; sourceTree = "<group>"; };
+		C6048F7B1C33739000FBE0B8 /* VWWCoordinateQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCoordinateQuadTree.m; sourceTree = "<group>"; };
+		C6048F7C1C33739000FBE0B8 /* VWWQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWQuadTree.h; sourceTree = "<group>"; };
+		C6048F7D1C33739000FBE0B8 /* VWWQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWQuadTree.m; sourceTree = "<group>"; };
+		C6048F7E1C33739000FBE0B8 /* UIColor+ZH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZH.h"; sourceTree = "<group>"; };
+		C6048F7F1C33739000FBE0B8 /* UIColor+ZH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ZH.m"; sourceTree = "<group>"; };
+		C6048F801C33739000FBE0B8 /* UIView+RenderToImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RenderToImage.h"; sourceTree = "<group>"; };
+		C6048F811C33739000FBE0B8 /* UIView+RenderToImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RenderToImage.m"; sourceTree = "<group>"; };
+		C6048F821C33739000FBE0B8 /* VWWClusteredAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredAnnotationView.h; sourceTree = "<group>"; };
+		C6048F831C33739000FBE0B8 /* VWWClusteredAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredAnnotationView.m; sourceTree = "<group>"; };
+		C6048F841C33739000FBE0B8 /* VWWClusteredMapView+ClassExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+ClassExtension.h"; sourceTree = "<group>"; };
+		C6048F851C33739000FBE0B8 /* VWWClusteredMapView+MKMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+MKMapViewDelegate.h"; sourceTree = "<group>"; };
+		C6048F861C33739000FBE0B8 /* VWWClusteredMapView+MKMapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+MKMapViewDelegate.m"; sourceTree = "<group>"; };
+		C6048F871C33739000FBE0B8 /* VWWClusteredMapView+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VWWClusteredMapView+Private.h"; sourceTree = "<group>"; };
+		C6048F881C33739000FBE0B8 /* VWWClusteredMapView+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VWWClusteredMapView+Private.m"; sourceTree = "<group>"; };
+		C6048F891C33739000FBE0B8 /* VWWClusteredMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWClusteredMapView.h; sourceTree = "<group>"; };
+		C6048F8A1C33739000FBE0B8 /* VWWClusteredMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredMapView.m; sourceTree = "<group>"; };
 		CF5741E51AC7CE9200300A05 /* VWWClusteredMapViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VWWClusteredMapViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5741E91AC7CE9200300A05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5741EA1AC7CE9200300A05 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -51,6 +87,9 @@
 		CF5742431AC7CF1600300A05 /* HotelAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelAnnotationView.h; sourceTree = "<group>"; };
 		CF5742441AC7CF1600300A05 /* HotelAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelAnnotationView.m; sourceTree = "<group>"; };
 		CF5742451AC7CF1600300A05 /* USA-HotelMotel.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "USA-HotelMotel.csv"; sourceTree = "<group>"; };
+		DD7B6357AC957F369C6EBE08 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E4DF75F764D10C16154C4343 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F707610106D5320BC552CEAF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC806FFCC21FB988F9DF377 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +111,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20F1FC443F342C0CB7FF905B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F707610106D5320BC552CEAF /* Pods.debug.xcconfig */,
+				DD7B6357AC957F369C6EBE08 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C6048F711C33739000FBE0B8 /* VWWClusteredMapView */ = {
+			isa = PBXGroup;
+			children = (
+				C6048F721C33739000FBE0B8 /* Documents */,
+				C6048F741C33739000FBE0B8 /* Fanout */,
+				C6048F771C33739000FBE0B8 /* QuadTree */,
+				C6048F7E1C33739000FBE0B8 /* UIColor+ZH.h */,
+				C6048F7F1C33739000FBE0B8 /* UIColor+ZH.m */,
+				C6048F801C33739000FBE0B8 /* UIView+RenderToImage.h */,
+				C6048F811C33739000FBE0B8 /* UIView+RenderToImage.m */,
+				C6048F821C33739000FBE0B8 /* VWWClusteredAnnotationView.h */,
+				C6048F831C33739000FBE0B8 /* VWWClusteredAnnotationView.m */,
+				C6048F841C33739000FBE0B8 /* VWWClusteredMapView+ClassExtension.h */,
+				C6048F851C33739000FBE0B8 /* VWWClusteredMapView+MKMapViewDelegate.h */,
+				C6048F861C33739000FBE0B8 /* VWWClusteredMapView+MKMapViewDelegate.m */,
+				C6048F871C33739000FBE0B8 /* VWWClusteredMapView+Private.h */,
+				C6048F881C33739000FBE0B8 /* VWWClusteredMapView+Private.m */,
+				C6048F891C33739000FBE0B8 /* VWWClusteredMapView.h */,
+				C6048F8A1C33739000FBE0B8 /* VWWClusteredMapView.m */,
+			);
+			path = VWWClusteredMapView;
+			sourceTree = "<group>";
+		};
+		C6048F721C33739000FBE0B8 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				C6048F731C33739000FBE0B8 /* Ideas.txt */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
+		C6048F741C33739000FBE0B8 /* Fanout */ = {
+			isa = PBXGroup;
+			children = (
+				C6048F751C33739000FBE0B8 /* VWWAnnotationFanoutView.h */,
+				C6048F761C33739000FBE0B8 /* VWWAnnotationFanoutView.m */,
+			);
+			path = Fanout;
+			sourceTree = "<group>";
+		};
+		C6048F771C33739000FBE0B8 /* QuadTree */ = {
+			isa = PBXGroup;
+			children = (
+				C6048F781C33739000FBE0B8 /* VWWClusteredAnnotation.h */,
+				C6048F791C33739000FBE0B8 /* VWWClusteredAnnotation.m */,
+				C6048F7A1C33739000FBE0B8 /* VWWCoordinateQuadTree.h */,
+				C6048F7B1C33739000FBE0B8 /* VWWCoordinateQuadTree.m */,
+				C6048F7C1C33739000FBE0B8 /* VWWQuadTree.h */,
+				C6048F7D1C33739000FBE0B8 /* VWWQuadTree.m */,
+			);
+			path = QuadTree;
+			sourceTree = "<group>";
+		};
 		C6D1D4021C33399F0040BCF7 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,9 +186,12 @@
 		CF5741DC1AC7CE9200300A05 = {
 			isa = PBXGroup;
 			children = (
+				C6048F711C33739000FBE0B8 /* VWWClusteredMapView */,
 				CF5741E71AC7CE9200300A05 /* VWWClusteredMapViewExample */,
 				CF5742011AC7CE9200300A05 /* VWWClusteredMapViewExampleTests */,
 				CF5741E61AC7CE9200300A05 /* Products */,
+				20F1FC443F342C0CB7FF905B /* Pods */,
+				F8C77507D6EA100FBD175759 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +214,7 @@
 				CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */,
 				C6D1D4021C33399F0040BCF7 /* UserInterface */,
 				CF5741E81AC7CE9200300A05 /* Supporting Files */,
+				C6048F661C33484D00FBE0B8 /* TODO.txt */,
 			);
 			path = VWWClusteredMapViewExample;
 			sourceTree = "<group>";
@@ -153,6 +259,14 @@
 			path = Hotel;
 			sourceTree = "<group>";
 		};
+		F8C77507D6EA100FBD175759 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4DF75F764D10C16154C4343 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,9 +274,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF5742081AC7CE9200300A05 /* Build configuration list for PBXNativeTarget "VWWClusteredMapViewExample" */;
 			buildPhases = (
+				5B4811E5AAA8807ADB75F21F /* Check Pods Manifest.lock */,
 				CF5741E11AC7CE9200300A05 /* Sources */,
 				CF5741E21AC7CE9200300A05 /* Frameworks */,
 				CF5741E31AC7CE9200300A05 /* Resources */,
+				512F154FA3BF0E91A1F7C9AA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,8 +349,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6048F671C33484D00FBE0B8 /* TODO.txt in Resources */,
 				CF5741F41AC7CE9200300A05 /* Main.storyboard in Resources */,
 				CF5741F91AC7CE9200300A05 /* LaunchScreen.xib in Resources */,
+				C6048F8B1C33739000FBE0B8 /* Ideas.txt in Resources */,
 				CF5742481AC7CF1600300A05 /* USA-HotelMotel.csv in Resources */,
 				CF5741F61AC7CE9200300A05 /* Images.xcassets in Resources */,
 			);
@@ -249,17 +367,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		512F154FA3BF0E91A1F7C9AA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B4811E5AAA8807ADB75F21F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CF5741E11AC7CE9200300A05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */,
+				C6048F901C33739000FBE0B8 /* UIColor+ZH.m in Sources */,
 				CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */,
+				C6048F931C33739000FBE0B8 /* VWWClusteredMapView+MKMapViewDelegate.m in Sources */,
 				CF5741F11AC7CE9200300A05 /* ViewController.m in Sources */,
+				C6048F921C33739000FBE0B8 /* VWWClusteredAnnotationView.m in Sources */,
 				CF5741EE1AC7CE9200300A05 /* AppDelegate.m in Sources */,
+				C6048F8C1C33739000FBE0B8 /* VWWAnnotationFanoutView.m in Sources */,
+				C6048F951C33739000FBE0B8 /* VWWClusteredMapView.m in Sources */,
+				C6048F8D1C33739000FBE0B8 /* VWWClusteredAnnotation.m in Sources */,
+				C6048F8E1C33739000FBE0B8 /* VWWCoordinateQuadTree.m in Sources */,
 				CF5741EB1AC7CE9200300A05 /* main.m in Sources */,
 				CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */,
+				C6048F8F1C33739000FBE0B8 /* VWWQuadTree.m in Sources */,
+				C6048F911C33739000FBE0B8 /* UIView+RenderToImage.m in Sources */,
+				C6048F941C33739000FBE0B8 /* VWWClusteredMapView+Private.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +542,7 @@
 		};
 		CF5742091AC7CE9200300A05 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F707610106D5320BC552CEAF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VWWClusteredMapViewExample/Info.plist;
@@ -391,6 +553,7 @@
 		};
 		CF57420A1AC7CE9200300A05 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD7B6357AC957F369C6EBE08 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = VWWClusteredMapViewExample/Info.plist;
