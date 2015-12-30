@@ -7,4 +7,5 @@ Radius_iOS/ThirdParty/PubNub/PubNub.xcodeproj/xcuserdata/
 Radius_iOS/ThirdParty/PubNub/PubNub.xcodeproj/project.xcworkspace/xcuserdata/
 # Pods - for those of you who use CocoaPods
 Pods
-
+Podfile
+Podfile.lock
