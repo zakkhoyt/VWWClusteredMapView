@@ -54,7 +54,7 @@
     self.mapView.dataSource = self;
 
     // Load hotels from CSV file. Array of id<MKAnnotation> objects
-    self.hotelAnnotations = [HotelAnnotation annotationsFromFile];
+    self.hotelAnnotations = [HotelAnnotation annotationsFromFileWithLimit:nil];
     [self.mapView reloadData];
 }
 

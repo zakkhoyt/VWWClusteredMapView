@@ -110,10 +110,11 @@ static CGFloat const VWWScaleFactorBeta = 0.4;
         HotelAnnotationView *view = (HotelAnnotationView*)context.nextFocusedView;
         view.transform = CGAffineTransformMakeScale(5.0, 5.0);
     }
+}
+
+- (void)pressesBegan:(NSSet<UIPress *> *)presses withEvent:(nullable UIPressesEvent *)event NS_AVAILABLE_IOS(9_0) {
     
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-}
+
 @end

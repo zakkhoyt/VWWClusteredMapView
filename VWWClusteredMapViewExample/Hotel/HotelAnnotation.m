@@ -24,8 +24,8 @@
 
 @implementation HotelAnnotation (ReadFile)
 
-//+(NSArray*)readHotelsDataFile{
-+(NSArray*)annotationsFromFile {
+
++(NSArray*)annotationsFromFileWithLimit:(NSNumber*)limit {
     @autoreleasepool {
         NSString *data = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"USA-HotelMotel" ofType:@"csv"] encoding:NSASCIIStringEncoding error:nil];
         if(data == nil){
@@ -35,8 +35,11 @@
         NSArray *lines = [data componentsSeparatedByString:@"\n"];
         NSInteger count = lines.count - 1;
         NSMutableArray *hotels = [[NSMutableArray alloc]initWithCapacity:count];
-        // TODO: Fast enumeration
-//        for (NSInteger index = 0; index < 100; index++) {
+
+        if(limit && limit.unsignedIntegerValue < count) {
+            count = limit.unsignedIntegerValue;
+        }
+        
         for (NSInteger index = 0; index < count; index++) {
             HotelAnnotation* data = [self dataFromLine:lines[index]];
             [hotels addObject:data];

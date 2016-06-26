@@ -26,7 +26,7 @@
 @interface HotelAnnotation (ReadFile)
 // Read hotels from file
 
-+(NSArray*)annotationsFromFile;
++(NSArray*)annotationsFromFileWithLimit:(NSNumber*)limit;
 +(HotelAnnotation*)dataFromLine:(NSString*)line;
 @end
 
