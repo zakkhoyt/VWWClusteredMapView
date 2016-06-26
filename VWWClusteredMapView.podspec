@@ -4,7 +4,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "VWWClusteredMapView"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "MKMapView with annotation clustering"
   s.author        = { "Zakk Hoyt" => "vaporwarewolf@gmail.com" }
   s.homepage      = "http://github.com/zakkhoyt/VWWClusteredMapView"
@@ -19,4 +19,5 @@ Pod::Spec.new do |s|
   s.resources = 'VWWClusteredMapView/**/*.{xib}'
   s.requires_arc = true
   s.ios.deployment_target = '8.0'
+  s.tvos.deployment_target = '9.2'
 end
