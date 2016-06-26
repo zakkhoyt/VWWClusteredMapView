@@ -4,10 +4,15 @@
 
 Pod::Spec.new do |s|
   s.name         = "VWWClusteredMapView"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "MKMapView with annotation clustering"
   s.author        = { "Zakk Hoyt" => "vaporwarewolf@gmail.com" }
   s.homepage      = "http://github.com/zakkhoyt/VWWClusteredMapView"
+  s.platforms = { :ios => 8.0, 
+                  :tvos => 9.2,
+                  :osx => 10.10
+                }
+
   s.license = { :type => 'MIT',
                 :text =>  <<-LICENSE
                   Copyright 2015. Zakk hoyt.
@@ -20,4 +25,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.2'
+  s.osx.deployment_target = '10.10'
 end
