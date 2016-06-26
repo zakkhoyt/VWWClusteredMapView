@@ -1,3 +1,7 @@
+## NOT READY FOR RELEASE
+
+But if you are saavy and willing to use unreleased software: 
+
 ### VWWClusteredMapView
 A MKMapView with clustering annotations for iOS and TVOS. Use it like a standard MKMapView but instead of addAnnotations and removeAnnotations use the VWWClusteredMapViewDataSource protocol. 
 
