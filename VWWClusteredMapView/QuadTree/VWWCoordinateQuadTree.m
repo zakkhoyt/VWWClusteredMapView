@@ -8,8 +8,6 @@
 #import "VWWCoordinateQuadTree.h"
 #import "VWWClusteredAnnotation.h"
 
-@import Photos;
-
 @implementation VWWCoordinateQuadTree {
     NSUInteger _clusterDensity;
 }

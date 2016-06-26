@@ -32,8 +32,8 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 
 @property (nonatomic) VWWClusteredMapViewAnnotationAddAnimation addAnimationType;
 @property (nonatomic) VWWClusteredMapViewAnnotationRemoveAnimation removeAnimationType;
-@property (weak, nonatomic) id<VWWClusteredMapViewDataSource> dataSource;
-@property (weak, nonatomic) id<VWWClusteredMapViewDelegate> delegate;
+@property (weak, nonatomic, nullable) id<VWWClusteredMapViewDataSource> dataSource;
+@property (weak, nonatomic, nullable) id<VWWClusteredMapViewDelegate> delegate;
 
 // When the user taps overlapping annotations, fan them out. Default = YES
 @property (nonatomic) BOOL enableFanout;
@@ -80,19 +80,19 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 - (MKMapRect)mapRectThatFits:(MKMapRect)mapRect edgePadding:(NSEdgeInsets)insets;
 #endif
 
-@property (nonatomic, copy) MKMapCamera *camera NS_AVAILABLE(10_9, 7_0);
+@property (nonatomic, copy, nullable) MKMapCamera *camera NS_AVAILABLE(10_9, 7_0);
 - (void)setCamera:(MKMapCamera *)camera animated:(BOOL)animated NS_AVAILABLE(10_9, 7_0);
 
 #if TARGET_OS_IPHONE
-- (CGPoint)convertCoordinate:(CLLocationCoordinate2D)coordinate toPointToView:(UIView *)view;
-- (CLLocationCoordinate2D)convertPoint:(CGPoint)point toCoordinateFromView:(UIView *)view;
-- (CGRect)convertRegion:(MKCoordinateRegion)region toRectToView:(UIView *)view;
-- (MKCoordinateRegion)convertRect:(CGRect)rect toRegionFromView:(UIView *)view;
+- (CGPoint)convertCoordinate:(CLLocationCoordinate2D)coordinate toPointToView:(nullable UIView *)view;
+- (CLLocationCoordinate2D)convertPoint:(CGPoint)point toCoordinateFromView:(nullable UIView *)view;
+- (CGRect)convertRegion:(MKCoordinateRegion)region toRectToView:(nullable UIView *)view;
+- (MKCoordinateRegion)convertRect:(CGRect)rect toRegionFromView:(nullable UIView *)view;
 #else
-- (CGPoint)convertCoordinate:(CLLocationCoordinate2D)coordinate toPointToView:(NSView *)view;
-- (CLLocationCoordinate2D)convertPoint:(CGPoint)point toCoordinateFromView:(NSView *)view;
-- (CGRect)convertRegion:(MKCoordinateRegion)region toRectToView:(NSView *)view;
-- (MKCoordinateRegion)convertRect:(CGRect)rect toRegionFromView:(NSView *)view;
+- (CGPoint)convertCoordinate:(CLLocationCoordinate2D)coordinate toPointToView:(nullable NSView *)view;
+- (CLLocationCoordinate2D)convertPoint:(CGPoint)point toCoordinateFromView:(nullable NSView *)view;
+- (CGRect)convertRegion:(MKCoordinateRegion)region toRectToView:(nullable NSView *)view;
+- (MKCoordinateRegion)convertRect:(CGRect)rect toRegionFromView:(nullable NSView *)view;
 #endif
 
 // Control the types of user interaction available
@@ -100,11 +100,11 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 @property (nonatomic, getter=isZoomEnabled) BOOL zoomEnabled;
 @property (nonatomic, getter=isScrollEnabled) BOOL scrollEnabled;
 // Rotate and pitch are enabled by default on Mac OS X and on iOS 7.0 and later.
-@property (nonatomic, getter=isRotateEnabled) BOOL rotateEnabled NS_AVAILABLE(10_9, 7_0);
-@property (nonatomic, getter=isPitchEnabled) BOOL pitchEnabled NS_AVAILABLE(10_9, 7_0);
+@property (nonatomic, getter=isRotateEnabled) BOOL rotateEnabled NS_AVAILABLE(10_9, 7_0) __TVOS_PROHIBITED;
+@property (nonatomic, getter=isPitchEnabled) BOOL pitchEnabled NS_AVAILABLE(10_9, 7_0) __TVOS_PROHIBITED;
 
 #if !TARGET_OS_IPHONE
-@property (nonatomic) BOOL showsCompass NS_AVAILABLE(10_9, NA);
+@property (nonatomic) BOOL showsCompass NS_AVAILABLE(10_9, 9_0) __TVOS_PROHIBITED;
 @property (nonatomic) BOOL showsZoomControls NS_AVAILABLE(10_9, NA);
 @property (nonatomic) BOOL showsScale NS_AVAILABLE(10_10, NA);
 #endif
@@ -116,7 +116,7 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 @property (nonatomic) BOOL showsUserLocation;
 
 // The annotation representing the user's location
-@property (nonatomic, readonly) MKUserLocation *userLocation;
+@property (nonatomic, readonly, nullable) MKUserLocation *userLocation;
 
 #if TARGET_OS_IPHONE
 @property (nonatomic) MKUserTrackingMode userTrackingMode NS_AVAILABLE(NA, 5_0);
@@ -134,18 +134,18 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 //- (void)removeAnnotations:(NSArray *)annotations;
 
 //@property (nonatomic, readonly) NSArray *annotations;
-- (NSSet *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2);
+- (NSSet<id<MKAnnotation>> *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2);
 
 // Currently displayed view for an annotation; returns nil if the view for the annotation isn't being displayed.
-- (MKAnnotationView *)viewForAnnotation:(id<MKAnnotation>)annotation;
+- (nullable MKAnnotationView *)viewForAnnotation:(id <MKAnnotation>)annotation;
 
 // Used by the delegate to acquire an already allocated annotation view, in lieu of allocating a new one.
-- (MKAnnotationView *)dequeueReusableAnnotationViewWithIdentifier:(NSString *)identifier;
+- (nullable MKAnnotationView *)dequeueReusableAnnotationViewWithIdentifier:(NSString *)identifier;
 
 // Select or deselect a given annotation.  Asks the delegate for the corresponding annotation view if necessary.
-- (void)selectAnnotation:(id<MKAnnotation>)annotation animated:(BOOL)animated;
-- (void)deselectAnnotation:(id<MKAnnotation>)annotation animated:(BOOL)animated;
-@property (nonatomic, copy) NSArray *selectedAnnotations;
+- (void)selectAnnotation:(id <MKAnnotation>)annotation animated:(BOOL)animated;
+- (void)deselectAnnotation:(nullable id <MKAnnotation>)annotation animated:(BOOL)animated;
+@property (nonatomic, copy, nullable) NSArray<id<MKAnnotation>> *selectedAnnotations;
 
 // annotationVisibleRect is the visible rect where the annotations views are currently displayed.
 // The delegate can use annotationVisibleRect when animating the adding of the annotations views in mapView:didAddAnnotationViews:
@@ -161,36 +161,36 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 // Overlays are models used to represent areas to be drawn on top of the map.
 // This is in contrast to annotations, which represent points on the map.
 // Implement -mapView:rendererForOverlay: on MKMapViewDelegate to return the renderer for each overlay.
-- (void)addOverlay:(id<MKOverlay>)overlay level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
-- (void)addOverlays:(NSArray *)overlays level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
+- (void)addOverlay:(id <MKOverlay>)overlay level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
+- (void)addOverlays:(NSArray<id<MKOverlay>> *)overlays level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
 
-- (void)removeOverlay:(id<MKOverlay>)overlay NS_AVAILABLE(10_9, 4_0);
-- (void)removeOverlays:(NSArray *)overlays NS_AVAILABLE(10_9, 4_0);
+- (void)removeOverlay:(id <MKOverlay>)overlay NS_AVAILABLE(10_9, 4_0);
+- (void)removeOverlays:(NSArray<id<MKOverlay>> *)overlays NS_AVAILABLE(10_9, 4_0);
 
-- (void)insertOverlay:(id<MKOverlay>)overlay atIndex:(NSUInteger)index level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
+- (void)insertOverlay:(id <MKOverlay>)overlay atIndex:(NSUInteger)index level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
 
-- (void)insertOverlay:(id<MKOverlay>)overlay aboveOverlay:(id<MKOverlay>)sibling NS_AVAILABLE(10_9, 4_0);
-- (void)insertOverlay:(id<MKOverlay>)overlay belowOverlay:(id<MKOverlay>)sibling NS_AVAILABLE(10_9, 4_0);
+- (void)insertOverlay:(id <MKOverlay>)overlay aboveOverlay:(id <MKOverlay>)sibling NS_AVAILABLE(10_9, 4_0);
+- (void)insertOverlay:(id <MKOverlay>)overlay belowOverlay:(id <MKOverlay>)sibling NS_AVAILABLE(10_9, 4_0);
 
-- (void)exchangeOverlay:(id<MKOverlay>)overlay1 withOverlay:(id<MKOverlay>)overlay2 NS_AVAILABLE(10_9, 7_0);
+- (void)exchangeOverlay:(id <MKOverlay>)overlay1 withOverlay:(id <MKOverlay>)overlay2 NS_AVAILABLE(10_9, 7_0);
 
-@property (nonatomic, readonly) NSArray *overlays NS_AVAILABLE(10_9, 4_0);
-- (NSArray *)overlaysInLevel:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
+@property (nonatomic, readonly) NSArray<id<MKOverlay>> *overlays NS_AVAILABLE(10_9, 4_0);
+- (NSArray<id<MKOverlay>> *)overlaysInLevel:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
 
 // Current renderer for overlay; returns nil if the overlay is not shown.
-- (MKOverlayRenderer *)rendererForOverlay:(id<MKOverlay>)overlay NS_AVAILABLE(10_9, 7_0);
+- (nullable MKOverlayRenderer *)rendererForOverlay:(id <MKOverlay>)overlay NS_AVAILABLE(10_9, 7_0);
 
 #if TARGET_OS_IPHONE
 // Currently displayed view for overlay; returns nil if the view has not been created yet.
 // Prefer using MKOverlayRenderer and -rendererForOverlay.
-- (MKOverlayView *)viewForOverlay:(id<MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0);
+- (MKOverlayView *)viewForOverlay:(id <MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0) __TVOS_PROHIBITED;
 #endif
 
 // These methods operate implicitly on overlays in MKOverlayLevelAboveLabels and may be deprecated in a future release in favor of the methods that specify the level.
-- (void)addOverlay:(id<MKOverlay>)overlay NS_AVAILABLE(10_9, 4_0);
-- (void)addOverlays:(NSArray *)overlays NS_AVAILABLE(10_9, 4_0);
+- (void)addOverlay:(id <MKOverlay>)overlay NS_AVAILABLE(10_9, 4_0);
+- (void)addOverlays:(NSArray<id<MKOverlay>> *)overlays NS_AVAILABLE(10_9, 4_0);
 
-- (void)insertOverlay:(id<MKOverlay>)overlay atIndex:(NSUInteger)index NS_AVAILABLE(10_9, 4_0);
+- (void)insertOverlay:(id <MKOverlay>)overlay atIndex:(NSUInteger)index NS_AVAILABLE(10_9, 4_0);
 - (void)exchangeOverlayAtIndex:(NSUInteger)index1 withOverlayAtIndex:(NSUInteger)index2 NS_AVAILABLE(10_9, 4_0);
 
 @end
@@ -242,7 +242,7 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didFailToLocateUserWithError:(NSError *)error NS_AVAILABLE(10_9, 4_0);
 
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState
-            fromOldState:(MKAnnotationViewDragState)oldState NS_AVAILABLE(10_9, 4_0);
+            fromOldState:(MKAnnotationViewDragState)oldState NS_AVAILABLE(10_9, 4_0) __TVOS_PROHIBITED;
 
 #if TARGET_OS_IPHONE
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated NS_AVAILABLE(NA, 5_0);
@@ -252,8 +252,8 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didAddOverlayRenderers:(NSArray *)renderers NS_AVAILABLE(10_9, 7_0);
 
 #if TARGET_OS_IPHONE
-- (MKOverlayView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForOverlay:(id<MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0);
-- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didAddOverlayViews:(NSArray *)overlayViews NS_DEPRECATED_IOS(4_0, 7_0);
+- (MKOverlayView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForOverlay:(id<MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0) __TVOS_PROHIBITED;
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didAddOverlayViews:(NSArray *)overlayViews NS_DEPRECATED_IOS(4_0, 7_0) __TVOS_PROHIBITED;
 #endif
 
 @end

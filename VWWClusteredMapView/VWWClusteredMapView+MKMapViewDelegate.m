@@ -155,7 +155,7 @@
     }
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState NS_AVAILABLE(10_9, 4_0) {
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState NS_AVAILABLE(10_9, 4_0) __TVOS_PROHIBITED {
     if([self.delegate respondsToSelector:@selector(clusteredMapView:annotationView:didChangeDragState:fromOldState:)]) {
         [self.delegate clusteredMapView:self annotationView:view didChangeDragState:newState fromOldState:oldState];
     }
@@ -183,7 +183,7 @@
 }
 
 #if TARGET_OS_IPHONE
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0) {
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0)  __TVOS_PROHIBITED{
     if([self.delegate respondsToSelector:@selector(clusteredMapView:viewForOverlay:)]) {
         return [self.delegate clusteredMapView:self viewForOverlay:overlay];
     }
@@ -191,7 +191,7 @@
     
 }
 
-- (void)mapView:(MKMapView *)mapView didAddOverlayViews:(NSArray *)overlayViews NS_DEPRECATED_IOS(4_0, 7_0) {
+- (void)mapView:(MKMapView *)mapView didAddOverlayViews:(NSArray *)overlayViews NS_DEPRECATED_IOS(4_0, 7_0)  __TVOS_PROHIBITED{
     if([self.delegate respondsToSelector:@selector(clusteredMapView:didAddOverlayViews:)]) {
         [self.delegate clusteredMapView:self didAddOverlayViews:overlayViews];
     }
