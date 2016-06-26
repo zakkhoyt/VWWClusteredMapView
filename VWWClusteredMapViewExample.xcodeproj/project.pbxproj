@@ -23,23 +23,12 @@
 		CF5741F41AC7CE9200300A05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF5741F21AC7CE9200300A05 /* Main.storyboard */; };
 		CF5741F61AC7CE9200300A05 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5741F51AC7CE9200300A05 /* Images.xcassets */; };
 		CF5741F91AC7CE9200300A05 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5741F71AC7CE9200300A05 /* LaunchScreen.xib */; };
-		CF5742051AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742041AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m */; };
 		CF5742101AC7CEF300300A05 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */; };
 		CF5742461AC7CF1600300A05 /* HotelAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742421AC7CF1600300A05 /* HotelAnnotation.m */; };
 		CF5742471AC7CF1600300A05 /* HotelAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5742441AC7CF1600300A05 /* HotelAnnotationView.m */; };
 		CF5742481AC7CF1600300A05 /* USA-HotelMotel.csv in Resources */ = {isa = PBXBuildFile; fileRef = CF5742451AC7CF1600300A05 /* USA-HotelMotel.csv */; };
 		EF163EA912C0C748C29A7128 /* libPods-VWWClusteredMapViewExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED22CA254894F31FE96DC79A /* libPods-VWWClusteredMapViewExample.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CF5741FF1AC7CE9200300A05 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CF5741DD1AC7CE9200300A05 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CF5741E41AC7CE9200300A05;
-			remoteInfo = VWWClusteredMapViewExample;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1FBACB75E9A3B03F82AD7B04 /* Pods-VWWClusteredMapViewExampleTVOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VWWClusteredMapViewExampleTVOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-VWWClusteredMapViewExampleTVOS/Pods-VWWClusteredMapViewExampleTVOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,9 +56,6 @@
 		CF5741F31AC7CE9200300A05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF5741F51AC7CE9200300A05 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CF5741F81AC7CE9200300A05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		CF5741FE1AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VWWClusteredMapViewExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF5742031AC7CE9200300A05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF5742041AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWWClusteredMapViewExampleTests.m; sourceTree = "<group>"; };
 		CF57420E1AC7CEF300300A05 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		CF57420F1AC7CEF300300A05 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		CF5742411AC7CF1600300A05 /* HotelAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelAnnotation.h; sourceTree = "<group>"; };
@@ -97,13 +83,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF163EA912C0C748C29A7128 /* libPods-VWWClusteredMapViewExample.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CF5741FB1AC7CE9200300A05 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,12 +135,20 @@
 			name = UserInterface;
 			sourceTree = "<group>";
 		};
+		C6E557FE1D20843C00B6A987 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CF5742401AC7CF1600300A05 /* Hotel */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 		CF5741DC1AC7CE9200300A05 = {
 			isa = PBXGroup;
 			children = (
+				C6E557FE1D20843C00B6A987 /* Shared */,
 				CF5741E71AC7CE9200300A05 /* VWWClusteredMapViewExample */,
 				C61BCD231D1FA97100E5AADE /* VWWClusteredMapViewExampleTVOS */,
-				CF5742011AC7CE9200300A05 /* VWWClusteredMapViewExampleTests */,
 				CF5741E61AC7CE9200300A05 /* Products */,
 				20F1FC443F342C0CB7FF905B /* Pods */,
 				F8C77507D6EA100FBD175759 /* Frameworks */,
@@ -172,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				CF5741E51AC7CE9200300A05 /* VWWClusteredMapViewExample.app */,
-				CF5741FE1AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.xctest */,
 				C61BCD221D1FA97100E5AADE /* VWWClusteredMapViewExampleTVOS.app */,
 			);
 			name = Products;
@@ -181,7 +167,6 @@
 		CF5741E71AC7CE9200300A05 /* VWWClusteredMapViewExample */ = {
 			isa = PBXGroup;
 			children = (
-				CF5742401AC7CF1600300A05 /* Hotel */,
 				CF5741EF1AC7CE9200300A05 /* ViewController.h */,
 				CF5741F01AC7CE9200300A05 /* ViewController.m */,
 				CF57420E1AC7CEF300300A05 /* SettingsTableViewController.h */,
@@ -200,23 +185,6 @@
 				CF5741ED1AC7CE9200300A05 /* AppDelegate.m */,
 				CF5741E91AC7CE9200300A05 /* Info.plist */,
 				CF5741EA1AC7CE9200300A05 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CF5742011AC7CE9200300A05 /* VWWClusteredMapViewExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				CF5742041AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m */,
-				CF5742021AC7CE9200300A05 /* Supporting Files */,
-			);
-			path = VWWClusteredMapViewExampleTests;
-			sourceTree = "<group>";
-		};
-		CF5742021AC7CE9200300A05 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CF5742031AC7CE9200300A05 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -287,24 +255,6 @@
 			productReference = CF5741E51AC7CE9200300A05 /* VWWClusteredMapViewExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CF5741FD1AC7CE9200300A05 /* VWWClusteredMapViewExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CF57420B1AC7CE9200300A05 /* Build configuration list for PBXNativeTarget "VWWClusteredMapViewExampleTests" */;
-			buildPhases = (
-				CF5741FA1AC7CE9200300A05 /* Sources */,
-				CF5741FB1AC7CE9200300A05 /* Frameworks */,
-				CF5741FC1AC7CE9200300A05 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CF5742001AC7CE9200300A05 /* PBXTargetDependency */,
-			);
-			name = VWWClusteredMapViewExampleTests;
-			productName = VWWClusteredMapViewExampleTests;
-			productReference = CF5741FE1AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -316,15 +266,13 @@
 				TargetAttributes = {
 					C61BCD211D1FA97100E5AADE = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = J7U74N85YF;
+						DevelopmentTeamName = "zachary hoyt";
 					};
 					CF5741E41AC7CE9200300A05 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = J7U74N85YF;
 						DevelopmentTeamName = "zachary hoyt";
-					};
-					CF5741FD1AC7CE9200300A05 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = CF5741E41AC7CE9200300A05;
 					};
 				};
 			};
@@ -342,7 +290,6 @@
 			projectRoot = "";
 			targets = (
 				CF5741E41AC7CE9200300A05 /* VWWClusteredMapViewExample */,
-				CF5741FD1AC7CE9200300A05 /* VWWClusteredMapViewExampleTests */,
 				C61BCD211D1FA97100E5AADE /* VWWClusteredMapViewExampleTVOS */,
 			);
 		};
@@ -368,13 +315,6 @@
 				CF5741F91AC7CE9200300A05 /* LaunchScreen.xib in Resources */,
 				CF5742481AC7CF1600300A05 /* USA-HotelMotel.csv in Resources */,
 				CF5741F61AC7CE9200300A05 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CF5741FC1AC7CE9200300A05 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,23 +439,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF5741FA1AC7CE9200300A05 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF5742051AC7CE9200300A05 /* VWWClusteredMapViewExampleTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CF5742001AC7CE9200300A05 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CF5741E41AC7CE9200300A05 /* VWWClusteredMapViewExample */;
-			targetProxy = CF5741FF1AC7CE9200300A05 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C61BCD2D1D1FA97100E5AADE /* Main.storyboard */ = {
@@ -618,7 +542,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -654,7 +578,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -686,42 +610,6 @@
 			};
 			name = Release;
 		};
-		CF57420C1AC7CE9200300A05 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = VWWClusteredMapViewExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vaporwarewolf.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VWWClusteredMapViewExample.app/VWWClusteredMapViewExample";
-			};
-			name = Debug;
-		};
-		CF57420D1AC7CE9200300A05 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = VWWClusteredMapViewExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vaporwarewolf.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VWWClusteredMapViewExample.app/VWWClusteredMapViewExample";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -748,15 +636,6 @@
 			buildConfigurations = (
 				CF5742091AC7CE9200300A05 /* Debug */,
 				CF57420A1AC7CE9200300A05 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CF57420B1AC7CE9200300A05 /* Build configuration list for PBXNativeTarget "VWWClusteredMapViewExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CF57420C1AC7CE9200300A05 /* Debug */,
-				CF57420D1AC7CE9200300A05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

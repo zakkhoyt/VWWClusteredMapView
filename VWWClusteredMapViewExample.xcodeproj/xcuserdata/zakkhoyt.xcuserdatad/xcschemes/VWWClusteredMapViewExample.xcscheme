@@ -28,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CF5741FD1AC7CE9200300A05"
-               BuildableName = "VWWClusteredMapViewExampleTests.xctest"
-               BlueprintName = "VWWClusteredMapViewExampleTests"
-               ReferencedContainer = "container:VWWClusteredMapViewExample.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -92,8 +92,28 @@ static CGFloat const VWWScaleFactorBeta = 0.4;
 
 
 -(CGFloat)scaledValueForValue:(CGFloat)value{
+    
     return 1.0 / (1.0 + expf(-1 * VWWScaleFactorAlpha * powf(value, VWWScaleFactorBeta)));
 }
 
 
+-(void)didUpdateFocusInContext:(UIFocusUpdateContext *)context withAnimationCoordinator:(UIFocusAnimationCoordinator *)coordinator {
+    NSLog(@"HotelView ");
+    //if([context.previouslyFocusedView isKindOfClass:[HotelAnnotationView class]]) {
+    if([context.previouslyFocusedView isEqual:self]) {
+        HotelAnnotationView *view = (HotelAnnotationView*)context.previouslyFocusedView;
+        view.transform = CGAffineTransformIdentity;
+    }
+    
+//    if([context.nextFocusedView isKindOfClass:[HotelAnnotationView class]]) {
+    if([context.nextFocusedView isEqual:self])  {
+        HotelAnnotationView *view = (HotelAnnotationView*)context.nextFocusedView;
+        view.transform = CGAffineTransformMakeScale(5.0, 5.0);
+    }
+    
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+}
 @end

@@ -32,6 +32,9 @@
     [super viewDidLoad];
 
     // Configure mapview data source and delegate
+    self.mapView.addAnimationType =  VWWClusteredMapViewAnnotationAddAnimationNone;
+    self.mapView.clusterDensity = ClusterMapViewDensityMacho;
+    self.mapView.enableFanout = NO;
     self.mapView.delegate = self;
     self.mapView.dataSource = self;
 
@@ -44,6 +47,21 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)didUpdateFocusInContext:(UIFocusUpdateContext *)context withAnimationCoordinator:(UIFocusAnimationCoordinator *)coordinator {
+    NSLog(@"ViewController ");
+    if([context.previouslyFocusedView isKindOfClass:[HotelAnnotationView class]]) {
+        HotelAnnotationView *view = (HotelAnnotationView*)context.previouslyFocusedView;
+        view.transform = CGAffineTransformIdentity;
+    }
+    
+    if([context.nextFocusedView isKindOfClass:[HotelAnnotationView class]]) {
+        HotelAnnotationView *view = (HotelAnnotationView*)context.nextFocusedView;
+        view.transform = CGAffineTransformMakeScale(5.0, 5.0);
+    }
+    
+}
+
 
 @end
 
@@ -81,10 +99,21 @@
 }
 
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view {
-    NSLog(@"TODO: show details");
-    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Tapped" message:@"Annotation cluster tapped. Do what you will." preferredStyle:UIAlertControllerStyleAlert];
-    [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
-    [self presentViewController:ac animated:YES completion:NULL];
+    [UIView animateWithDuration:0.3 animations:^{
+        view.transform = CGAffineTransformMakeScale(2, 2);
+        view.alpha = 0.5;
+    }];
+    
+//    NSLog(@"TODO: show details");
+//    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Tapped" message:@"Annotation cluster tapped. Do what you will." preferredStyle:UIAlertControllerStyleAlert];
+//    [ac addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
+//    [self presentViewController:ac animated:YES completion:NULL];
 }
+
+- (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(VWWClusteredAnnotationView *)view {
+    view.transform = CGAffineTransformIdentity;
+    view.alpha = 1.0;
+}
+
 
 @end
