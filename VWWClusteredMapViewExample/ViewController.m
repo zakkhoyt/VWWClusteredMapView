@@ -91,16 +91,12 @@
 @end
 
 @implementation ViewController (VWWClusteredMapViewDataSource)
-
-- (NSInteger)numberOfSectionsInMapView:(VWWClusteredMapView*)mapView{
-    return 1;
-}
-- (NSInteger)mapView:(VWWClusteredMapView*)mapView numberOfAnnotationsInSection:(NSInteger)section{
+- (NSInteger)mapViewNumberOfAnnotations:(VWWClusteredMapView*)mapView{
     return self.hotelAnnotations.count;
 }
 
-- (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return self.hotelAnnotations[indexPath.item];
+- (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndex:(NSInteger)index {
+    return self.hotelAnnotations[index];
 }
 
 @end

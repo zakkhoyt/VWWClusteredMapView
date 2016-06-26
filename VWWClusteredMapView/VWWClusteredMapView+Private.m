@@ -14,34 +14,44 @@
 @implementation VWWClusteredMapView (Private)
 
 - (void)refreshClusterableAnnotations {
-
-    NSMutableSet *before = self.clusteredAnnotations;
-    self.lastClusteredAnnotations = [NSSet setWithSet:before];
-
-    double scale = self.bounds.size.width / self.visibleMapRect.size.width;
-    NSArray *currentAnnotations = [self.quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
-
-    NSMutableSet *after = [NSMutableSet setWithArray:currentAnnotations];
-    [after removeObject:[self userLocation]];
-    NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
-    [toKeep intersectSet:after];
-
-    NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
-    [toAdd minusSet:toKeep];
-
-    NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
-    [toRemove minusSet:after];
-
-    [self.clusteredAnnotations unionSet:toAdd];
-    [self.clusteredAnnotations minusSet:toRemove];
-
-    [self removeAnnotations:[toRemove allObjects] completionBlock:^{
-        [self.mapView addAnnotations:[toAdd allObjects]];
-        NSTimeInterval interval = self.addAnnotationAnimationDuration + 0.25;  // animation + max possible stagger delay
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(interval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                                                                                 //                [self.lock unlock];
-                                                                                             });
-    }];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        if ([self.lock tryLock]) {
+            NSMutableSet *before = self.clusteredAnnotations;
+            self.lastClusteredAnnotations = [NSSet setWithSet:before];
+            
+            double scale = self.bounds.size.width / self.visibleMapRect.size.width;
+            NSArray *currentAnnotations = [self.quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
+            
+            if (currentAnnotations.count == 0 && self.lastClusteredAnnotations.count == 0) {
+                [self.lock unlock];
+                return;
+            }
+            
+            NSMutableSet *after = [NSMutableSet setWithArray:currentAnnotations];
+            [after removeObject:[self userLocation]];
+            NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
+            [toKeep intersectSet:after];
+            
+            NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
+            [toAdd minusSet:toKeep];
+            
+            NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
+            [toRemove minusSet:after];
+            
+            [self.clusteredAnnotations unionSet:toAdd];
+            [self.clusteredAnnotations minusSet:toRemove];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self removeAnnotations:[toRemove allObjects] completionBlock:^{
+                    [self.mapView addAnnotations:[toAdd allObjects]];
+                    NSTimeInterval interval = self.addAnnotationAnimationDuration + 0.25;  // animation + max possible stagger delay
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(interval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [self.lock unlock];
+                    });
+                }];
+            });
+        }
+    });
 }
 
 - (void)removeAnnotations:(NSArray *)annotations completionBlock:(VWWClusteredMapViewEmptyBlock)completionBlock {

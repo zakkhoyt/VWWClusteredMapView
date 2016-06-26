@@ -5,12 +5,10 @@
 //  Created by Zakk Hoyt on 3/28/15.
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 
-
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "VWWClusteredAnnotation.h"
 #import "VWWClusteredAnnotationView.h"
-
 
 typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
     ClusterMapViewDensityWimpy = 0,
@@ -18,11 +16,9 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
     ClusterMapViewDensityMacho,
 };
 
-
 // Defined at bottom of file
 @protocol VWWClusteredMapViewDataSource;
 @protocol VWWClusteredMapViewDelegate;
-
 
 @interface VWWClusteredMapView : UIView
 
@@ -39,14 +35,13 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 @property (weak, nonatomic) id<VWWClusteredMapViewDataSource> dataSource;
 @property (weak, nonatomic) id<VWWClusteredMapViewDelegate> delegate;
 
--(void)reloadData;
+- (void)reloadData;
 
-//
-//- (void)insertAnnotationsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
-//- (void)deleteAnnotationsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
-//- (void)reloadAnnotationsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
-//- (void)moveAnnotationsAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
-
+// TODO: Add functions to allow inserting/deleting/moving with animation
+//- (void)insertAnnotationsAtIndex:(NSInteger)index withRowAnimation:(UITableViewRowAnimation)animation;
+//- (void)deleteAnnotationsAtIndex:(NSInteger)index withRowAnimation:(UITableViewRowAnimation)animation;
+//- (void)reloadAnnotationsAtIndex:(NSInteger)index withRowAnimation:(UITableViewRowAnimation)animation;
+//- (void)moveAnnotationsAtIndex:(NSInteger)index toIndexIndex:(NSInteger)newIndex;
 @end
 
 @interface VWWClusteredMapView (MKMapView)
@@ -111,8 +106,8 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 @property (nonatomic) BOOL showsScale NS_AVAILABLE(10_10, NA);
 #endif
 
-@property (nonatomic) BOOL showsPointsOfInterest NS_AVAILABLE(10_9, 7_0); // Affects MKMapTypeStandard and MKMapTypeHybrid
-@property (nonatomic) BOOL showsBuildings NS_AVAILABLE(10_9, 7_0); // Affects MKMapTypeStandard
+@property (nonatomic) BOOL showsPointsOfInterest NS_AVAILABLE(10_9, 7_0);  // Affects MKMapTypeStandard and MKMapTypeHybrid
+@property (nonatomic) BOOL showsBuildings NS_AVAILABLE(10_9, 7_0);         // Affects MKMapTypeStandard
 
 // Set to YES to add the user location annotation to the map and start updating its location
 @property (nonatomic) BOOL showsUserLocation;
@@ -140,14 +135,14 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 //- (NSSet *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2);
 
 // Currently displayed view for an annotation; returns nil if the view for the annotation isn't being displayed.
-- (MKAnnotationView *)viewForAnnotation:(id <MKAnnotation>)annotation;
+- (MKAnnotationView *)viewForAnnotation:(id<MKAnnotation>)annotation;
 
 // Used by the delegate to acquire an already allocated annotation view, in lieu of allocating a new one.
 - (MKAnnotationView *)dequeueReusableAnnotationViewWithIdentifier:(NSString *)identifier;
 
 // Select or deselect a given annotation.  Asks the delegate for the corresponding annotation view if necessary.
-- (void)selectAnnotation:(id <MKAnnotation>)annotation animated:(BOOL)animated;
-- (void)deselectAnnotation:(id <MKAnnotation>)annotation animated:(BOOL)animated;
+- (void)selectAnnotation:(id<MKAnnotation>)annotation animated:(BOOL)animated;
+- (void)deselectAnnotation:(id<MKAnnotation>)annotation animated:(BOOL)animated;
 @property (nonatomic, copy) NSArray *selectedAnnotations;
 
 // annotationVisibleRect is the visible rect where the annotations views are currently displayed.
@@ -157,73 +152,64 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 // Position the map such that the provided array of annotations are all visible to the fullest extent possible.
 - (void)showAnnotations:(NSArray *)annotations animated:(BOOL)animated NS_AVAILABLE(10_9, 7_0);
 
-
-
 @end
-
 
 @interface VWWClusteredMapView (MKMapView_OverlaysAPI)
 
 // Overlays are models used to represent areas to be drawn on top of the map.
 // This is in contrast to annotations, which represent points on the map.
 // Implement -mapView:rendererForOverlay: on MKMapViewDelegate to return the renderer for each overlay.
-- (void)addOverlay:(id <MKOverlay>)overlay level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
+- (void)addOverlay:(id<MKOverlay>)overlay level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
 - (void)addOverlays:(NSArray *)overlays level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
 
-- (void)removeOverlay:(id <MKOverlay>)overlay NS_AVAILABLE(10_9, 4_0);
+- (void)removeOverlay:(id<MKOverlay>)overlay NS_AVAILABLE(10_9, 4_0);
 - (void)removeOverlays:(NSArray *)overlays NS_AVAILABLE(10_9, 4_0);
 
-- (void)insertOverlay:(id <MKOverlay>)overlay atIndex:(NSUInteger)index level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
+- (void)insertOverlay:(id<MKOverlay>)overlay atIndex:(NSUInteger)index level:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
 
-- (void)insertOverlay:(id <MKOverlay>)overlay aboveOverlay:(id <MKOverlay>)sibling NS_AVAILABLE(10_9, 4_0);
-- (void)insertOverlay:(id <MKOverlay>)overlay belowOverlay:(id <MKOverlay>)sibling NS_AVAILABLE(10_9, 4_0);
+- (void)insertOverlay:(id<MKOverlay>)overlay aboveOverlay:(id<MKOverlay>)sibling NS_AVAILABLE(10_9, 4_0);
+- (void)insertOverlay:(id<MKOverlay>)overlay belowOverlay:(id<MKOverlay>)sibling NS_AVAILABLE(10_9, 4_0);
 
-- (void)exchangeOverlay:(id <MKOverlay>)overlay1 withOverlay:(id <MKOverlay>)overlay2 NS_AVAILABLE(10_9, 7_0);
+- (void)exchangeOverlay:(id<MKOverlay>)overlay1 withOverlay:(id<MKOverlay>)overlay2 NS_AVAILABLE(10_9, 7_0);
 
 @property (nonatomic, readonly) NSArray *overlays NS_AVAILABLE(10_9, 4_0);
 - (NSArray *)overlaysInLevel:(MKOverlayLevel)level NS_AVAILABLE(10_9, 7_0);
 
 // Current renderer for overlay; returns nil if the overlay is not shown.
-- (MKOverlayRenderer *)rendererForOverlay:(id <MKOverlay>)overlay NS_AVAILABLE(10_9, 7_0);
+- (MKOverlayRenderer *)rendererForOverlay:(id<MKOverlay>)overlay NS_AVAILABLE(10_9, 7_0);
 
 #if TARGET_OS_IPHONE
 // Currently displayed view for overlay; returns nil if the view has not been created yet.
 // Prefer using MKOverlayRenderer and -rendererForOverlay.
-- (MKOverlayView *)viewForOverlay:(id <MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0);
+- (MKOverlayView *)viewForOverlay:(id<MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0);
 #endif
 
 // These methods operate implicitly on overlays in MKOverlayLevelAboveLabels and may be deprecated in a future release in favor of the methods that specify the level.
-- (void)addOverlay:(id <MKOverlay>)overlay NS_AVAILABLE(10_9, 4_0);
+- (void)addOverlay:(id<MKOverlay>)overlay NS_AVAILABLE(10_9, 4_0);
 - (void)addOverlays:(NSArray *)overlays NS_AVAILABLE(10_9, 4_0);
 
-- (void)insertOverlay:(id <MKOverlay>)overlay atIndex:(NSUInteger)index NS_AVAILABLE(10_9, 4_0);
+- (void)insertOverlay:(id<MKOverlay>)overlay atIndex:(NSUInteger)index NS_AVAILABLE(10_9, 4_0);
 - (void)exchangeOverlayAtIndex:(NSUInteger)index1 withOverlayAtIndex:(NSUInteger)index2 NS_AVAILABLE(10_9, 4_0);
 
 @end
 
-
-
-
-
 @protocol VWWClusteredMapViewDataSource <NSObject>
 @required
 
-- (NSInteger)mapViewNumberOfAnnotations:(VWWClusteredMapView*)mapView;
-- (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndex:(NSInteger)index;
+- (NSInteger)mapViewNumberOfAnnotations:(VWWClusteredMapView *)mapView;
+- (id<MKAnnotation>)mapView:(VWWClusteredMapView *)mapView annotationForItemAtIndex:(NSInteger)index;
 
 @end
 
 @protocol VWWClusteredMapViewDelegate <NSObject>
 @required
 
-    
 @optional
 // *********************************************************
 // Methods in this section are additional to MKMapViewDelegate
-- (VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id <MKAnnotation>)annotation;
+- (VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(id<MKAnnotation>)annotation;
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didSelectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didDeselectClusteredAnnotationView:(VWWClusteredAnnotationView *)view NS_AVAILABLE(10_9, 4_0);
-
 
 // *********************************************************
 // Methods in this section are wrapped versions of MKMapViewDelegate
@@ -237,7 +223,7 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 - (void)clusteredMapViewWillStartRenderingMap:(VWWClusteredMapView *)clusteredMapView NS_AVAILABLE(10_9, 7_0);
 - (void)clusteredMapViewDidFinishRenderingMap:(VWWClusteredMapView *)clusteredMapView fullyRendered:(BOOL)fullyRendered NS_AVAILABLE(10_9, 7_0);
 
-- (MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForAnnotation:(id <MKAnnotation>)annotation;
+- (MKAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForAnnotation:(id<MKAnnotation>)annotation;
 
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didAddAnnotationViews:(NSArray *)views;
 
@@ -260,11 +246,11 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated NS_AVAILABLE(NA, 5_0);
 #endif
 
-- (MKOverlayRenderer *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView rendererForOverlay:(id <MKOverlay>)overlay NS_AVAILABLE(10_9, 7_0);
+- (MKOverlayRenderer *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView rendererForOverlay:(id<MKOverlay>)overlay NS_AVAILABLE(10_9, 7_0);
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didAddOverlayRenderers:(NSArray *)renderers NS_AVAILABLE(10_9, 7_0);
 
 #if TARGET_OS_IPHONE
-- (MKOverlayView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForOverlay:(id <MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0);
+- (MKOverlayView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForOverlay:(id<MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0);
 - (void)clusteredMapView:(VWWClusteredMapView *)clusteredMapView didAddOverlayViews:(NSArray *)overlayViews NS_DEPRECATED_IOS(4_0, 7_0);
 #endif
 

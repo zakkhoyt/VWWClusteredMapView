@@ -51,24 +51,27 @@
 
 
 +(void)quadTree:(VWWQuadTreeNode*)node gatherDataInRange:(VWWBoundingBox*)range block:(VWWDataReturnBlock)block{
-    if([VWWQuadTree boundingBox:node.boundingBox intersectsBoundingBox:range] == NO){
-        return;
-    }
-    
-    for(NSUInteger index = 0; index < node.count; index++){
-        if([VWWQuadTree boundingBox:range containsData:node.points[index]]){
-            block(node.points[index]);
+
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        if([VWWQuadTree boundingBox:node.boundingBox intersectsBoundingBox:range] == NO){
+            return;
         }
-    }
-    
-    if(node.northWest == nil){
-        return;
-    }
-    
-    [VWWQuadTree quadTree:node.northWest gatherDataInRange:range block:block];
-    [VWWQuadTree quadTree:node.northEast gatherDataInRange:range block:block];
-    [VWWQuadTree quadTree:node.southWest gatherDataInRange:range block:block];
-    [VWWQuadTree quadTree:node.southEast gatherDataInRange:range block:block];
+        
+        for(NSUInteger index = 0; index < node.count; index++){
+            if([VWWQuadTree boundingBox:range containsData:node.points[index]]){
+                block(node.points[index]);
+            }
+        }
+        
+        if(node.northWest == nil){
+            return;
+        }
+        
+        [VWWQuadTree quadTree:node.northWest gatherDataInRange:range block:block];
+        [VWWQuadTree quadTree:node.northEast gatherDataInRange:range block:block];
+        [VWWQuadTree quadTree:node.southWest gatherDataInRange:range block:block];
+        [VWWQuadTree quadTree:node.southEast gatherDataInRange:range block:block];
+//    });
 }
 
 +(BOOL)quadTree:(VWWQuadTreeNode*)node insertData:(VWWQuadTreeNodeData*)data{

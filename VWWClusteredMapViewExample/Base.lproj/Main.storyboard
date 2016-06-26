@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D9c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dP6-on-Rpz" customClass="VWWClusteredMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="424"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBs-Ey-tsO">
@@ -50,6 +50,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dP6-on-Rpz" secondAttribute="bottom" id="6H5-H6-f9J"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yID-Sw-HZS" secondAttribute="bottom" constant="8" id="9Fz-Eh-k4c"/>
                             <constraint firstAttribute="trailing" secondItem="wBs-Ey-tsO" secondAttribute="trailing" id="EWH-7H-HFg"/>
                             <constraint firstItem="wBs-Ey-tsO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Fau-fZ-3oo"/>
@@ -60,6 +61,11 @@
                             <constraint firstItem="dP6-on-Rpz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lCg-sb-P49"/>
                             <constraint firstItem="dP6-on-Rpz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="m6z-OG-xS1"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fdH-2x-wRJ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="bottomConstraint" destination="Yqh-7L-VbK" id="76I-0v-ukJ"/>
