@@ -41,15 +41,6 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 
 -(void)reloadData;
 
-
--(void)setSection:(NSUInteger)section hidden:(BOOL)hidden;
--(BOOL)sectionHidden:(NSUInteger)section;
--(void)moveSectionToTop:(NSUInteger)section;
-
-// TODO:
-//- (void)insertSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAddAnimation)animation;
-//- (void)deleteSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAddAnimation)animation;
-//- (void)reloadSections:(NSIndexSet *)sections withAnnotationAnimation:(VWWClusteredMapViewAnnotationAddAnimation)animation;
 //
 //- (void)insertAnnotationsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
 //- (void)deleteAnnotationsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
@@ -216,9 +207,9 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 
 @protocol VWWClusteredMapViewDataSource <NSObject>
 @required
-- (NSInteger)numberOfSectionsInMapView:(VWWClusteredMapView*)mapView;
-- (NSInteger)mapView:(VWWClusteredMapView*)mapView numberOfAnnotationsInSection:(NSInteger)section;
-- (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSInteger)mapViewNumberOfAnnotations:(VWWClusteredMapView*)mapView;
+- (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndex:(NSInteger)index;
 
 @end
 

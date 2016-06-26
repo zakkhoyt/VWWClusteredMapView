@@ -25,7 +25,7 @@
 
 -(void)buildTreeWithItems:(NSArray*)data{
     VWWBoundingBox *world = [VWWBoundingBox boundingBoxForWorld];
-    self.root = [VWWQuadTree quadTreeBuildWithData:data count:data.count boundingBox:world capacity:4];
+    self.root = [VWWQuadTree quadTreeBuildWithData:data boundingBox:world capacity:4];
 }
 
 

@@ -105,11 +105,10 @@
 }
 
 +(VWWQuadTreeNode*)quadTreeBuildWithData:(NSArray*)data
-                                   count:(NSInteger)count
                              boundingBox:(VWWBoundingBox*)boundingBox
                                 capacity:(NSInteger)capacity{
     VWWQuadTreeNode *root = [[VWWQuadTreeNode alloc]initWithBoundingBox:boundingBox capacity:capacity];
-    for(NSUInteger index = 0; index < count; index++){
+    for(NSUInteger index = 0; index < data.count; index++){
         [VWWQuadTree quadTree:root insertData:data[index]];
     }
     return root;

@@ -23,6 +23,6 @@ typedef void(^VWWDataReturnBlock)(VWWQuadTreeNodeData* data);
 +(void)quadTreeTraverse:(VWWQuadTreeNode*)node block:(VWWQuadTreeTraverseBlock)block;
 +(void)quadTree:(VWWQuadTreeNode*)node gatherDataInRange:(VWWBoundingBox*)range block:(VWWDataReturnBlock)block;
 +(BOOL)quadTree:(VWWQuadTreeNode*)node insertData:(VWWQuadTreeNodeData*)data;
-+(VWWQuadTreeNode*)quadTreeBuildWithData:(NSArray*)data count:(NSInteger)count boundingBox:(VWWBoundingBox*)boundingBox capacity:(NSInteger)capacity;
++(VWWQuadTreeNode*)quadTreeBuildWithData:(NSArray*)data boundingBox:(VWWBoundingBox*)boundingBox capacity:(NSInteger)capacity;
 
 @end
