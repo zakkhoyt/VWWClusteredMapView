@@ -99,10 +99,10 @@
     return [UIColor colorWithRed:(0X2D/(float)0xFF) green:(0x4A/(float)0xFF) blue:(0x3B/(float)0xFF) alpha:1.0];
 }
 +(UIColor*)zhLightTextColor{
-    return [UIColor lightTextColor];
+    return [UIColor lightGrayColor];
 }
 +(UIColor*)zhDarkTextColor{
-    return [UIColor darkTextColor];
+    return [UIColor darkGrayColor];
 }
 
 
