@@ -35,6 +35,9 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 @property (weak, nonatomic) id<VWWClusteredMapViewDataSource> dataSource;
 @property (weak, nonatomic) id<VWWClusteredMapViewDelegate> delegate;
 
+// When the user taps overlapping annotations, fan them out. Default = YES
+@property (nonatomic) BOOL enableFanout;
+
 - (void)reloadData;
 
 // TODO: Add functions to allow inserting/deleting/moving with animation
@@ -123,8 +126,7 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 // Returns YES if the user's location is displayed within the currently visible map region.
 @property (nonatomic, readonly, getter=isUserLocationVisible) BOOL userLocationVisible;
 
-//// Annotations are models used to annotate coordinates on the map.
-//// Implement mapView:viewForAnnotation: on MKMapViewDelegate to return the annotation view for each annotation.
+//// These methods are not passed through to the user, but instead we use the VWWClusteredMapViewDataSource protocol
 //- (void)addAnnotation:(id <MKAnnotation>)annotation;
 //- (void)addAnnotations:(NSArray *)annotations;
 //
@@ -132,7 +134,7 @@ typedef NS_ENUM(NSInteger, ClusterMapViewDensity) {
 //- (void)removeAnnotations:(NSArray *)annotations;
 
 //@property (nonatomic, readonly) NSArray *annotations;
-//- (NSSet *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2);
+- (NSSet *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2);
 
 // Currently displayed view for an annotation; returns nil if the view for the annotation isn't being displayed.
 - (MKAnnotationView *)viewForAnnotation:(id<MKAnnotation>)annotation;

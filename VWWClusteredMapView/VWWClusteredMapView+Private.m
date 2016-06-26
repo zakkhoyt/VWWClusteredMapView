@@ -14,44 +14,46 @@
 @implementation VWWClusteredMapView (Private)
 
 - (void)refreshClusterableAnnotations {
+    //    if ([self.lock tryLock]) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        if ([self.lock tryLock]) {
-            NSMutableSet *before = self.clusteredAnnotations;
-            self.lastClusteredAnnotations = [NSSet setWithSet:before];
-            
-            double scale = self.bounds.size.width / self.visibleMapRect.size.width;
-            NSArray *currentAnnotations = [self.quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
-            
-            if (currentAnnotations.count == 0 && self.lastClusteredAnnotations.count == 0) {
-                [self.lock unlock];
-                return;
-            }
-            
-            NSMutableSet *after = [NSMutableSet setWithArray:currentAnnotations];
-            [after removeObject:[self userLocation]];
-            NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
-            [toKeep intersectSet:after];
-            
-            NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
-            [toAdd minusSet:toKeep];
-            
-            NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
-            [toRemove minusSet:after];
-            
-            [self.clusteredAnnotations unionSet:toAdd];
-            [self.clusteredAnnotations minusSet:toRemove];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self removeAnnotations:[toRemove allObjects] completionBlock:^{
-                    [self.mapView addAnnotations:[toAdd allObjects]];
-                    NSTimeInterval interval = self.addAnnotationAnimationDuration + 0.25;  // animation + max possible stagger delay
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(interval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [self.lock unlock];
-                    });
-                }];
-            });
+
+        NSMutableSet *before = self.clusteredAnnotations;
+        self.lastClusteredAnnotations = [NSSet setWithSet:before];
+
+        double scale = self.bounds.size.width / self.visibleMapRect.size.width;
+        NSArray *currentAnnotations = [self.quadTree clusteredAnnotationsWithinMapRect:self.visibleMapRect withZoomScale:scale];
+
+        if (currentAnnotations.count == 0 && self.lastClusteredAnnotations.count == 0) {
+            //                [self.lock unlock];
+            return;
         }
+
+        NSMutableSet *after = [NSMutableSet setWithArray:currentAnnotations];
+        [after removeObject:[self userLocation]];
+        NSMutableSet *toKeep = [NSMutableSet setWithSet:before];
+        [toKeep intersectSet:after];
+
+        NSMutableSet *toAdd = [NSMutableSet setWithSet:after];
+        [toAdd minusSet:toKeep];
+
+        NSMutableSet *toRemove = [NSMutableSet setWithSet:before];
+        [toRemove minusSet:after];
+
+        [self.clusteredAnnotations unionSet:toAdd];
+        [self.clusteredAnnotations minusSet:toRemove];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self removeAnnotations:[toRemove allObjects] completionBlock:^{
+                [self.mapView addAnnotations:[toAdd allObjects]];
+                NSTimeInterval interval = self.addAnnotationAnimationDuration + 0.25;  // animation + max possible stagger delay
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(interval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                                                                         //                        [self.lock unlock];
+                                                                                                     });
+            }];
+        });
+
     });
+    //    }
 }
 
 - (void)removeAnnotations:(NSArray *)annotations completionBlock:(VWWClusteredMapViewEmptyBlock)completionBlock {
@@ -67,26 +69,6 @@
         if (completionBlock) {
             completionBlock();
         }
-        return;
-    }
-
-    if (self.removeAnimationType == VWWClusteredMapViewAnnotationRemoveAnimationGravity) {
-        // Gravity remove animation
-        //    http://www.raywenderlich.com/50197/uikit-dynamics-tutorial
-        [annotations enumerateObjectsUsingBlock:^(id<MKAnnotation> annotation, NSUInteger idx, BOOL *stop) {
-            MKAnnotationView *annotationView = [self.mapView viewForAnnotation:annotation];
-            if (annotationView) {
-                [self.gravity addItem:annotationView];
-            }
-        }];
-
-        [self.animator addBehavior:self.gravity];
-
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.animator removeBehavior:self.gravity];
-            completionBlock();
-        });
-
     } else {
         __block NSUInteger count = 0;
         [annotations enumerateObjectsUsingBlock:^(id<MKAnnotation> annotation, NSUInteger idx, BOOL *stop) {
@@ -105,58 +87,6 @@
                     }
                 }];
         }];
-    }
-}
-
-- (void)setAnimationPointsForAnnotationView:(VWWClusteredAnnotationView *)annotationView {
-
-    //    VWWClusteredAnnotation *annotation = annotationView.annotation;
-    //    if([annotation isKindOfClass:[VWWClusteredAnnotation class]] == NO){
-    //        // TODO: Assert
-    //        return;
-    //    }
-    //
-    //    NSSet *annotationStacks = [NSSet setWithArray:annotation.annotations];
-    //    // Find splits
-    //    for(VWWClusteredAnnotation *lastAnnotation in self.lastClusteredAnnotations){
-    //        NSSet *lastClusteredAnnotationstacks = [NSSet setWithArray:lastAnnotation.annotations];
-    //        if([annotationStacks isSubsetOfSet:lastClusteredAnnotationstacks]){
-    //            CGPoint fromPoint = [self.mapView convertCoordinate:lastAnnotation.coordinate toPointToView:self];
-    //            annotationView.splitFromPoint = fromPoint;
-    //            break;
-    //        }
-    //    }
-    //    [self.lastClusteredAnnotations enumerateObjectsUsingBlock:^(NSSet* _Nonnull lastSet, NSUInteger idx, BOOL * _Nonnull stop) {
-    //        [lastSet enumerateObjectsUsingBlock:^(VWWClusteredAnnotation*  _Nonnull lastAnnotation, BOOL * _Nonnull stop) {
-    //            NSLog(@"");
-    //        }];
-    //    }];
-
-    //    // Find merges
-    //    for(VWWClusteredAnnotation *lastAnnotation in self.lastClusteredAnnotations){
-    //        NSSet *lastClusteredAnnotationstacks = [NSSet setWithArray:lastAnnotation.annotations];
-    //        if([lastClusteredAnnotationstacks isSubsetOfSet:annotationStacks]){
-    //            CGPoint toPoint = [self.mapView convertCoordinate:annotation.coordinate toPointToView:self];
-    //            annotationView.mergeToPoint = toPoint;
-    //            break;
-    //        }
-    //    }
-}
-
-//-(void)refreshAnnotations{
-//    [self.mapView removeAnnotations:self.annotations];
-//    [self refreshClusterableAnnotations];
-//}
-
-- (void)updateViewsBasedOnMapRegion:(CADisplayLink *)link {
-    // Only re-render the layover if region has changed
-    if (self.lastRegion.center.latitude != self.mapView.region.center.latitude ||
-        self.lastRegion.center.longitude != self.mapView.region.center.longitude ||
-        self.lastRegion.span.latitudeDelta != self.mapView.region.span.latitudeDelta ||
-        self.lastRegion.span.longitudeDelta != self.mapView.region.span.longitudeDelta) {
-        @synchronized(self) {
-            self.lastRegion = self.mapView.region;
-        }
     }
 }
 

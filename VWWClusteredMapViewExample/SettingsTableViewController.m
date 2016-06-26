@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegment;
 @property (weak, nonatomic) IBOutlet UISwitch *annotationsAreClusterableSwitch;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *clusterDensitySegment;
-@property (weak, nonatomic) IBOutlet UISwitch *annotationsAreSnapableSwitch;
 @end
 
 
@@ -23,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapTypeSegment.selectedSegmentIndex = 0;
-//    self.annotationsAreClusterableSwitch.on = self.mapView.annotationsAreClusterable;
     self.clusterDensitySegment.selectedSegmentIndex = (NSUInteger)self.mapView.clusterDensity;
 }
 
@@ -39,9 +37,6 @@
     self.mapView.mapType = mapType;
 }
 
-- (IBAction)annotationsAreClusterableSwitchValueChanged:(UISwitch*)sender {
-//    self.mapView.annotationsAreClusterable = sender.on;
-}
 
 - (IBAction)clusterDensitySegmentValueChanged:(UISegmentedControl*)sender {
     self.mapView.clusterDensity = (ClusterMapViewDensity)sender.selectedSegmentIndex;

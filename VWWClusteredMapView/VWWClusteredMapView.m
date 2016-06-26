@@ -38,6 +38,7 @@
     self.lock = [NSLock new];
     self.addAnnotationAnimationDuration = 0.25;
     self.removeAnnotationAnimationDuration = 0.075;
+    self.enableFanout = YES;
 
     self.addAnimationType = VWWClusteredMapViewAnnotationAddAnimationAutomatic;
     MKMapView *mapView = [[MKMapView alloc] initWithFrame:frame];
@@ -48,16 +49,13 @@
     [self setMapView:mapView];
     [self setAnimateReclusting:YES];
     [self setClusterDensity:ClusterMapViewDensityNormal];
-    [self setupDynamics];
 }
 
 - (ClusterMapViewDensity)clusterDensity {
-
     if (self.quadTree) {
         return (ClusterMapViewDensity)self.quadTree.clusterDensity;
     }
 
-    NSLog(@"TODO: clusterDensity");
     return ClusterMapViewDensityNormal;
 }
 
@@ -66,39 +64,17 @@
     [self refreshClusterableAnnotations];
 }
 
-- (void)setAnimateReclusting:(BOOL)animateReclusting {
-    _animateReclusting = animateReclusting;
-}
-
-- (void)setupDynamics {
-    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self];
-    self.gravity = [[UIGravityBehavior alloc] init];
-    self.gravity.magnitude = 5.0;
-}
-
-// TODO:
-- (MKAnnotationView *)viewForClusteredAnnotation:(id<MKAnnotation>)annotation {
-    NSLog(@"TODO: %s", __PRETTY_FUNCTION__);
-    return nil;
-}
 
 - (void)reloadData {
     // Remove current annotations and clean up data
     [self.mapView removeAnnotations:self.mapView.annotations];
-    //    [self.quadTrees removeAllObjects];
     _quadTree = nil;
-    //    [self.clusteredAnnotations removeAllObjects];
-    //    [self.lastClusteredAnnotations removeAllObjects];
-
-    //    NSUInteger sectionCount = [self.dataSource numberOfSectionsInMapView:self];
-    // Prep some iVars for the future
-    //    self.quadTrees = [[NSMutableArray alloc]initWithCapacity:sectionCount];
+    
     self.quadTree = [[VWWCoordinateQuadTree alloc] init];
     self.clusteredAnnotations = [[NSMutableSet alloc] init];
     self.lastClusteredAnnotations = [[NSMutableSet alloc] init];
 
     // Build clustered annotations from loose annotations
-
     NSMutableArray *annotations = [@[] mutableCopy];
     NSUInteger itemCount = [self.dataSource mapViewNumberOfAnnotations:self];
     for (NSUInteger itemIndex = 0; itemIndex < itemCount; itemIndex++) {
@@ -113,7 +89,6 @@
         [nodes addObject:node];
     }];
     [self.quadTree buildTreeWithItems:nodes];
-
 
     [self refreshClusterableAnnotations];
 }
@@ -321,53 +296,9 @@
     return self.mapView.userLocationVisible;
 }
 
-//- (void)addAnnotation:(id <MKAnnotation>)annotation{
-//    [self.mapView addAnnotation:annotation];
-//}
-//
-//
-//- (void)addAnnotations:(NSArray *)annotations{
-//
-//    // Unclustered
-//    if(!self.unclusteredAnnotations){
-//        self.unclusteredAnnotations = [@[]mutableCopy];
-//    }
-//    [self.unclusteredAnnotations addObjectsFromArray:annotations];
-//
-//
-//
-//    NSMutableArray *treeAnnotations = [@[]mutableCopy];
-//
-//    [annotations enumerateObjectsUsingBlock:^(id annotation, NSUInteger idx, BOOL *stop) {
-//        VWWQuadTreeNodeData *node = [[VWWQuadTreeNodeData alloc]initWithAnotation:annotation];
-//        [treeAnnotations addObject:node];
-//    }];
-//
-//    if(self.annotationsAreClusterable){
-//        [self.coordinateQuadTree buildTreeWithItems:treeAnnotations];
-//        [self refreshClusterableAnnotations];
-//
-//    } else {
-//        [self.mapView addAnnotations:annotations];
-//    }
-//
-//}
-//
-//- (void)removeAnnotation:(id <MKAnnotation>)annotation {
-//    [self.mapView removeAnnotation:annotation];
-//}
-//- (void)removeAnnotations:(NSArray *)annotations {
-//    [self.mapView removeAnnotations:annotations];
-//}
-
-//
-//-(NSArray*)annotations {
-//    return self.mapView.annotations;
-//}
-//
-//- (NSSet *)annotationsInMapRect:(MKMapRect)mapRect NS_AVAILABLE(10_9, 4_2) {
-//    return [self.mapView annotationsInMapRect:mapRect];
-//}
+- (NSSet *)annotationsInMapRect:(MKMapRect)mapRect {
+    return [self.mapView annotationsInMapRect:mapRect];
+}
 
 - (MKAnnotationView *)viewForAnnotation:(id<MKAnnotation>)annotation {
     return [self.mapView viewForAnnotation:annotation];

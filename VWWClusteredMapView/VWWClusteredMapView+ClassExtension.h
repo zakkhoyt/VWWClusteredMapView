@@ -13,18 +13,8 @@
 @interface VWWClusteredMapView () 
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) NSMutableSet *clusteredAnnotations;
-//@property (nonatomic, strong) NSMutableSet *hiddenSections;
 @property (nonatomic, strong) NSSet *lastClusteredAnnotations;
-
 @property (nonatomic, strong) VWWCoordinateQuadTree *quadTree;
-//@property (nonatomic, strong) NSMutableArray *quadTrees;
-
-
-@property (nonatomic) MKCoordinateRegion lastRegion;
-
-@property (nonatomic, strong) UIDynamicAnimator* animator;
-@property (nonatomic, strong) UIGravityBehavior* gravity;
-
 @property (nonatomic, strong) NSLock *lock;
 
 @end

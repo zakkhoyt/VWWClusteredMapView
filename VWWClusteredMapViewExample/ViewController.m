@@ -35,21 +35,20 @@
 @interface ViewController (VWWClusteredMapViewDelegate) <VWWClusteredMapViewDelegate>
 @end
 
-
 @implementation ViewController
 
 #pragma mark UIViewController methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     // Setup our settings UI stuff
     self.settingsButton.layer.cornerRadius = self.settingsButton.frame.size.height / 2.0;
     self.settingsButton.layer.borderWidth = 4;
     self.settingsButton.layer.borderColor = [UIColor orangeColor].CGColor;
     self.settingsContainerView.alpha = 1.0;
     self.bottomConstraint.constant = -self.settingsContainerView.bounds.size.height;
-    
+
     // Configure mapview data source and delegate
     self.mapView.delegate = self;
     self.mapView.dataSource = self;
@@ -57,15 +56,14 @@
     // Load hotels from CSV file. Array of id<MKAnnotation> objects
     self.hotelAnnotations = [HotelAnnotation annotationsFromFile];
     [self.mapView reloadData];
-    
 }
 
--(BOOL)prefersStatusBarHidden{
+- (BOOL)prefersStatusBarHidden {
     return YES;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"SegueMainToSettings"]) {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"SegueMainToSettings"]) {
         SettingsTableViewController *vc = segue.destinationViewController;
         vc.mapView = self.mapView;
         [vc setHideButtonActionBlock:^{
@@ -91,11 +89,11 @@
 @end
 
 @implementation ViewController (VWWClusteredMapViewDataSource)
-- (NSInteger)mapViewNumberOfAnnotations:(VWWClusteredMapView*)mapView{
+- (NSInteger)mapViewNumberOfAnnotations:(VWWClusteredMapView *)mapView {
     return self.hotelAnnotations.count;
 }
 
-- (id<MKAnnotation>)mapView:(VWWClusteredMapView*)mapView annotationForItemAtIndex:(NSInteger)index {
+- (id<MKAnnotation>)mapView:(VWWClusteredMapView *)mapView annotationForItemAtIndex:(NSInteger)index {
     return self.hotelAnnotations[index];
 }
 
@@ -103,23 +101,23 @@
 
 @implementation ViewController (VWWClusteredMapViewDelegate)
 
--(VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(VWWClusteredAnnotation*)annotation {
-    if([annotation isKindOfClass:[MKUserLocation class]]){
+- (VWWClusteredAnnotationView *)clusteredMapView:(VWWClusteredMapView *)clusteredMapView viewForClusteredAnnotation:(VWWClusteredAnnotation *)annotation {
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
         return nil;
     }
 
     id obj = [annotation.annotations firstObject];
-    if([obj isKindOfClass:[HotelAnnotation class]]){
-        
+    if ([obj isKindOfClass:[HotelAnnotation class]]) {
+
         HotelAnnotationView *annotationView = (HotelAnnotationView *)[clusteredMapView dequeueReusableAnnotationViewWithIdentifier:@"HotelAnnotationView"];
         if (!annotationView) {
             annotationView = [[HotelAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"HotelAnnotationView"];
         }
         annotationView.canShowCallout = NO;
-        annotationView.count = ((VWWClusteredAnnotation*)annotation).annotations.count;
+        annotationView.count = ((VWWClusteredAnnotation *)annotation).annotations.count;
         return annotationView;
     }
-    
+
     return nil;
 }
 
@@ -131,4 +129,3 @@
 }
 
 @end
-

@@ -15,74 +15,46 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
 
 -(void)didMoveToSuperview{
     [super didMoveToSuperview];
-    
-//    if(self.animateReclusting){
-    // Coming soon is to merge and join annotatoins as the user zooms (like in the Photos app's map view).
-    // This commented out code doesn't quite work correctly.
-//    if(CGPointEqualToPoint(self.mergeToPoint, CGPointZero)){
-        switch (self.animationType) {
-            case VWWClusteredMapViewAnnotationAddAnimationFade:
-                [self animateAddFadeStaggered:NO];
-                break;
-            case VWWClusteredMapViewAnnotationAddAnimationFadeStaggered:
-                [self animateAddFadeStaggered:YES];
-                break;
-                
-            case VWWClusteredMapViewAnnotationAddAnimationAutomatic:
-            case VWWClusteredMapViewAnnotationAddAnimationGrow:
-                [self animateAddGrowStaggered:NO];
-                break;
-            case VWWClusteredMapViewAnnotationAddAnimationGrowStaggered:
-                [self animateAddGrowStaggered:YES];
-                break;
-            case VWWClusteredMapViewAnnotationAddAnimationRain:
-                [self animateAddRainStaggered:NO];
-                break;
-            case VWWClusteredMapViewAnnotationAddAnimationRainStaggered:
-                [self animateAddRainStaggered:YES];
-                break;
-            case VWWClusteredMapViewAnnotationAddAnimationNone:
-                self.alpha = 1.0;
-                self.transform = CGAffineTransformIdentity;
-            default:
-                break;
-        }
-//    } else {
-//        [self animateMergeToWithCompletionBlock:^{
-//            [super removeFromSuperview];
-//        }];
-//    }
-//    }
+    switch (self.animationType) {
+        case VWWClusteredMapViewAnnotationAddAnimationFade:
+            [self animateAddFadeStaggered:NO];
+            break;
+        case VWWClusteredMapViewAnnotationAddAnimationFadeStaggered:
+            [self animateAddFadeStaggered:YES];
+            break;
+        case VWWClusteredMapViewAnnotationAddAnimationGrow:
+            [self animateAddGrowStaggered:NO];
+            break;
+        case VWWClusteredMapViewAnnotationAddAnimationAutomatic:
+        case VWWClusteredMapViewAnnotationAddAnimationGrowStaggered:
+            [self animateAddGrowStaggered:YES];
+            break;
+        case VWWClusteredMapViewAnnotationAddAnimationRain:
+            [self animateAddRainStaggered:NO];
+            break;
+        case VWWClusteredMapViewAnnotationAddAnimationRainStaggered:
+            [self animateAddRainStaggered:YES];
+            break;
+        case VWWClusteredMapViewAnnotationAddAnimationNone:
+            self.alpha = 1.0;
+            self.transform = CGAffineTransformIdentity;
+        default:
+            break;
+    }
 }
 
-//-(void)removeFromSuperview{
-//if(self.animateReclusting){
-////    if(CGPointEqualToPoint(self.splitFromPoint, CGPointZero)){
-//        [self animateRemoveWithCompletionBlock:^{
-//            [super removeFromSuperview];
-//        }];
-////    } else {
-////        [self animateSplitWithCompletionBlock:^{
-////            [super removeFromSuperview];
-////        }];
-////    }
-//}
-//}
-
-
 #pragma mark Animations for adding
-
 
 -(void)animateAddFadeStaggered:(BOOL)staggered{
     NSTimeInterval delay = staggered ? [self staggeredDelay] : 0;
     
     self.transform = CGAffineTransformIdentity;
     self.alpha = 0.0;
-
+    
     [UIView animateWithDuration:self.addAnnotationAnimationDuration delay:delay options:UIViewAnimationOptionLayoutSubviews animations:^{
         self.alpha = 1.0;
     } completion:NULL];
-
+    
 }
 -(void)animateAddGrowStaggered:(BOOL)staggered{
     NSTimeInterval delay = staggered ? [self staggeredDelay] : 0;
@@ -92,8 +64,8 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
          usingSpringWithDamping:0.25
           initialSpringVelocity:5.0
                         options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.transform = CGAffineTransformMakeScale(1.0, 1.0);
-    } completion:NULL];
+                            self.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                        } completion:NULL];
 }
 
 -(void)animateAddRainStaggered:(BOOL)staggered{
@@ -121,7 +93,7 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
             self.alpha = 1.0;
         }];
     } completion:nil];
-
+    
 }
 
 
@@ -132,7 +104,7 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
 }
 
 -(void)animateSplitWithCompletionBlock:(VWWClusteredAnnotationViewEmptyBlock)completionBlock{
-
+    
     CGPoint origin = self.frame.origin;
     
     CGPoint splitFromPoint = self.splitFromPoint;
@@ -140,7 +112,7 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
     splitFromPoint.y -= self.frame.size.height / 2.0;
     CGRect startFrame = CGRectMake(splitFromPoint.x, splitFromPoint.y, self.frame.size.width, self.frame.size.height);
     self.frame = startFrame;
-
+    
     CGRect endFrame = CGRectMake(origin.x, origin.y, self.frame.size.width, self.frame.size.height);
     
     CGFloat duration = 0.5;
@@ -161,7 +133,7 @@ typedef void(^VWWClusteredAnnotationViewEmptyBlock)(void);
     } completion:^(BOOL finished) {
         completionBlock();
     }];
-
+    
 }
 
 @end

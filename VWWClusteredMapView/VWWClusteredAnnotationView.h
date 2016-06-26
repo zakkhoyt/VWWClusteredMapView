@@ -22,7 +22,6 @@ typedef NS_ENUM(NSInteger, VWWClusteredMapViewAnnotationAddAnimation) {
 typedef NS_ENUM(NSInteger, VWWClusteredMapViewAnnotationRemoveAnimation) {
     VWWClusteredMapViewAnnotationRemoveAnimationNone = 0,
     VWWClusteredMapViewAnnotationRemoveAnimationShrink = 1,
-    VWWClusteredMapViewAnnotationRemoveAnimationGravity = 2,
     VWWClusteredMapViewAnnotationRemoveAnimationAutomatic = 100,
 };
 
