@@ -1,24 +1,15 @@
-# VWWClusteredMapView
+### VWWClusteredMapView
+A MKMapView with clustering annotations for iOS and TVOS. Use it like a standard MKMapView but instead of addAnnotations and removeAnnotations use the VWWClusteredMapViewDataSource protocol. 
 
-## Overview
+#### Standalone Installation
+- pod 'VWWClusteredMapView', :git => 'https://github.com/zakkhoyt/VWWClusteredMapView', :tag => '1.0.3'
 
-## Installation and Example project
-
-1.) Clone this repository
-
-2.)	Add this line to your Podfile:
-
-pod 'VWWClusteredMapView', :git => 'https://github.com/zakkhoyt/VWWClusteredMapView', :branch => 'master'
-
-3.) Run pod install
-
-4.) Open VWWClusteredMapViewExample.xcworkspace
-
+#### Example project
+- Clone this repository
 
 ## Requirements
-
 - iOS 8.0 or higher 
+- TVOS 9.2 or higher
 
 ## License
-
 VWWClusteredMapView is available under the MIT license.
