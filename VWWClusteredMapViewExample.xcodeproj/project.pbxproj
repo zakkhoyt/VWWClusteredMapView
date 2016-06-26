@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14F503842050A90092D93FEA /* libPods-VWWClusteredMapViewExampleTVOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D467718A47D0E2E3E5928D /* libPods-VWWClusteredMapViewExampleTVOS.a */; };
 		C6048F671C33484D00FBE0B8 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = C6048F661C33484D00FBE0B8 /* TODO.txt */; };
 		C61BCD261D1FA97100E5AADE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C61BCD251D1FA97100E5AADE /* main.m */; };
 		C61BCD291D1FA97100E5AADE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C61BCD281D1FA97100E5AADE /* AppDelegate.m */; };
@@ -41,8 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1FBACB75E9A3B03F82AD7B04 /* Pods-VWWClusteredMapViewExampleTVOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VWWClusteredMapViewExampleTVOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-VWWClusteredMapViewExampleTVOS/Pods-VWWClusteredMapViewExampleTVOS.release.xcconfig"; sourceTree = "<group>"; };
 		700C68A3C1E5656C85DC4150 /* Pods-VWWClusteredMapViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VWWClusteredMapViewExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-VWWClusteredMapViewExample/Pods-VWWClusteredMapViewExample.release.xcconfig"; sourceTree = "<group>"; };
 		7DF444B02580382FA1F31CF3 /* Pods-VWWClusteredMapViewExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VWWClusteredMapViewExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VWWClusteredMapViewExample/Pods-VWWClusteredMapViewExample.debug.xcconfig"; sourceTree = "<group>"; };
+		84D467718A47D0E2E3E5928D /* libPods-VWWClusteredMapViewExampleTVOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VWWClusteredMapViewExampleTVOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A66AE5861140E51CFA80A0C5 /* Pods-VWWClusteredMapViewExampleTVOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VWWClusteredMapViewExampleTVOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VWWClusteredMapViewExampleTVOS/Pods-VWWClusteredMapViewExampleTVOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C6048F661C33484D00FBE0B8 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		C61BCD221D1FA97100E5AADE /* VWWClusteredMapViewExampleTVOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VWWClusteredMapViewExampleTVOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61BCD251D1FA97100E5AADE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14F503842050A90092D93FEA /* libPods-VWWClusteredMapViewExampleTVOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,8 @@
 				DD7B6357AC957F369C6EBE08 /* Pods.release.xcconfig */,
 				7DF444B02580382FA1F31CF3 /* Pods-VWWClusteredMapViewExample.debug.xcconfig */,
 				700C68A3C1E5656C85DC4150 /* Pods-VWWClusteredMapViewExample.release.xcconfig */,
+				A66AE5861140E51CFA80A0C5 /* Pods-VWWClusteredMapViewExampleTVOS.debug.xcconfig */,
+				1FBACB75E9A3B03F82AD7B04 /* Pods-VWWClusteredMapViewExampleTVOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -232,6 +239,7 @@
 			children = (
 				E4DF75F764D10C16154C4343 /* libPods.a */,
 				ED22CA254894F31FE96DC79A /* libPods-VWWClusteredMapViewExample.a */,
+				84D467718A47D0E2E3E5928D /* libPods-VWWClusteredMapViewExampleTVOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -243,9 +251,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C61BCD351D1FA97100E5AADE /* Build configuration list for PBXNativeTarget "VWWClusteredMapViewExampleTVOS" */;
 			buildPhases = (
+				E6F733A9A320E965E3EAD3E7 /* 📦 Check Pods Manifest.lock */,
 				C61BCD1E1D1FA97100E5AADE /* Sources */,
 				C61BCD1F1D1FA97100E5AADE /* Frameworks */,
 				C61BCD201D1FA97100E5AADE /* Resources */,
+				FBD459E4159107FB11C73E4A /* 📦 Embed Pods Frameworks */,
+				3E04E3143D19BFF49DA10DD6 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -370,6 +381,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3E04E3143D19BFF49DA10DD6 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VWWClusteredMapViewExampleTVOS/Pods-VWWClusteredMapViewExampleTVOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		97B2C3E4901B97EA3F0BA7CC /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -413,6 +439,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VWWClusteredMapViewExample/Pods-VWWClusteredMapViewExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6F733A9A320E965E3EAD3E7 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FBD459E4159107FB11C73E4A /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VWWClusteredMapViewExampleTVOS/Pods-VWWClusteredMapViewExampleTVOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -491,6 +547,7 @@
 /* Begin XCBuildConfiguration section */
 		C61BCD331D1FA97100E5AADE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A66AE5861140E51CFA80A0C5 /* Pods-VWWClusteredMapViewExampleTVOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -509,6 +566,7 @@
 		};
 		C61BCD341D1FA97100E5AADE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FBACB75E9A3B03F82AD7B04 /* Pods-VWWClusteredMapViewExampleTVOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
